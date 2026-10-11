@@ -1,0 +1,6 @@
+# Pinned build dependencies. Update deliberately, in their own commit.
+libzim==3.13.1
+Markdown==3.10.3
+PyYAML==6.0.3
+Jinja2==3.1.6
+pillow==12.3.0

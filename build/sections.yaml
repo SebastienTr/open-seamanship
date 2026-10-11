@@ -1,0 +1,33 @@
+# Top-level sections, in home-page order. `slug` is the folder under content/<lang>/.
+en:
+  - slug: emergency
+    title: Emergency
+    blurb: One-page cards. Act in seconds.
+    accent: true
+  - slug: fix-it
+    title: Fix it
+    blurb: Engine, electrical, hull and leaks, rig and sails, steering, plumbing and gas, radio.
+  - slug: run-the-boat
+    title: Run the boat
+    blurb: Navigation, rules of the road, weather, anchoring, docking, heavy weather, passage planning.
+  - slug: health
+    title: Health at sea
+    blurb: First aid, medicine chest, seasickness, water and food, survival.
+  - slug: know-your-boat
+    title: Know your boat
+    blurb: How systems work, naval architecture, materials, maintenance.
+  - slug: regions
+    title: Regions
+    blurb: Rules, rescue services, weather and tides by region. Brittany first.
+  - slug: tables
+    title: Tables and tools
+    blurb: Almanac, conversions, Beaufort scale, signals, lights and shapes, glossary.
+  - slug: history
+    title: History
+    blurb: How navigation, boats and the rules came to be.
+  - slug: library
+    title: Library
+    blurb: Full public-domain and openly licensed manuals.
+  - slug: about
+    title: About this pack
+    blurb: Licences, sources, how to report an error.

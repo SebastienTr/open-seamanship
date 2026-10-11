@@ -1,0 +1,43 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+
+permissions:
+  contents: write   # needed only to publish releases on tags
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # tags give the version
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Tests
+        run: make test
+      - name: Release build (reviewed pages only)
+        run: make all MODE=release
+      - name: Preview build (with drafts)
+        run: make all MODE=preview
+      - uses: actions/upload-artifact@v4
+        with:
+          name: open-seamanship-zim
+          path: dist/*.zim
+          if-no-files-found: error
+      - name: Checksums
+        run: cd dist && sha256sum *.zim > SHA256SUMS && cat SHA256SUMS
+      - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/open-seamanship_en_${GITHUB_REF_NAME}.zim dist/SHA256SUMS \
+            --title "Open Seamanship $GITHUB_REF_NAME" --notes "Release build: reviewed pages only."

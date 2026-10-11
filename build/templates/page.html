@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}{% if not home %} · Open Seamanship{% endif %}</title>
+{% if page and page.meta.summary %}<meta name="description" content="{{ page.meta.summary }}">{% endif %}
+<link rel="stylesheet" href="{{ root }}static/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="{{ root }}index.html">Open Seamanship</a>
+  <nav><a class="sos" href="{{ root }}emergency/index.html">Emergency</a> <a href="{{ root }}a-z.html">A-Z</a></nav>
+</header>
+
+{% if preview %}
+<p class="banner preview">Preview build. Pages marked "Unreviewed" have not been checked. Do not rely on them.</p>
+{% endif %}
+
+<main>
+{% if section and not home %}
+<p class="crumbs"><a href="{{ root }}index.html">Home</a> › <a href="{{ root }}{{ section.slug }}/index.html">{{ section.title }}</a></p>
+{% endif %}
+
+<h1>{{ title }}</h1>
+
+{% if page and not page.structural %}
+<p class="labels">
+  <span class="label kind">{{ kind_label[page.kind] }}</span>
+  <span class="label region">{{ regions[page.meta.region] }}</span>
+  <span class="label status-{{ page.meta.status }}">{{ status_label[page.meta.status] }}</span>
+  {% if page.meta.safety == "critical" %}<span class="label critical">Safety critical</span>{% endif %}
+</p>
+{% if page.meta.status == "draft" %}
+<p class="banner draft">Unreviewed draft. Do not rely on this page.</p>
+{% endif %}
+{% if page.meta.summary %}<p class="summary">{{ page.meta.summary }}</p>{% endif %}
+{% for u in page.meta.uncertain or [] %}
+<aside class="box uncertain"><strong>Uncertain.</strong> {{ u }}</aside>
+{% endfor %}
+{% endif %}
+
+{% if home %}
+<div class="intro">{{ body | safe }}</div>
+<ul class="tiles">
+{% for s in sections %}
+  <li class="tile{% if s.accent %} accent{% endif %}">
+    <a href="{{ s.slug }}/index.html"><span class="tile-title">{{ s.title }}</span>
+    <span class="tile-blurb">{{ s.blurb }}</span>
+    {% if counts[s.slug] == 0 and s.slug != "about" %}<span class="tile-empty">Coming soon</span>{% endif %}</a>
+  </li>
+{% endfor %}
+</ul>
+{% elif body %}
+<article class="body">{{ body | safe }}</article>
+{% endif %}
+
+{% if listing is defined %}
+  {% if section and section.blurb %}<p class="summary">{{ section.blurb }}</p>{% endif %}
+  {% if listing %}
+  <ul class="listing">
+  {% for p in listing %}
+    <li><a href="{{ root }}{{ p.out_path }}">{{ p.title }}</a>
+    {% if not p.structural %}<span class="meta">{{ kind_label[p.kind] }} · {{ regions[p.meta.region] }}{% if p.meta.status == "draft" %} · Unreviewed{% endif %}</span>{% endif %}
+    {% if p.meta.summary %}<br><span class="sub">{{ p.meta.summary }}</span>{% endif %}</li>
+  {% endfor %}
+  </ul>
+  {% else %}
+  <p class="empty">No pages here yet. This section is being written.</p>
+  {% endif %}
+{% endif %}
+
+{% if page and page.meta.local_wikipedia %}
+<aside class="box wiki"><strong>Local Wikipedia.</strong> Install the matching regional shelf to read:
+{{ page.meta.local_wikipedia | join(", ") }}.</aside>
+{% endif %}
+</main>
+
+<footer>
+{% if page and not page.structural and footer_sources %}
+<p><strong>Sources:</strong></p>
+<ul class="sources">
+{% for s in footer_sources %}<li>{{ s.title }}, {{ s.locator }} ({{ s.licence }})</li>{% endfor %}
+</ul>
+{% endif %}
+{% if page %}
+<p>Text licence: <a href="{{ licences[page.meta.licence].url }}">{{ licences[page.meta.licence].name }}</a>.
+{% if not page.structural and page.meta.reviewed %}Last reviewed {{ page.meta.reviewed }}.{% endif %}</p>
+{% endif %}
+<p>Open Seamanship {{ info.version }} ({{ info.date.isoformat() }}). Does not replace training, official publications or local rules.
+<a href="{{ root }}about/report-an-error.html">Report an error</a>.</p>
+</footer>
+</body>
+</html>

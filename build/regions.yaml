@@ -1,0 +1,9 @@
+# Region codes used in page front matter (`region:`), with display labels.
+international: International
+eu: European Union
+fr: France
+fr-bretagne: "France: Brittany"
+fr-mediterranee: "France: Mediterranean"
+uk: United Kingdom
+uk-south-coast: "United Kingdom: south coast"
+us: United States

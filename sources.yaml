@@ -1,0 +1,185 @@
+# Sources manifest. Every library file and image in the pack must be listed here.
+# Fields: see CONTRIBUTING.md. `status`: cleared | check | excluded.
+# Nothing is fetched yet (phase 1); `files` is filled by scripts/fetch.py in phase 3.
+
+# --- International core: US federal publications ---------------------------
+- id: bowditch
+  title: "The American Practical Navigator (Pub. No. 9), 2 volumes"
+  publisher: US National Geospatial-Intelligence Agency
+  url: https://msi.nga.mil/Publications/APN
+  licence: public-domain-us-federal
+  evidence: "US federal work; NGA states it is freely available for download"
+  status: check            # confirm current download location and edition
+  retrieved: null
+  files: []
+- id: nga-pub102
+  title: "International Code of Signals (Pub. No. 102)"
+  publisher: US National Geospatial-Intelligence Agency
+  url: https://msi.nga.mil/Publications
+  licence: public-domain-us-federal
+  evidence: "US federal work"
+  status: check
+  retrieved: null
+  files: []
+- id: nga-pub229
+  title: "Sight Reduction Tables for Marine Navigation (Pub. No. 229), 6 volumes"
+  publisher: US National Geospatial-Intelligence Agency
+  url: https://msi.nga.mil/Publications
+  licence: public-domain-us-federal
+  evidence: "US federal work"
+  status: check
+  retrieved: null
+  files: []
+- id: uscg-navrules
+  title: "Navigation Rules and Regulations Handbook (International and Inland)"
+  publisher: US Coast Guard
+  url: https://www.navcen.uscg.gov/navigation-rules-amalgamated
+  licence: public-domain-us-federal
+  evidence: "US federal publication of law; COLREGs text taken from here, not from IMO"
+  status: check            # confirm latest corrected edition
+  retrieved: null
+  files: []
+- id: uscg-boat-crew-seamanship
+  title: "Boat Crew Seamanship Manual (COMDTINST M16114.5 series)"
+  publisher: US Coast Guard
+  url: https://everyspec.com/USCG/COMDTINST_M16114x5C_50599/
+  licence: public-domain-us-federal
+  evidence: "US federal work; revision C dated 2003"
+  status: check            # look for a newer revision and its distribution statement
+  retrieved: null
+  files: []
+- id: navedtra-machinery-repairman
+  title: "Machinery Repairman 3 & 2 (NAVEDTRA 12204)"
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/machineryrepairm003995mbp
+  licence: public-domain-us-federal
+  evidence: "Distribution Statement A on the cover: approved for public release, distribution unlimited"
+  status: cleared
+  retrieved: null
+  files: []
+- id: phs-ships-medicine-chest
+  title: "The Ship's Medicine Chest and Medical Aid at Sea (2003 edition)"
+  publisher: US Public Health Service
+  url: https://irp.fas.org/doddir/milmed/ships.pdf
+  licence: public-domain-us-federal
+  evidence: "US federal work (DHHS / PHS)"
+  status: cleared          # dosing to be marked as dated on every page that uses it
+  retrieved: null
+  files: []
+- id: noaa-mariners-weather-guide-hawaii
+  title: "Mariners Weather Guide for Hawaiian Waters and the North Pacific (1972)"
+  publisher: NOAA National Weather Service
+  url: https://repository.library.noaa.gov/view/noaa/49724
+  licence: CC0-1.0
+  evidence: "NOAA Institutional Repository rights field: CC0 Public Domain"
+  status: cleared          # concepts only; broadcast schedules are obsolete
+  retrieved: null
+  files: []
+
+# --- Public-domain books ----------------------------------------------------
+- id: verrill-knots
+  title: "Knots, Splices and Rope Work (A. Hyatt Verrill)"
+  publisher: Project Gutenberg eBook #13510
+  url: https://www.gutenberg.org/ebooks/13510
+  licence: public-domain
+  evidence: "Published 1912 (US PD); author died 1954, so EU PD since 1 January 2025"
+  status: cleared
+  retrieved: null
+  files: []
+- id: verrill-sailboat
+  title: "The Book of the Sailboat (A. Hyatt Verrill)"
+  publisher: Project Gutenberg eBook #54051
+  url: https://www.gutenberg.org/ebooks/54051
+  licence: public-domain
+  evidence: "Published 1916 (US PD); author died 1954 (EU PD since 2025). Label as historical"
+  status: cleared
+  retrieved: null
+  files: []
+- id: knight-sailing
+  title: "Sailing (E. F. Knight)"
+  publisher: Project Gutenberg eBook #56394
+  url: https://www.gutenberg.org/ebooks/56394
+  licence: public-domain
+  evidence: "19th-century work; author died 1925 (EU PD since 1996). Label as historical"
+  status: cleared
+  retrieved: null
+  files: []
+- id: bonnefoux-memoires
+  title: "Mémoires du Baron de Bonnefoux, capitaine de vaisseau, 1782-1855"
+  publisher: Project Gutenberg eBook #38734
+  url: https://www.gutenberg.org/ebooks/38734
+  licence: public-domain
+  evidence: "Author died 1855; editor's notes (early 20th c.) to check for EU 70-year rule"
+  status: check
+  retrieved: null
+  files: []
+- id: bonnefoux-paris-dictionnaire
+  title: "Dictionnaire de marine à voiles et à vapeur (Bonnefoux et Pâris)"
+  publisher: Arthus Bertrand, Paris, 1847-1859
+  url: https://mrsh.unicaen.fr/dicomarine/dicoMarine/DicoMarineImpr.xml/ead/oeuv24_3.pdf
+  licence: public-domain
+  evidence: "Authors died 1855 and 1893. Use an Internet Archive or Wikisource copy, never Gallica files"
+  status: check            # find a non-Gallica scan
+  retrieved: null
+  files: []
+
+# --- Europe -----------------------------------------------------------------
+- id: mca-mgn
+  title: "UK Marine Guidance Notes (MGN), selected leisure notes"
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/collections/active-marine-guidance-notes-mgns
+  licence: OGL-UK-3.0
+  evidence: "MCA publications state OGL v3.0; check each note for third-party images"
+  status: check
+  retrieved: null
+  files: []
+- id: shom-ram
+  title: "Références Altimétriques Maritimes (chart datum and tide levels, French ports)"
+  publisher: Shom
+  url: https://services.data.shom.fr/geonetwork/1/api/records/MAREE_COURANTS_RAM.xml
+  licence: etalab-2.0
+  evidence: "Shom product sheet: Licence Ouverte 2.0; citation 'Shom, 2025. Références Altimétriques Maritimes, https://dx.doi.org/10.17183/MAREE_COURANTS_RAM'"
+  status: cleared
+  retrieved: null
+  files: []
+- id: mer-gouv-plaisance
+  title: "Fiches d'information et éditions de la navigation de plaisance"
+  publisher: French Ministry of the Sea
+  url: https://mer.gouv.fr/fiches-dinformation-et-editions-de-la-navigation-de-plaisance-et-des-loisirs-nautiques
+  licence: etalab-2.0
+  evidence: "Assumed public information; reuse terms not stated on the page, images may be third-party"
+  status: check
+  retrieved: null
+  files: []
+- id: eu-rcd-2013-53
+  title: "Directive 2013/53/EU on recreational craft (design categories A-D, CE marking)"
+  publisher: European Union, EUR-Lex
+  url: https://eur-lex.europa.eu/eli/dir/2013/53/oj
+  licence: eu-reuse-2011-833
+  evidence: "EUR-Lex reuse authorised with the source acknowledged (Decision 2011/833/EU)"
+  status: cleared
+  retrieved: null
+  files: []
+
+# --- Looked at and rejected -------------------------------------------------
+- id: who-imgs
+  title: "International Medical Guide for Ships, 3rd edition"
+  publisher: World Health Organization
+  url: https://www.who.int/publications/i/item/9789241547208
+  licence: null
+  evidence: "Sold; no open licence found"
+  status: excluded
+- id: ifixit
+  title: "iFixit repair guides"
+  publisher: iFixit
+  url: https://www.ifixit.com
+  licence: null
+  evidence: "CC BY-NC-SA (non-commercial); already shipped by N.O.M.A.D. Link only"
+  status: excluded
+- id: gallica-scans
+  title: "Gallica (BnF) scan files"
+  publisher: Bibliothèque nationale de France
+  url: https://gallica.bnf.fr
+  licence: null
+  evidence: "Commercial reuse of scans is paid; use the same works from other sources"
+  status: excluded

@@ -1,0 +1,8 @@
+# Licence record for every non-Markdown file under content/ (images, SVG, PDF).
+# `make check` fails if a file is missing here or its licence is not accepted.
+# Example:
+# en/fix-it/img/impeller.svg:
+#   licence: CC-BY-SA-4.0
+#   author: open-seamanship contributors
+#   source: null            # or an id from sources.yaml
+{}

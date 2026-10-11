@@ -1,0 +1,26 @@
+# Licences accepted in the pack. Anything not listed here fails `make check`.
+# See CONTENT_POLICY.md for the reasoning.
+public-domain:
+  name: Public domain
+  url: https://creativecommons.org/publicdomain/mark/1.0/
+public-domain-us-federal:
+  name: Public domain (US federal government work)
+  url: https://www.law.cornell.edu/uscode/text/17/105
+CC0-1.0:
+  name: CC0 1.0
+  url: https://creativecommons.org/publicdomain/zero/1.0/
+CC-BY-4.0:
+  name: CC BY 4.0
+  url: https://creativecommons.org/licenses/by/4.0/
+CC-BY-SA-4.0:
+  name: CC BY-SA 4.0
+  url: https://creativecommons.org/licenses/by-sa/4.0/
+OGL-UK-3.0:
+  name: Open Government Licence v3.0
+  url: https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+etalab-2.0:
+  name: Licence Ouverte / Open Licence 2.0
+  url: https://www.etalab.gouv.fr/licence-ouverte-open-licence/
+eu-reuse-2011-833:
+  name: EU reuse (Commission Decision 2011/833/EU)
+  url: https://eur-lex.europa.eu/eli/dec/2011/833/oj

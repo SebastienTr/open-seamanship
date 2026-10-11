@@ -1,0 +1,12 @@
+Open Seamanship uses two licences:
+
+- Original text, drawings and other content written for this pack:
+  Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+  Full text: LICENSES/CC-BY-SA-4.0.txt
+
+- Build code (build/, tests/, install.sh, Makefile, Dockerfile, CI):
+  Apache License 2.0. Full text: LICENSES/Apache-2.0.txt
+
+Library documents, images and Wikipedia articles keep their own licences.
+Each one is recorded in sources.yaml or content/assets.yaml, and shown on the
+page that uses it. See CONTENT_POLICY.md.
