@@ -81,7 +81,7 @@ done
 install -m 0644 "$ZIM" "$LIBRARY/$name"
 echo "==> Copied to $LIBRARY/$name"
 
-if command -v docker >/dev/null 2>&1 && docker ps --format '{{.Names}}' | grep -qx "$CONTAINER"; then
+if command -v docker >/dev/null 2>&1 && docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "$CONTAINER"; then
   docker restart "$CONTAINER" >/dev/null
   echo "==> Restarted $CONTAINER"
 else

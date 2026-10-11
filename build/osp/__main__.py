@@ -45,7 +45,7 @@ def main(argv=None) -> int:
 
     info = config.build_info()
     for lang in langs:
-        site_dir = DIST / "site" / lang
+        site_dir = DIST / "site" / (f"{lang}-preview" if args.preview else lang)
         if args.command in ("site", "all"):
             written = build(lang, pages[lang], site_dir, preview=args.preview)
             print(f"site {lang}: {len(written)} page(s) in {site_dir.relative_to(DIST.parent)}")
