@@ -99,7 +99,7 @@ def pack(out_dir: Path | None = None) -> Path | None:
                 c.add_item(_Item(path, title, "text/html", lambda page=page: StringProvider(page), True))
             else:
                 path = "files/" + rel
-                c.add_item(_Item(path, title, mime, lambda f=f: FileProvider(str(f)), mime == "text/html"))
+                c.add_item(_Item(path, title, mime, lambda f=f: FileProvider(str(f)), mime in ("text/html", "application/pdf")))
             folder = rel.split("/")[0] if "/" in rel else ""
             rows.append((folder, title, path, f.suffix.lower().lstrip(".").upper()))
 

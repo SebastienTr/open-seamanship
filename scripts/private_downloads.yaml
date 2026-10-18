@@ -1,0 +1,121 @@
+# Free, official engine manuals for the PRIVATE shelf.
+#
+# These documents are free to download but copyrighted by their makers: they
+# are never put in the public pack. scripts/fetch_private.py saves them under
+# private/<group>/ for your own use. Only manufacturer sites, or owner
+# associations re-hosting a maker's own document, are listed here.
+#
+# Resolver types:
+#   url        direct link to a PDF
+#   flowpaper  a FlowPaper viewer page; the PDF path is read from the page (Beta Marine)
+#   page-pdfs  a web page; every PDF link matching `match` is downloaded (Westerbeke)
+#   tohatsu    Tohatsu's owner's-manual catalogue (JSON), filtered by power and language
+#
+# Checked on 18 October 2026. Makers move files: a failed link is reported, not fatal.
+
+volvo-penta-md2000:
+  note: "Volvo Penta MD2010, MD2020, MD2030, MD2040 instruction book (1997)"
+  items:
+    - type: url
+      name: MD2010-2040-instruction-book-EN-7738231-5.pdf
+      url: "https://www.bavariayacht.org/downloads/engine/Volvo%20Owners_Manual-MD2010-20-30-40%207738231-5.pdf"
+      host: Bavaria Yacht owners' association (re-host of the Volvo Penta document)
+    - type: url
+      name: MD2010-2040-manuel-instructions-FR.pdf
+      url: "https://apps.hisse-et-oh.com/store/medias/sailing/5de/1ab/c93/original/5de1abc939819f37768c060f.pdf"
+      host: Hisse et Oh (re-host of the Volvo Penta document)
+
+westerbeke-universal:
+  note: "Westerbeke and Universal (Kubota-based): operator's manuals, technical (workshop) manuals, parts lists, service bulletins"
+  items:
+    - type: page-pdfs
+      url: "https://www.westerbeke.com/Category/M-25/5399ADA2DAF73A26740BF7A5"
+      match: "(technical manual|operator|parts manual|service bulletin)"
+    - type: page-pdfs
+      url: "https://www.westerbeke.com/Category/W27/5399ADA1DAF73A26740BF61A"
+      match: "(technical manual|operator|parts manual|service bulletin)"
+    - type: url
+      name: 200554-M-25XPB-M-35B-M-40B-technical-manual.pdf
+      url: "https://www.c34.org/wiki/images/b/bb/200554_m-25xpb_m35b_m40b_technical_man.pdf"
+      host: Catalina 34 owners' association (re-host of the Westerbeke document)
+
+kohler-lombardini:
+  note: "Kohler KDW 702, 1003, 1404 workshop manual (industrial base of Lombardini LDW marine engines)"
+  items:
+    - type: url
+      name: KDW702-1003-1404-workshop-manual.pdf
+      url: "https://resources.kohler.com/power/kohler/enginesUS/pdf/kdw702_1404_service.pdf"
+
+sole-diesel:
+  note: "Solé Diesel MINI-62G to SM-105L operator's manual, in French"
+  items:
+    - type: url
+      name: Sole-MINI62G-SM105L-manuel-FR.pdf
+      url: "https://www.solediesel.com/datos_publicos/Manuales/U_CTMT62G105L_FR.pdf"
+
+beta-marine:
+  note: "Beta Marine (Kubota-based): operator's manual, parts list, gearbox manuals"
+  items:
+    - type: flowpaper
+      name: Beta-10-115T-operators-manual.pdf
+      url: "https://betamarine.co.uk/resources/Operators_Manuals/10-115T-HE-OM/"
+    - type: flowpaper
+      name: Beta-10-25-illustrated-parts-list.pdf
+      url: "https://betamarine.co.uk/resources/Illustrated_Parts_Lists/B10-B25-IPL/"
+    - type: flowpaper
+      name: Gearbox-TMC40P.pdf
+      url: "https://betamarine.co.uk/resources/Gearboxes/TMC/TMC40P-OM/"
+    - type: flowpaper
+      name: Gearbox-TMC60P.pdf
+      url: "https://betamarine.co.uk/resources/Gearboxes/TMC/TMC60P-OM/"
+    - type: flowpaper
+      name: Gearbox-PRM60.pdf
+      url: "https://betamarine.co.uk/resources/Gearboxes/PRM/PRM60-OM/"
+    - type: flowpaper
+      name: Gearbox-ZF15MIV-ZF25M.pdf
+      url: "https://betamarine.co.uk/resources/Gearboxes/ZF/ZF15MIV-ZF25M-OM/"
+
+vetus:
+  note: "Vetus M-line (Mitsubishi-based) and H-line (Hyundai-based) operation manuals"
+  items:
+    - type: url
+      name: Vetus-M-line-Benutzerhandbuch-DE.pdf
+      url: "https://vetus.com/de/asset/benutzerhandbuch-m-line/"
+    - type: url
+      name: Vetus-H-line-user-manual-EN.pdf
+      url: "https://vetus.com/asset/user-manual-h-line/"
+
+yanmar:
+  # yanmar.com refused automated downloads (HTTP 403) from a cloud server on 18 Oct 2026.
+  # From a home connection it may work; otherwise download these in a browser.
+  note: "Yanmar JH operation manual, SD saildrive manual, and a French YM manual (to confirm on opening)"
+  items:
+    - type: url
+      name: Yanmar-JH-operation-manual-EN.pdf
+      url: "https://www.yanmar.com/media/global/com/product/marinepleasure/sailBoatPropulsion/operationmanual/JH-CR_OPM_0AJHC-M00011.pdf"
+    - type: url
+      name: Yanmar-SD-saildrive-operation-manual.pdf
+      url: "https://www.yanmar.com/marine/wp-content/uploads/2020/03/Apr.2026-0_SD-OPM_20260427.pdf"
+    - type: url
+      name: Yanmar-0AYMM-FR0028-probably-YM-FR.pdf
+      url: "https://www.yanmar.com/marine/wp-content/uploads/2020/05/0AYMM-FR0028_2019.12.pdf"
+    - type: url
+      name: Yanmar-GM-JH-service-bulletins-Mack-Boring.pdf
+      url: "https://www.c320.org/filemgmt_data/files/yanmar_bulletins.pdf"
+      host: Catalina 320 owners' association (re-host of the US distributor's bulletins)
+
+tohatsu:
+  note: "Tohatsu (and Nissan Marine) outboard owner's manuals, from the official catalogue"
+  items:
+    - type: tohatsu
+      url: "https://www.tohatsu.com/marine/common/owners_manual/owners_manual_int.json"
+      max_hp: 30
+      languages: [French, English]
+
+yamaha:
+  note: "Yamaha outboard owner's manuals (examples; find yours by model on yamaha-motor.eu)"
+  items:
+    - type: url
+      name: Yamaha-9.9F-15F-manuel-FR.pdf
+      url: "https://cdn2.yamaha-motor.eu/prod/owner-manuals/Outboard%20Engines/P63V281997EF.PDF"
+
