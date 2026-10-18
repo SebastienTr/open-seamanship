@@ -46,6 +46,17 @@ Record both facts (publication date, death dates) in `sources.yaml`.
 - **US federal works** have no US copyright. Their status abroad is untested;
   we follow Wikimedia Commons and treat them as public domain, and record the
   risk here. US military manuals also need *Distribution Statement A*.
+- **Read the credits page of every government manual.** Navy rate manuals
+  often use manufacturers' illustrations "by courtesy"; those are not public
+  domain and must be removed or cleared. Army technical manuals that reprint a
+  manufacturer's manual (for example the Cummins engine TMs) carry the
+  maker's copyright and are excluded.
+- **Prefer non-Google scans** of old books on Internet Archive. Google's scans
+  carry usage guidelines asking for non-commercial use; a university or
+  Internet Archive scan of the same book avoids the question.
+- **Manufacturers' manuals** (Volvo Penta, Perkins, Yanmar, Beta and others)
+  are never in the public pack. A person may pack their own copies into the
+  private shelf (`private/`, see private/README.md), which is never published.
 - **French public information** is reusable, normally under the Licence
   Ouverte 2.0. A brochure's text may be fine while its photos and drawings
   belong to third parties: check each image or redraw it.

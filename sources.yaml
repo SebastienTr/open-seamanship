@@ -161,7 +161,159 @@
   retrieved: null
   files: []
 
+# --- Diesel engines (library shelf "Diesel engines, all sizes") --------------
+# Rule for government manuals: read the credits page. Navy rate manuals often
+# include manufacturers' illustrations "by courtesy", which we must drop or
+# clear. Army TMs that reprint a maker's manual carry the maker's copyright.
+- id: navpers-16178-fundamentals-of-diesel-engines
+  title: "Fundamentals of Diesel Engines (NAVPERS 16178), 1945"
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/FundamentalsOfDieselEngines16178
+  licence: public-domain-us-federal
+  evidence: "US Navy work, 1945; Internet Archive marks it Public Domain Mark 1.0. Credits page to check"
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-engineman-3-2-1979
+  title: "Engineman 3 & 2, Rate Training Manual (1979)"
+  publisher: US Naval Education and Training Command, via ERIC ED178727
+  url: https://archive.org/details/ERIC_ED178727
+  licence: public-domain-us-federal
+  evidence: "US Navy work. Credits page lists third-party illustrations used by courtesy: those must be removed or cleared"
+  status: check
+  retrieved: null
+  files: []
+- id: navpers-engineman-1957
+  title: "Engineman 3 (NAVPERS 10539) and Engineman 2 (NAVPERS 10540), 1957"
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/Engineman310539
+  licence: public-domain-us-federal
+  evidence: "US Navy work, 1957. Credits page to check"
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-fireman-1976
+  title: "Fireman, Rate Training Manual (1976)"
+  publisher: US Naval Education and Training Command, via ERIC ED126343
+  url: https://archive.org/details/ERIC_ED126343
+  licence: public-domain-us-federal
+  evidence: "US Navy work. Credits page to check"
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-14050-construction-mechanic-advanced
+  title: "Construction Mechanic Advanced (NAVEDTRA 14050), 1992"
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/navedtra-14050-construction-mechanic-advanced-1992
+  licence: public-domain-us-federal
+  evidence: "Distribution Statement A: approved for public release, distribution is unlimited (checked in the text). Credits page to check"
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-construction-mechanic-3-2-1978
+  title: "Construction Mechanic 3 & 2, Rate Training Manual (1978)"
+  publisher: US Naval Education and Training Command, via ERIC ED170540
+  url: https://archive.org/details/ERIC_ED170540
+  licence: public-domain-us-federal
+  evidence: "US Navy work. Credits page to check"
+  status: check
+  retrieved: null
+  files: []
+- id: mcm-engine-tune-up-diesel
+  title: "Construction Mechanic, Engine Tune-Up II (Diesel), 8-8 (1978)"
+  publisher: Military Curriculum Materials for Vocational and Technical Education, via ERIC ED223905
+  url: https://archive.org/details/ERIC_ED223905
+  licence: public-domain-us-federal
+  evidence: "Adapted US military course; ERIC notes copyrighted materials were omitted or cleared. Confirm the adaptation's own status"
+  status: check
+  retrieved: null
+  files: []
+- id: tm-9-2815-252-24-dn2m
+  title: "TM 9-2815-252-24, Diesel Engine Model DN2M (5 kW MEP-802A generator), 1993"
+  publisher: US Department of the Army
+  url: https://archive.org/details/5kw-mep-802-tqg-engine-9-2815-252-24
+  licence: public-domain-us-federal
+  evidence: "Distribution Statement A: approved for public release, distribution is unlimited (checked in the text). A small two-cylinder diesel, the closest public analogue to small marine diesels"
+  status: cleared
+  retrieved: null
+  files: []
+- id: tm-9-8000-automotive-1985
+  title: "TM 9-8000, Principles of Automotive Vehicles (1985)"
+  publisher: US Department of the Army
+  url: https://archive.org/details/tm-9-8000-principles-of-automotive-vehicles-1985
+  licence: public-domain-us-federal
+  evidence: "US Army work; diesel and fuel-injection chapters. Distribution statement to check"
+  status: check
+  retrieved: null
+  files: []
+- id: doe-hdbk-1018-mechanical-science
+  title: "DOE Fundamentals Handbook: Mechanical Science (DOE-HDBK-1018-93), 2 volumes"
+  publisher: US Department of Energy
+  url: https://everyspec.com/DOE/DOE-HDBK/DOE-HDBK-1018-1-93_3295/
+  licence: public-domain-us-federal
+  evidence: "US federal work; volume 1 covers diesel engine fundamentals, heat exchangers, pumps, valves. Find an official copy and check its statement"
+  status: check
+  retrieved: null
+  files: []
+- id: marine-oil-engine-handbook-1914
+  title: "The Marine Oil-Engine Handbook, 3rd edition (1914)"
+  publisher: Temple Press, London (staff of The Motor Ship and Motor Boat)
+  url: https://archive.org/details/MarineOilEngineHandbook3rdEd1914
+  licence: public-domain
+  evidence: "Published 1914 (US PD); collective work with no named author, so EU term is 70 years after publication. Label as historical"
+  status: cleared
+  retrieved: null
+  files: []
+- id: supino-land-marine-diesel-1915
+  title: "Land and Marine Diesel Engines (Giorgio Supino, translated by A. G. Bremner and J. Richardson), 1915"
+  publisher: Charles Griffin, London
+  url: https://archive.org/details/landmarinediesel00supi
+  licence: public-domain
+  evidence: "Published 1915 (US PD); author died 1913. Translators' death dates still to check for the EU rule"
+  status: check
+  retrieved: null
+  files: []
+- id: megson-diesel-engine-in-practice-1916
+  title: "The Diesel Engine in Practice (J. E. Megson and H. S. Jones), 1916"
+  publisher: Internet Archive scan (University of California)
+  url: https://archive.org/details/dieselengineinpr00megsrich
+  licence: public-domain
+  evidence: "Published 1916 (US PD). Authors' death dates still to check for the EU rule"
+  status: check
+  retrieved: null
+  files: []
+- id: collins-knocks-and-kinks-1908
+  title: "Knocks and Kinks (Hubert E. Collins), 1908"
+  publisher: Internet Archive scan (University of California copy, not the Google scan)
+  url: https://archive.org/details/knockskinkscause00collrich
+  licence: public-domain
+  evidence: "Published 1908 (US PD); author born 1872, death date to check for the EU rule. Prefer non-Google scans"
+  status: check
+  retrieved: null
+  files: []
+
 # --- Looked at and rejected -------------------------------------------------
+- id: tm-5-2815-233-14-cummins
+  title: "TM 5-2815-233-14, Cummins diesel engines maintenance manual (1983)"
+  publisher: US Department of the Army
+  url: https://archive.org/details/tm-5-2815-233-14-cummins-diesel-engines-maintenance-manual-1983
+  licence: null
+  evidence: "Reprints Cummins' own manual: the text carries 'Copyright 1983' and 'Copyright 1980' notices"
+  status: excluded
+- id: volvo-penta-manuals
+  title: "Volvo Penta owner's, workshop and parts manuals (all engines, including MD2020)"
+  publisher: AB Volvo Penta
+  url: https://www.volvopenta.com
+  licence: null
+  evidence: "Manufacturer copyright. Allowed only in a personal, never-published private shelf (see private/README.md)"
+  status: excluded
+- id: perkins-manuals
+  title: "Perkins workshop and parts manuals (including the Perama M20, base engine of the Volvo Penta MD2020)"
+  publisher: Perkins Engines
+  url: https://www.perkins.com
+  licence: null
+  evidence: "Manufacturer copyright. Private shelf only"
+  status: excluded
 - id: who-imgs
   title: "International Medical Guide for Ships, 3rd edition"
   publisher: World Health Organization

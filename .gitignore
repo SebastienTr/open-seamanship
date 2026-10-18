@@ -3,3 +3,6 @@ dist/
 __pycache__/
 *.pyc
 .DS_Store
+# Private shelf: never committed (see private/README.md)
+private/*
+!private/README.md

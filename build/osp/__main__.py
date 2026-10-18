@@ -15,7 +15,7 @@ LANGS = ["en"]  # French joins after English v1.0 (see the plan)
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="osp", description="Build the Open Seamanship pack.")
-    ap.add_argument("command", choices=["check", "site", "zim", "all"])
+    ap.add_argument("command", choices=["check", "site", "zim", "all", "private"])
     ap.add_argument("--lang", action="append", choices=LANGS, help="language (default: all)")
     ap.add_argument(
         "--preview",
@@ -26,6 +26,16 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     langs = args.lang or LANGS
     release = not args.preview
+
+    if args.command == "private":
+        from .private import pack as pack_private
+
+        out = pack_private()
+        if out is None:
+            print("private/ has no documents yet; see private/README.md")
+            return 0
+        print(f"private zim: {out.relative_to(DIST.parent)} ({out.stat().st_size // 1024} KiB). Do not share it.")
+        return 0
 
     report, pages = check_all(langs, release=release)
     for w in report.warnings:

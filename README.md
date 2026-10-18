@@ -50,6 +50,13 @@ docker build -t open-seamanship .
 docker run --rm -v "$PWD/dist:/work/dist" open-seamanship make all
 ```
 
+## Private shelf
+
+Manuals you own but may not share, such as your engine maker's owner's or
+workshop manual, go in `private/`. `make private` packs them, with your own
+notes, into a separate ZIM in `dist/private/`. Git ignores that folder and the
+public pack never reads it. See [private/README.md](private/README.md).
+
 ## Install on Project N.O.M.A.D.
 
 On the NOMAD host:

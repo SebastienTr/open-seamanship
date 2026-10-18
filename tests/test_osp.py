@@ -124,5 +124,34 @@ class EndToEnd(unittest.TestCase):
             self.assertIn("Unreviewed draft", html)
 
 
+class PrivateShelf(unittest.TestCase):
+    def test_private_docs_pack_but_never_reach_the_public_pack(self):
+        from osp import private
+        with tempfile.TemporaryDirectory() as tmp:
+            shelf = Path(tmp) / "private"
+            (shelf / "volvo-penta-md2020").mkdir(parents=True)
+            (shelf / "volvo-penta-md2020" / "owners_manual.pdf").write_bytes(b"%PDF-1.4\n%fake\n")
+            (shelf / "my-boat.md").write_text("# My boat\n\nImpeller part number: XYZ-123\n")
+            (shelf / "README.md").write_text("ignored")
+            old = private.PRIVATE
+            private.PRIVATE = shelf
+            try:
+                out = private.pack(Path(tmp) / "out")
+            finally:
+                private.PRIVATE = old
+            a = Archive(str(out))
+            self.assertTrue(a.has_entry_by_path("files/volvo-penta-md2020/owners_manual.pdf"))
+            self.assertTrue(a.has_entry_by_path("notes/my-boat.html"))
+            self.assertEqual(bytes(a.get_metadata("Flavour")).decode(), "private")
+            n = Searcher(a).search(Query().set_query("impeller")).getEstimatedMatches()
+            self.assertGreater(n, 0)
+
+            report, pages = check_all(["en"], release=True)
+            site = Path(tmp) / "site"
+            build("en", pages["en"], site, preview=True)
+            public = [p for p in site.rglob("*") if p.is_file()]
+            self.assertFalse(any(p.suffix == ".pdf" or "my-boat" in p.name for p in public))
+
+
 if __name__ == "__main__":
     unittest.main()
