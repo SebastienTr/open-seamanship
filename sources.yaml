@@ -255,6 +255,51 @@
   status: check
   retrieved: null
   files: []
+- id: tm-9-2815-254-24-isuzu-c240
+  title: "TM 9-2815-254-24, engine maintenance for MEP-804A/814A (Isuzu C-240PW-28 diesel), 1993, and parts list TM 9-2815-254-24P (2010)"
+  publisher: US Department of the Army
+  url: https://archive.org/details/mep804amep814aenginemaintenancetechnicalmanualtm9281525424
+  licence: public-domain-us-federal
+  evidence: "Distribution Statement A: approved for public release, distribution is unlimited (in the text); no Isuzu copyright found. Strip the uploader's added pages. Parts list: archive.org/details/mep804amep814aenginepartstechnicalmanualtm9281525424p"
+  status: cleared
+  retrieved: null
+  files: []
+- id: fm-55-501-marine-crewman
+  title: "FM 55-501, Marine Crewman's Handbook (1999)"
+  publisher: US Department of the Army
+  url: https://archive.org/details/FM_55_501_M_C_H_1999
+  licence: public-domain-us-federal
+  evidence: "Distribution restriction: approved for public release; distribution is unlimited (in the text)"
+  status: cleared
+  retrieved: null
+  files: []
+- id: tm-5-278-outboard-motors-1944
+  title: "TM 5-278, Outboard Motors (1944)"
+  publisher: US War Department
+  url: https://archive.org/details/TM5-278
+  licence: public-domain-us-federal
+  evidence: "US federal work, predates distribution statements; no copyright notice found. Two-stroke principles, label as historical"
+  status: cleared
+  retrieved: null
+  files: []
+- id: tm-55-1030-evinrude-1945
+  title: "TM 55-1030, Evinrude Zephyr and Lightfour outboard motors (1945)"
+  publisher: US War Department
+  url: https://archive.org/details/TM55-1030
+  licence: public-domain-us-federal
+  evidence: "US federal work; no copyright notice found. Historical"
+  status: cleared
+  retrieved: null
+  files: []
+- id: uscg-boat-crew-handbook-seamanship
+  title: "USCG Boat Crew Handbook, Seamanship Fundamentals (BCH16114.4A)"
+  publisher: US Coast Guard
+  url: https://archive.org/details/boat-crew-handbook-seamanship-fundamentals
+  licence: public-domain-us-federal
+  evidence: "US Coast Guard work with a section on outboard motors and stern drives; no Distribution Statement A seen yet"
+  status: check
+  retrieved: null
+  files: []
 - id: marine-oil-engine-handbook-1914
   title: "The Marine Oil-Engine Handbook, 3rd edition (1914)"
   publisher: Temple Press, London (staff of The Motor Ship and Motor Boat)
@@ -299,6 +344,27 @@
   url: https://archive.org/details/tm-5-2815-233-14-cummins-diesel-engines-maintenance-manual-1983
   licence: null
   evidence: "Reprints Cummins' own manual: the text carries 'Copyright 1983' and 'Copyright 1980' notices"
+  status: excluded
+- id: tm-9-2815-257-yanmar-l70
+  title: "TM 9-2815-257-23 and -24P, Yanmar L70 diesel (3 kW MEP-831A), 2018"
+  publisher: US Department of the Army
+  url: https://archive.org/details/3-kw-mep-831-tqg-eng-9-2815-257-23-aug-2018-pin-078442
+  licence: null
+  evidence: "Distribution Statement C: distribution authorised to US Government agencies and their contractors only"
+  status: excluded
+- id: mississippi-outboard-curriculum
+  title: "Mississippi Outboard Engine Mechanics curriculum (ERIC ED529542), 2006"
+  publisher: ERIC
+  url: https://archive.org/details/ERIC_ED529542
+  licence: null
+  evidence: "Contains material 'reprinted with permission from Power Equipment Technology, copyright 2003'"
+  status: excluded
+- id: maker-manuals-free-but-copyrighted
+  title: "Free maker manuals: Westerbeke/Universal technical manuals, Kohler KDW workshop manual, Solé, Beta, Vetus, Yanmar, Perkins and outboard owner's manuals"
+  publisher: Engine makers
+  url: https://www.westerbeke.com/Category/M-25/5399ADA2DAF73A26740BF7A5
+  licence: null
+  evidence: "Free to download but copyrighted; private shelf only. Full list in the 'Moteurs marins et hors-bords' resource doc"
   status: excluded
 - id: volvo-penta-manuals
   title: "Volvo Penta owner's, workshop and parts manuals (all engines, including MD2020)"
