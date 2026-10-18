@@ -128,6 +128,8 @@ def main(argv=None) -> int:
     new_log = not LOG.exists()
     ok = skipped = failed = dupes = 0
     seen_hashes: dict[str, str] = {}
+    for existing in sorted(PRIVATE.rglob("*.pdf")):  # duplicates are skipped across runs too
+        seen_hashes.setdefault(hashlib.sha256(existing.read_bytes()).hexdigest(), existing.name)
     with LOG.open("a", encoding="utf-8") as log:
         if new_log:
             log.write("date\tgroup\tfile\tsha256\turl\n")
