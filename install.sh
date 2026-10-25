@@ -44,15 +44,51 @@ done
 
 cd "$(dirname "$0")"
 
+# When run with sudo, build as the real user so .venv and dist/ are not owned by root.
+# Only the copy into the Kiwix library and the container restart need root.
+as_user() {
+  if [ "$(id -u)" -eq 0 ] && [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+    sudo -u "$SUDO_USER" -H "$@"
+  else
+    "$@"
+  fi
+}
+
+deps_ok() {
+  [ -x .venv/bin/python ] &&
+    [ "$(as_user .venv/bin/python -c "import libzim, yaml, markdown, jinja2, PIL; print('deps-ok')" 2>/dev/null)" = "deps-ok" ]
+}
+
+ensure_venv() {
+  if deps_ok; then
+    return
+  fi
+  echo "==> Setting up the Python environment in .venv"
+  if ! as_user python3 -m venv --help >/dev/null 2>&1; then
+    echo "python3 with venv is required. On Debian/Ubuntu: sudo apt install python3-venv" >&2
+    exit 1
+  fi
+  # A .venv left by an interrupted run (for example created before python3-venv
+  # was installed) has no pip or no packages: start again from scratch.
+  rm -rf .venv
+  if ! as_user python3 -m venv .venv || [ ! -x .venv/bin/pip ]; then
+    echo "Could not create .venv with pip. On Debian/Ubuntu: sudo apt install python3-venv" >&2
+    exit 1
+  fi
+  as_user .venv/bin/pip install --quiet --upgrade pip
+  as_user .venv/bin/pip install --quiet -r requirements.txt
+  deps_ok || { echo "Python packages failed to install; see the pip output above." >&2; exit 1; }
+}
+
 if [ -z "$ZIM" ]; then
   echo "==> Building Open Seamanship ($MODE)"
-  if [ ! -x .venv/bin/python ]; then
-    python3 -m venv .venv
-    .venv/bin/pip install --quiet --upgrade pip
-    .venv/bin/pip install --quiet -r requirements.txt
+  # Earlier runs under sudo may have left root-owned build folders: hand them back.
+  if [ "$(id -u)" -eq 0 ] && [ -n "${SUDO_USER:-}" ] && [ "$SUDO_USER" != "root" ]; then
+    for d in .venv dist; do [ -e "$d" ] && chown -R "$SUDO_USER": "$d"; done
   fi
+  ensure_venv
   rm -f dist/open-seamanship_*.zim
-  make all PYTHON=.venv/bin/python MODE="$MODE"
+  as_user make all PYTHON=.venv/bin/python MODE="$MODE"
   ZIM="$(ls -1 dist/open-seamanship_*.zim | head -n 1)"
 fi
 
