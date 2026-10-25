@@ -11,9 +11,9 @@ file and as a community add-on for
 [Project N.O.M.A.D.](https://github.com/Crosstalk-Solutions/project-nomad).
 
 > **Status (October 2026): foundations done, no reviewed content yet.**
-> The build, licence checks and packaging work end to end, and 45 sources are
-> mapped. Written pages come next. Nothing in a preview build should be relied
-> on at sea. See [docs/ROADMAP.md](docs/ROADMAP.md).
+> The build, licence checks and packaging work end to end, and about 100
+> sources are mapped, half of them already cleared. Written pages come next.
+> Nothing in a preview build should be relied on at sea. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## What is inside
 
@@ -21,7 +21,7 @@ file and as a community add-on for
 | --- | --- | --- | --- |
 | Emergency cards | One screen, numbered actions, act in seconds | Us, reviewed by practitioners | Not started |
 | Guides | Symptom first, then causes, fixes and "if that fails" | Us, reviewed by practitioners | Not started |
-| Library | Public-domain and openly licensed manuals | US, UK, French and EU public bodies; old books | [45 sources mapped](docs/SOURCES.md), not yet ingested |
+| Library | Public-domain and openly licensed manuals | US, UK, French and EU public bodies; old books | [sources mapped](docs/SOURCES.md), not yet ingested |
 | Local Wikipedia shelves | Curated regional articles, one small ZIM per region | Wikipedia contributors | Brittany seed list |
 | Private shelf | Manuals you own but may not share, packed for your own use | Engine makers | Working |
 

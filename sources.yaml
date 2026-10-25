@@ -147,7 +147,7 @@
   publisher: French Ministry of the Sea
   url: https://mer.gouv.fr/fiches-dinformation-et-editions-de-la-navigation-de-plaisance-et-des-loisirs-nautiques
   licence: etalab-2.0
-  evidence: "Assumed public information; reuse terms not stated on the page, images may be third-party"
+  evidence: "Contradictory: the site footer says etalab-2.0 unless stated otherwise, but its legal notice forbids commercial use and modification of editorial content. Take regulations from Légifrance/LEGI instead"
   status: check
   retrieved: null
   files: []
@@ -170,8 +170,8 @@
   publisher: US Bureau of Naval Personnel
   url: https://archive.org/details/FundamentalsOfDieselEngines16178
   licence: public-domain-us-federal
-  evidence: "US Navy work, 1945; Internet Archive marks it Public Domain Mark 1.0. Credits page to check"
-  status: check
+  evidence: "US Navy work, 1945; Internet Archive Public Domain Mark; no courtesy credits found in the text"
+  status: cleared
   retrieved: null
   files: []
 - id: navedtra-engineman-3-2-1979
@@ -188,8 +188,8 @@
   publisher: US Bureau of Naval Personnel
   url: https://archive.org/details/Engineman310539
   licence: public-domain-us-federal
-  evidence: "US Navy work, 1957. Credits page to check"
-  status: check
+  evidence: "US Navy work, 1957; Public Domain Mark; GPO publication; no courtesy credits found in the text"
+  status: cleared
   retrieved: null
   files: []
 - id: navedtra-fireman-1976
@@ -251,8 +251,8 @@
   publisher: US Department of Energy
   url: https://everyspec.com/DOE/DOE-HDBK/DOE-HDBK-1018-1-93_3295/
   licence: public-domain-us-federal
-  evidence: "US federal work; volume 1 covers diesel engine fundamentals, heat exchangers, pumps, valves. Find an official copy and check its statement"
-  status: check
+  evidence: "'Distribution Statement A. Approved for public release; distribution is unlimited.' No third-party notice found. Volume 1 covers diesel engines, heat exchangers, pumps, valves"
+  status: cleared
   retrieved: null
   files: []
 - id: tm-9-2815-254-24-isuzu-c240
@@ -400,4 +400,487 @@
   url: https://gallica.bnf.fr
   licence: null
   evidence: "Commercial reuse of scans is paid; use the same works from other sources"
+  status: excluded
+
+# --- Fishing, engine rooms and general mariner material (added 25 Oct 2026) ---
+- id: niosh-winch-guard-2024
+  title: Fabrication and installation guides, McElroy/Catchot 505 winch guard (NIOSH 2024-110 and 2024-111)
+  publisher: US NIOSH
+  url: https://www.cdc.gov/niosh/docs/2024-110/pdfs/2024-110.pdf
+  licence: public-domain-us-federal
+  evidence: 'PDF: ''This document is in the public domain''. Installation guide: https://www.cdc.gov/niosh/docs/2024-111/pdfs/2024-111.pdf'
+  status: cleared
+  retrieved: null
+  files: []
+- id: niosh-pfds-that-work
+  title: PFDs That Work (NIOSH 2013-131)
+  publisher: US NIOSH
+  url: https://www.cdc.gov/niosh/docs/2013-131/pdfs/2013-131.pdf
+  licence: public-domain-us-federal
+  evidence: 'US federal work; CDC policy: ''not subject to copyright, is in the public domain'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: niosh-survive-sinking
+  title: Increase your chances of surviving a vessel sinking (crewmember info sheet)
+  publisher: US NIOSH
+  url: https://www.cdc.gov/niosh/media/pdfs/Crewmember-Survival-Infosheet_1.pdf
+  licence: public-domain-us-federal
+  evidence: US federal work; CDC public-domain policy
+  status: cleared
+  retrieved: null
+  files: []
+- id: uscg-fishing-fed-regs
+  title: Federal Requirements for Commercial Fishing Industry Vessels
+  publisher: US Coast Guard CG-CVC-3
+  url: https://www.dco.uscg.mil/Portals/9/Fed_Regs.pdf
+  licence: public-domain-us-federal
+  evidence: US federal work (17 USC 105); no notice in the PDF
+  status: cleared
+  retrieved: null
+  files: []
+- id: cfr-46-part-28
+  title: 46 CFR Part 28, Requirements for Commercial Fishing Industry Vessels
+  publisher: eCFR (US federal regulation)
+  url: https://www.ecfr.gov/current/title-46/chapter-I/subchapter-C/part-28
+  licence: public-domain-us-federal
+  evidence: US federal regulation
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-fishermens-safety-guide
+  title: Fishermen's Safety Guide (2020, amendment 1)
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/fishermens-safety-guide
+  licence: OGL-UK-3.0
+  evidence: 'gov.uk: ''All content is available under the Open Government Licence v3.0, except where otherwise stated''. Drop the credited Planefocus and Seafish photos'
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-fishing-stability
+  title: Fishing Vessel Stability Guidance (2020)
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/fishing-vessel-stability-guidance
+  licence: OGL-UK-3.0
+  evidence: gov.uk OGL v3.0 footer
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-msn-1871
+  title: MSN 1871, Code of Practice for the Safety of Small Fishing Vessels under 15 m
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/msn-1871-fcode-of-practice-for-safety-of-small-fishing-vessels
+  licence: OGL-UK-3.0
+  evidence: gov.uk OGL footer; '© Crown Copyright 2017'. Check it has not been superseded
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-fishing-leaflets
+  title: MCA fishing safety leaflets (single-handed fishing, potting and creeling, preventing flooding)
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/collections/fishing-safety-guides-and-publications
+  licence: OGL-UK-3.0
+  evidence: gov.uk OGL footer on the collection and the single-handed leaflet
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-mgn-526-wolfson
+  title: MGN 526, Wolfson stability method for small fishing vessels
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/collections/active-marine-guidance-notes-mgns
+  licence: OGL-UK-3.0
+  evidence: 'PDF: ''© Crown Copyright 2021''; gov.uk OGL footer'
+  status: cleared
+  retrieved: null
+  files: []
+- id: fao-small-fishing-vessel-inspection-2025
+  title: Guidelines for the seaworthiness and safety inspection of small fishing vessels (cd4894en)
+  publisher: FAO
+  url: https://doi.org/10.4060/cd4894en
+  licence: CC-BY-4.0
+  evidence: 'PDF: ''made available under the Creative Commons Attribution-4.0 International licence''. FAO photos and non-FAO material excluded from the licence'
+  status: cleared
+  retrieved: null
+  files: []
+- id: fao-small-fishing-vessel-risk-2025
+  title: Guidelines for insurance value and risk assessment of small fishing vessels (cd5007en)
+  publisher: FAO
+  url: https://doi.org/10.4060/cd5007en
+  licence: CC-BY-4.0
+  evidence: 'Repository metadata: CC BY 4.0; PDF licence line not yet seen'
+  status: check
+  retrieved: null
+  files: []
+- id: eu-guide-small-fishing-vessels
+  title: European guide for risk prevention in small fishing vessels (2016, 20+ languages)
+  publisher: European Commission (DG EMPL), via EU-OSHA
+  url: https://osha.europa.eu/en/publications/european-guide-risk-prevention-small-fishing-vessels
+  licence: eu-reuse-2011-833
+  evidence: 'ES edition: ''© Unión Europea, 2016. Reproducción autorizada, con indicación de la fuente bibliográfica''. Cover photos excluded'
+  status: cleared
+  retrieved: null
+  files: []
+- id: fr-legi-divisions-226-228
+  title: Arrêté du 23 novembre 1987, divisions 226, 227 and 228 (French fishing-vessel rules), from the LEGI dataset
+  publisher: DILA, data.gouv.fr
+  url: https://www.data.gouv.fr/datasets/legi-codes-lois-et-reglements-consolides
+  licence: etalab-2.0
+  evidence: data.gouv.fr licence 'fr-lo' (Licence Ouverte). Take the text from LEGI, not from mer.gouv.fr PDFs
+  status: cleared
+  retrieved: null
+  files: []
+- id: beamer-abordages-peche-commerce-2001
+  title: Étude sur les abordages entre navires de pêche et de commerce (2001)
+  publisher: BEAmer
+  url: https://www.bea-mer.developpement-durable.gouv.fr/IMG/pdf/Etude_abordages_peche-commerce_2001.pdf
+  licence: etalab-2.0
+  evidence: 'BEAmer site: ''Sauf mention explicite de propriété intellectuelle, les contenus de ce site sont proposés sous licence ouverte'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: beamer-plaquette-fileyeurs-2015
+  title: Plaquette fileyeurs (BEAmer with IMP and CNPMEM, 2015)
+  publisher: BEAmer
+  url: https://www.bea-mer.developpement-durable.gouv.fr/IMG/pdf/Plaquette_fileyeurs_2015.pdf
+  licence: etalab-2.0
+  evidence: BEAmer site licence ouverte, but co-published and the PDF carries no notice
+  status: check
+  retrieved: null
+  files: []
+- id: navpers-engineman-2-1957
+  title: Engineman 2 (NAVPERS 10540), 1957
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/Engineman210540
+  licence: public-domain-us-federal
+  evidence: Internet Archive Public Domain Mark; GPO publication; no courtesy credits found in the text
+  status: cleared
+  retrieved: null
+  files: []
+- id: navpers-principles-naval-engineering-1970
+  title: Principles of Naval Engineering (NAVPERS 10788), 1970
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/principlesofnava00unit
+  licence: public-domain-us-federal
+  evidence: 'US Navy work; credits list illustrations from Cooper-Bessemer, Fairbanks Morse, GM and others: ''Permission to reproduce these illustrations must be obtained from the original sources''. Strip them'
+  status: check
+  retrieved: null
+  files: []
+- id: navpers-machinists-mate-1955-1958
+  title: Machinist's Mate 1 & C (NAVPERS 10525, 1955) and Machinist's Mate 2 (NAVPERS 10523, 1958)
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/MachinistsMate1andC105251955
+  licence: public-domain-us-federal
+  evidence: 'Public Domain Mark; GPO; no courtesy credits found. MM2: archive.org/details/MachinistsMate210523'
+  status: cleared
+  retrieved: null
+  files: []
+- id: navpers-machinists-mate-3-1958
+  title: Machinist's Mate 3 (NAVPERS 10522), 1958
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/MachinistsMate310522
+  licence: public-domain-us-federal
+  evidence: Public Domain Mark; 45 figures 'Courtesy of U. S. Naval Institute' to strip
+  status: check
+  retrieved: null
+  files: []
+- id: navpers-electricians-mate-1-c-1965
+  title: Electrician's Mate 1 & C (NAVPERS 10547-A, 1965) and 1976 edition (ERIC ED132256)
+  publisher: US Bureau of Naval Personnel
+  url: https://archive.org/details/ElectriciansMate1andC10547A
+  licence: public-domain-us-federal
+  evidence: Public Domain Mark; no courtesy credits found in either edition
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-electricians-mate-3-2-1981
+  title: Electrician's Mate 3 & 2 (1981)
+  publisher: US Naval Education and Training Command, via ERIC ED203163
+  url: https://archive.org/details/ERIC_ED203163
+  licence: public-domain-us-federal
+  evidence: '''Permission to reproduce illustrations ... must be obtained from the source'': strip credited figures'
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-fluid-power-1970
+  title: Fluid Power (rate training manual), 1970
+  publisher: US Navy, via ERIC ED070578
+  url: https://archive.org/details/ERIC_ED070578
+  licence: public-domain-us-federal
+  evidence: US Navy work; no courtesy credits found. Hydraulics, steering gear, controllable-pitch propellers
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-14057-damage-controlman-2003
+  title: Damage Controlman (NAVEDTRA 14057), 2003
+  publisher: US Naval Education and Training Command
+  url: https://everyspec.com/USN/NAVEDTRA/
+  licence: public-domain-us-federal
+  evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'' Two figures ''Courtesy of Ocenco, Inc.'' to strip'
+  status: check
+  retrieved: null
+  files: []
+- id: navedtra-damage-controlman-3-2-1986
+  title: Damage Controlman 3 & 2 (1986)
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/micro_IA41152823_0976
+  licence: public-domain-us-federal
+  evidence: '''DISTRIBUTION STATEMENT A Approved for public release; distribution is unlimited.'' No third-party notice found'
+  status: cleared
+  retrieved: null
+  files: []
+- id: fm-4-01-502-watercraft-safety
+  title: FM 4-01.502, Army Watercraft Safety (2008)
+  publisher: US Department of the Army
+  url: https://archive.org/details/FM4-01.502ArmyWatercraftSafety
+  licence: public-domain-us-federal
+  evidence: '''Distribution Restriction: Approved for public release; distribution is unlimited.'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-mgn-657-aerosol-fire
+  title: MGN 657 (M+F) amendment 2, fixed aerosol fire extinguishing in small-vessel machinery spaces
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/collections/active-marine-guidance-notes-mgns
+  licence: OGL-UK-3.0
+  evidence: '''© Crown copyright 2026. This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-coswp
+  title: Code of Safe Working Practices for Merchant Seafarers (2015, amendments 1-2)
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-coswp
+  licence: OGL-UK-3.0
+  evidence: Only the gov.uk OGL footer; the PDF has no licence line and a print edition is sold. Confirm with MCA
+  status: check
+  retrieved: null
+  files: []
+- id: seaton-manual-marine-engineering-1918
+  title: A Manual of Marine Engineering (A. E. Seaton), 1918
+  publisher: Internet Archive scan
+  url: https://archive.org/details/manualofmarine00seatrich
+  licence: public-domain
+  evidence: Published 1918 (US PD); author 1848-1930 (EU PD since 2001). Mostly steam
+  status: cleared
+  retrieved: null
+  files: []
+- id: early-marine-diesel-books
+  title: 'Early marine diesel books: Chalkley, Goldingham, Purday (1913-1919)'
+  publisher: Internet Archive scans
+  url: https://archive.org/details/dieselenginesfor00chal
+  licence: public-domain
+  evidence: Published before 1930 (US PD). Authors' death dates still to check for the EU rule
+  status: check
+  retrieved: null
+  files: []
+- id: knight-modern-seamanship-1903
+  title: Modern Seamanship (Austin M. Knight), 1903
+  publisher: Internet Archive scan
+  url: https://archive.org/details/modernseamanship00knig_0
+  licence: public-domain
+  evidence: Published 1903; author 1854-1927 (EU PD since 1998)
+  status: cleared
+  retrieved: null
+  files: []
+- id: luce-seamanship-1866
+  title: Seamanship (Stephen B. Luce, US Naval Academy), 1866
+  publisher: Internet Archive scan
+  url: https://archive.org/details/seamanshipcompf00lucegoog
+  licence: public-domain
+  evidence: 'Author 1827-1917. Google scan: prefer another copy if one exists'
+  status: cleared
+  retrieved: null
+  files: []
+- id: admiralty-manual-seamanship-1915
+  title: Admiralty Manual of Seamanship, vol. 1 (1908, reprinted 1915)
+  publisher: Admiralty (UK)
+  url: https://archive.org/details/manual-seamanship-1915
+  licence: public-domain
+  evidence: 'UK Crown copyright on published works lasts 50 years: long expired; US PD (pre-1930)'
+  status: cleared
+  retrieved: null
+  files: []
+- id: todd-whall-practical-seamanship-1921
+  title: Practical Seamanship for the Merchant Service (Todd and Whall, 7th ed., revised by C. S. Menge), 1921
+  publisher: Internet Archive scan
+  url: https://archive.org/details/practicalseamans0000john
+  licence: public-domain
+  evidence: Pre-1930; Todd and Whall died before 1955; reviser Menge's death date unknown
+  status: check
+  retrieved: null
+  files: []
+- id: reed-stability-of-ships-1885
+  title: A Treatise on the Stability of Ships (Edward J. Reed), 1885
+  publisher: Internet Archive scan
+  url: https://archive.org/details/cu31924030901692
+  licence: public-domain
+  evidence: Author 1830-1906
+  status: cleared
+  retrieved: null
+  files: []
+- id: stevens-stowage-1894
+  title: On the Stowage of Ships and Their Cargoes (R. W. Stevens, 7th ed.), 1894
+  publisher: Internet Archive scan
+  url: https://archive.org/details/on-the-stowage-of-ships-and-their-cargoes-7th
+  licence: public-domain
+  evidence: Published 1894 (US PD); author's death date not confirmed
+  status: check
+  retrieved: null
+  files: []
+- id: lecky-wrinkles-1901
+  title: Wrinkles in Practical Navigation (S. T. S. Lecky), 1901 edition
+  publisher: Internet Archive scan
+  url: https://archive.org/details/wrinklesinpracti00leck_1
+  licence: public-domain
+  evidence: Author 1838-1902. Use 1901 or earlier; later editions were revised by Allingham
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-quartermaster-3-2-1976
+  title: Quartermaster 3 & 2 (1976)
+  publisher: US Navy, via ERIC ED132263
+  url: https://archive.org/details/ERIC_ED132263
+  licence: public-domain-us-federal
+  evidence: US Navy/GPO work; no third-party notice found
+  status: cleared
+  retrieved: null
+  files: []
+- id: fm-21-22-survival-at-sea-1950
+  title: FM 21-22 / AFM 64-26, Survival at Sea (1950)
+  publisher: US Army and Air Force
+  url: https://archive.org/details/FM21-221950
+  licence: public-domain-us-federal
+  evidence: Public Domain Mark; no notice found
+  status: cleared
+  retrieved: null
+  files: []
+- id: navy-survival-land-sea-1944
+  title: Survival on Land and Sea (US Navy / Smithsonian), 1944
+  publisher: US Navy
+  url: https://archive.org/details/13820890R.nlm.nih.gov
+  licence: public-domain-us-federal
+  evidence: '''Not for Sale ... Prepared for The United States Navy''; no copyright notice found'
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-aerographers-mate-1976
+  title: Aerographer's Mate 3 & 2 (NAVEDTRA 10363-E), 1976
+  publisher: US Naval Education and Training Support Command
+  url: https://archive.org/details/aerographersmate00nava
+  licence: public-domain-us-federal
+  evidence: GPO publication; no third-party notice found
+  status: cleared
+  retrieved: null
+  files: []
+- id: nws-radiofax-schedules
+  title: Worldwide Marine Radiofacsimile Broadcast Schedules
+  publisher: US National Weather Service
+  url: https://www.weather.gov/media/marine/rfax.pdf
+  licence: public-domain-us-federal
+  evidence: 'US federal work (NOAA). Schedules change: date every copy'
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-neets
+  title: NEETS, Navy Electricity and Electronics Training Series (NAVEDTRA 14173 onwards)
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/neetsmodules_202003
+  licence: public-domain-us-federal
+  evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-electronics-technician
+  title: Electronics Technician vols 1 (safety), 3 (communications), 5 (navigation), 7 (antennas), 1994-97
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/et1_20200208
+  licence: public-domain-us-federal
+  evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'''
+  status: cleared
+  retrieved: null
+  files: []
+- id: nga-pub-117-2014
+  title: Radio Navigational Aids, Pub. 117 (2014), including GMDSS
+  publisher: US National Geospatial-Intelligence Agency
+  url: https://archive.org/details/radio-navigational-aids-publication-no.-117-2014-edition.
+  licence: public-domain-us-federal
+  evidence: '''NO COPYRIGHT CLAIMED UNDER TITLE 17 U.S.C.'' Station data dated 2014'
+  status: cleared
+  retrieved: null
+  files: []
+- id: navedtra-14295-hospital-corpsman
+  title: Hospital Corpsman (NAVEDTRA 14295), 2000
+  publisher: US Naval Education and Training Command
+  url: https://archive.org/details/hospital-corpsman-nonresident-training-course-navedtra-14295
+  licence: public-domain-us-federal
+  evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'' Mark dosing as dated'
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-ship-captains-medical-guide
+  title: The Ship Captain's Medical Guide (15 chapter PDFs, updated 2019)
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/the-ship-captains-medical-guide
+  licence: OGL-UK-3.0
+  evidence: Only the gov.uk OGL footer; chapter PDFs carry no notice. Confirm
+  status: check
+  retrieved: null
+  files: []
+- id: noaa-chart-no-1
+  title: US Chart No. 1, symbols and abbreviations on nautical charts
+  publisher: NOAA and NGA
+  url: https://nauticalcharts.noaa.gov/publications/docs/us-chart-1/ChartNo1.pdf
+  licence: public-domain-us-federal
+  evidence: 'US federal work, but it mirrors the IHO INT 1 symbol set: check for IHO material'
+  status: check
+  retrieved: null
+  files: []
+- id: fao-bobp-safety-guide-2004
+  title: A Safety Guide for Small Offshore Fishing Boats (FAO/BOBP, 2004)
+  publisher: FAO
+  url: https://www.fao.org/4/AD533E/AD533E00.htm
+  licence: null
+  evidence: '''All rights reserved ... © FAO 2004'''
+  status: excluded
+- id: fao-ssf-outboards-stability
+  title: 'FAO Safety at Sea for Small-Scale Fishers: Outboard Engines; Awareness Course on Stability'
+  publisher: FAO
+  url: https://openknowledge.fao.org/items/833350d9-8729-4322-9aea-ba944967ef23
+  licence: null
+  evidence: Copyright FAO with no licence; related items CC BY-NC-SA 3.0 IGO (non-commercial)
+  status: excluded
+- id: amsea-instructor-manual
+  title: Marine Safety Instructor Training Manual (AMSEA)
+  publisher: Alaska Marine Safety Education Association
+  url: https://stacks.cdc.gov/view/cdc/216568
+  licence: null
+  evidence: '''Copyright 1987 Alaska Marine Safety Education Association''; sold'
+  status: excluded
+- id: sea-grant-beating-the-odds
+  title: Beating the Odds on Northern Waters, 4th ed. (Alaska Sea Grant, 2002)
+  publisher: Alaska Sea Grant / AMSEA
+  url: https://repository.library.noaa.gov/view/noaa/37696
+  licence: null
+  evidence: NOAA page says public domain, but the PDF is priced and contains '© American Heart Association, reproduced with permission'
+  status: excluded
+- id: sea-grant-atlantic-fishing-safety
+  title: Atlantic Coast Fishing Vessel Safety Manual (Rhode Island Sea Grant, 1991)
+  publisher: Rhode Island Sea Grant
+  url: https://repository.library.noaa.gov/view/noaa/44296
+  licence: null
+  evidence: 'PDF: ''Original Copyright ©1986 North Pacific Fishing Vessel Owner''s Association'''
+  status: excluded
+- id: seafish-ilo-imo
+  title: Seafish guidance, ILO fishing handbook, IMO publications
+  publisher: Seafish / ILO / IMO
+  url: https://www.imo.org/en/publications/Pages/Home.aspx
+  licence: null
+  evidence: 'Seafish: personal or in-house use only; ILO: short excerpts only; IMO: sales publications under copyright'
+  status: excluded
+- id: ifremer-gear-manuals
+  title: Ifremer fishing-gear manuals on Archimer (Techniques de pêche, Chaluts)
+  publisher: Ifremer
+  url: https://archimer.ifremer.fr
+  licence: null
+  evidence: 'Free PDFs with no licence statement: excluded until Ifremer confirms one'
   status: excluded
