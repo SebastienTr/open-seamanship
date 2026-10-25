@@ -28,11 +28,22 @@ Add an entry to `sources.yaml`:
   evidence: "Distribution Statement A on the cover; US Navy work"
   status: check                          # cleared | check | excluded
   retrieved: null                        # YYYY-MM-DD once fetched
-  files: []                              # filled by scripts/fetch.py: path + sha256
+  files: []                              # path + sha256, filled when the source is ingested (phase 3)
 ```
 
 Use `status: excluded` (with the reason in `evidence`) for sources we looked at
 and rejected, so nobody checks them again.
+
+Then run `make sources` to regenerate [docs/SOURCES.md](docs/SOURCES.md).
+`make check` fails while that file is out of date.
+
+## Add a free manual to the private shelf
+
+Free manuals published by engine makers stay copyrighted, so they go in
+[scripts/private_downloads.yaml](scripts/private_downloads.yaml), never in
+`sources.yaml`. List only manufacturer sites, or owner associations re-hosting
+a maker's own document. Test with
+`python3 scripts/fetch_private.py --only <group>`.
 
 ## Add a local Wikipedia shelf
 

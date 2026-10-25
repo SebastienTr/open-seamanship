@@ -15,7 +15,7 @@ LANGS = ["en"]  # French joins after English v1.0 (see the plan)
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="osp", description="Build the Open Seamanship pack.")
-    ap.add_argument("command", choices=["check", "site", "zim", "all", "private"])
+    ap.add_argument("command", choices=["check", "site", "zim", "all", "private", "sources"])
     ap.add_argument("--lang", action="append", choices=LANGS, help="language (default: all)")
     ap.add_argument(
         "--preview",
@@ -26,6 +26,13 @@ def main(argv=None) -> int:
     args = ap.parse_args(argv)
     langs = args.lang or LANGS
     release = not args.preview
+
+    if args.command == "sources":
+        from .sourcesdoc import OUT, write
+
+        write()
+        print(f"wrote {OUT.relative_to(DIST.parent)}")
+        return 0
 
     if args.command == "private":
         from .private import pack as pack_private
@@ -38,6 +45,10 @@ def main(argv=None) -> int:
         return 0
 
     report, pages = check_all(langs, release=release)
+    from .sourcesdoc import is_current
+
+    if not is_current():
+        report.error(DIST.parent / "docs" / "SOURCES.md", "out of date; run `make sources`")
     for w in report.warnings:
         print(f"warning: {w}", file=sys.stderr)
     for e in report.errors:

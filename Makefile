@@ -4,7 +4,7 @@ MODE ?= release
 export MODE
 export PYTHONPATH := $(CURDIR)/build
 
-.PHONY: all check site zim test clean private
+.PHONY: all check site zim test clean private sources fetch-private
 
 all: test
 	$(PYTHON) -m osp all
@@ -20,6 +20,12 @@ zim:
 
 private:
 	$(PYTHON) -m osp private
+
+fetch-private:
+	$(PYTHON) scripts/fetch_private.py
+
+sources:
+	$(PYTHON) -m osp sources
 
 test:
 	$(PYTHON) -m unittest discover -s tests

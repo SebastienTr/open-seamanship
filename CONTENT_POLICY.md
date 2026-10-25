@@ -1,6 +1,7 @@
 # Content policy
 
-People may act on this pack at sea. These rules exist to keep it accurate and
+People may act on this pack at sea: yachtsmen, fishermen, workboat, ferry and
+merchant crews. These rules exist to keep it accurate and
 legally redistributable by anyone, including people who sell N.O.M.A.D. boxes.
 The build enforces the parts that a machine can check (`make check`).
 

@@ -83,4 +83,5 @@ def build_info() -> BuildInfo:
         url = "https://github.com/" + url.removeprefix("git@github.com:")
     if url:
         url = url.removesuffix(".git")
+    url = url or "https://github.com/SebastienTr/open-seamanship"
     return BuildInfo(version=version or "0.0.0-dev", date=date, source_url=url)
