@@ -62,16 +62,55 @@ the home page. Findings from N.O.M.A.D. v1.35.1 (October 2026):
   anchor or boat icon. A custom app has no description field, so its tile shows
   a generic description.
 
-Planned design, a small "Mariner" app:
+### The dashboard app (built)
 
-1. The container image carries the written pack as a static website, so its
-   home tile works as soon as it starts.
-2. On first start, while online, it fetches the large libraries into
-   `storage/mariner` with checksums, resuming if interrupted, and shows
-   progress on a status page.
-3. It writes the Open Seamanship ZIM into `storage/zim` and asks N.O.M.A.D. to
-   rescan the Kiwix library, or tells the user to press **Rescan Library**.
-4. The private shelf is never in the image.
+`./install.sh --dashboard` installs **Open Seamanship** as a N.O.M.A.D. custom
+app, so it gets a tile on the Command Center home page. The tile opens a
+dashboard made for mariners.
+
+- **Image.** `make dashboard` assembles `dist/dashboard/`: the dashboard
+  (`dashboard/*.html|css|js`), the pack as a static site under `/pack/`, and
+  `sections.json` (section tiles with page counts). `make dashboard-image`
+  builds `open-seamanship-dashboard:<version>` from `nginx:1.27-alpine`. The
+  private shelf is never in the image (a test checks it).
+- **Registration.** `install.sh` builds the image locally, then calls the
+  N.O.M.A.D. admin API, which has no authentication on the host:
+  `GET /api/system/services/custom/nomad_custom_open_seamanship`, then
+  `POST /api/system/services/custom` (create) or `PUT` (update, which
+  recreates the container). The payload: name "Open Seamanship", host port
+  8620 → container 80, category `education`, icon `IconMap`, 128 MB, `force`.
+  The image is local and pinned to a version, so N.O.M.A.D. does not pull it
+  and its guard raises no "moving tag" warning. N.O.M.A.D. attaches custom
+  containers to `project-nomad_default` in production.
+- **Same-origin proxy.** nginx resolves the N.O.M.A.D. containers at request
+  time (Docker DNS `127.0.0.11`), so the dashboard starts even if they are
+  down. It exposes only what the dashboard needs: `GET /kiwix/search`,
+  `/kiwix/suggest`, `/kiwix/catalog/*` → `nomad_kiwix_server:8080`, and
+  `POST /nomad/api/zim/rescan-library` → `nomad_admin:8080`. Upstreams, the
+  Kiwix public port (8090) and URL are environment variables
+  (`OSP_KIWIX_UPSTREAM`, `OSP_NOMAD_UPSTREAM`, `OSP_KIWIX_PORT`,
+  `OSP_KIWIX_PUBLIC_URL`).
+- **Search.** Per mariner book (Kiwix `Name` starting `open-seamanship`):
+  title suggestions (`/suggest?content=<book path>`), which find PDF manuals,
+  plus full-text search (`/search?books.id=<uuid>&format=xml`). Books are
+  searched one by one so one bad index cannot fail the whole search. Results
+  open in Kiwix on port 8090 (kiwix-serve pages use absolute paths, so they
+  cannot be proxied under a sub-path). Note: `books.name` in kiwix-serve 3.8.1
+  is the file-based path name, not the ZIM `Name` metadata, hence `books.id`.
+- **Private shelf titles** include their folder ("Volvo penta md2000: …") so a
+  search for the maker finds them.
+- **Dashboard contents.** Distress panel (VHF 16, DSC 70, France 196, Mayday
+  wording marked as an unreviewed draft), search, pack sections, libraries on
+  this N.O.M.A.D. with a Rescan button, and tools: unit converter, fuel and
+  range, rule-of-twelfths tide height, Beaufort scale. Day, dusk and red night
+  modes. No external requests.
+- **Tested** with kiwix-serve 3.8.1 serving the public and private ZIMs, a mock
+  admin, and Playwright (day, night, phone). `tests/js/tide_test.js` checks the
+  tide maths.
+
+Still to do: fetch the large libraries on first start (into
+`storage/zim`, with checksums), and publish the image so the Supply Depot can
+install it without a local build.
 
 Longer term, with the maintainers' agreement: a curated Supply Depot entry, an
 anchor icon, and a Maritime category in N.O.M.A.D.'s curated content

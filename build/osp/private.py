@@ -90,17 +90,19 @@ def pack(out_dir: Path | None = None) -> Path | None:
         for f in docs:
             rel = f.relative_to(PRIVATE).as_posix()
             title = _title(f)
+            folder = rel.split("/")[0] if "/" in rel else ""
+            # The ZIM title carries the folder name too, so title search finds "volvo" or "yanmar".
+            zim_title = f"{_title(Path(folder))}: {title}" if folder else title
             mime = KINDS[f.suffix.lower()]
             if f.suffix.lower() == ".md":
                 path = "notes/" + rel[:-3].replace("/", "-") + ".html"
                 body = markdown.markdown(f.read_text(encoding="utf-8"), extensions=["tables", "sane_lists"])
                 page = _page(title, body).replace("static/style.css", "../static/style.css").replace(
                     'href="index.html"', 'href="../index.html"')
-                c.add_item(_Item(path, title, "text/html", lambda page=page: StringProvider(page), True))
+                c.add_item(_Item(path, zim_title, "text/html", lambda page=page: StringProvider(page), True))
             else:
                 path = "files/" + rel
-                c.add_item(_Item(path, title, mime, lambda f=f: FileProvider(str(f)), mime in ("text/html", "application/pdf")))
-            folder = rel.split("/")[0] if "/" in rel else ""
+                c.add_item(_Item(path, zim_title, mime, lambda f=f: FileProvider(str(f)), mime in ("text/html", "application/pdf")))
             rows.append((folder, title, path, f.suffix.lower().lstrip(".").upper()))
 
         groups: dict[str, list] = {}

@@ -1,4 +1,4 @@
-"""Command line: python -m osp {check,site,zim,all} [--lang en] [--preview]."""
+"""Command line: python -m osp {check,site,zim,all,private,sources,dashboard} [--lang en] [--preview]."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ LANGS = ["en"]  # French joins after English v1.0 (see the plan)
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="osp", description="Build the Open Seamanship pack.")
-    ap.add_argument("command", choices=["check", "site", "zim", "all", "private", "sources"])
+    ap.add_argument("command", choices=["check", "site", "zim", "all", "private", "sources", "dashboard"])
     ap.add_argument("--lang", action="append", choices=LANGS, help="language (default: all)")
     ap.add_argument(
         "--preview",
@@ -67,7 +67,7 @@ def main(argv=None) -> int:
     info = config.build_info()
     for lang in langs:
         site_dir = DIST / "site" / (f"{lang}-preview" if args.preview else lang)
-        if args.command in ("site", "all"):
+        if args.command in ("site", "all", "dashboard"):
             written = build(lang, pages[lang], site_dir, preview=args.preview)
             print(f"site {lang}: {len(written)} page(s) in {site_dir.relative_to(DIST.parent)}")
         if args.command in ("zim", "all"):
@@ -80,6 +80,11 @@ def main(argv=None) -> int:
             out = DIST / f"open-seamanship_{lang}_{info.version}{suffix}.zim"
             pack(lang, site_dir, out, flavour="preview" if args.preview else "all")
             print(f"zim {lang}: {out.relative_to(DIST.parent)} ({out.stat().st_size // 1024} KiB)")
+        if args.command == "dashboard":
+            from .dashboard import assemble
+
+            out = assemble(lang, pages[lang], site_dir, preview=args.preview)
+            print(f"dashboard {lang}: image context in {out.relative_to(DIST.parent)}")
     return 0
 
 

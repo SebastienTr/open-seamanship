@@ -1,0 +1,33 @@
+# Open Seamanship dashboard. Same-origin proxies to the N.O.M.A.D. Kiwix and admin
+# containers, resolved at request time so the dashboard starts even if they are down.
+server {
+    listen 80;
+    server_name _;
+    root /usr/share/nginx/html;
+    index index.html;
+
+    resolver ${OSP_RESOLVER} valid=30s ipv6=off;
+    set $kiwix ${OSP_KIWIX_UPSTREAM};
+    set $nomad ${OSP_NOMAD_UPSTREAM};
+
+    location = /config.js { add_header Cache-Control "no-store"; }
+    location / { try_files $uri $uri/ =404; }
+
+    # Read-only Kiwix endpoints used by the dashboard: search and catalogue.
+    location ~ ^/kiwix/(search|suggest|catalog/.*)$ {
+        limit_except GET { deny all; }
+        rewrite ^/kiwix/(.*)$ /$1 break;
+        proxy_pass http://$kiwix;
+        proxy_set_header Host $host;
+        proxy_connect_timeout 3s;
+    }
+
+    # The only admin call the dashboard makes: rescan the Kiwix library.
+    location = /nomad/api/zim/rescan-library {
+        limit_except POST { deny all; }
+        rewrite ^ /api/zim/rescan-library break;
+        proxy_pass http://$nomad;
+        proxy_set_header Host $host;
+        proxy_connect_timeout 3s;
+    }
+}

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Seamanship</title>
+<link rel="stylesheet" href="dashboard.css">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="bar">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="8" r="3.2"/><path d="M16 11v16M9 15h14M5 19c1.5 5 6 8 11 8s9.5-3 11-8"/></svg>
+    <span>Open Seamanship</span>
+  </div>
+  <div class="clocks" aria-live="off">
+    <span><b id="utc">--:--</b> UTC</span>
+    <span><b id="local">--:--</b> local</span>
+  </div>
+  <div class="themes" role="group" aria-label="Display mode">
+    <button type="button" data-theme="day">Day</button>
+    <button type="button" data-theme="dusk">Dusk</button>
+    <button type="button" data-theme="night" title="Red light keeps your night vision">Night</button>
+  </div>
+</header>
+
+<main>
+  <section class="distress" aria-labelledby="distress-h">
+    <div class="distress-head">
+      <h1 id="distress-h">Distress</h1>
+      <p class="channels"><span>VHF <b>16</b> voice</span><span>DSC <b>70</b></span><span>France, from a phone: <b>196</b> (CROSS)</span></p>
+    </div>
+    <details>
+      <summary>Mayday call, word for word</summary>
+      <ol class="mayday">
+        <li><b>DSC first, if you have it:</b> lift the cover, hold the red DISTRESS button until the radio sends (about 5 seconds).</li>
+        <li><b>Channel 16, high power:</b> «MAYDAY, MAYDAY, MAYDAY. This is <i>[boat name ×3]</i>, call sign <i>[…]</i>, MMSI <i>[…]</i>.»</li>
+        <li>«MAYDAY <i>[boat name]</i>, call sign, MMSI.»</li>
+        <li>«My position is <i>[latitude, longitude, or bearing and distance from a landmark]</i>.»</li>
+        <li>«<i>[What is happening: sinking, fire, man overboard…]</i>. I require immediate assistance.»</li>
+        <li>«<i>[Number of people on board, other useful facts]</i>. Over.»</li>
+        <li>No answer within about a minute: repeat. Keep listening on 16.</li>
+      </ol>
+      <p class="note">Draft, not yet reviewed. Format after ITU practice as taught in the US Coast Guard Boat Crew Seamanship Manual. In France the CROSS answers on VHF 16 and on 196 (<a href="https://www.mer.gouv.fr/comment-alerter-les-secours-en-mer">mer.gouv.fr</a>).</p>
+    </details>
+  </section>
+
+  <section class="search" aria-labelledby="search-h">
+    <h2 id="search-h" class="vh">Search</h2>
+    <form id="search-form" role="search">
+      <input id="q" name="q" type="search" autocomplete="off"
+             placeholder="Search the mariner library: engine overheating, impeller, stability, Mayday…" aria-label="Search the mariner library">
+      <button type="submit">Search</button>
+    </form>
+    <p id="search-scope" class="scope"></p>
+    <div id="results" aria-live="polite"></div>
+  </section>
+
+  <section aria-labelledby="pack-h">
+    <h2 id="pack-h">The pack</h2>
+    <ul class="tiles" id="sections"></ul>
+  </section>
+
+  <section aria-labelledby="lib-h">
+    <h2 id="lib-h">Libraries on this N.O.M.A.D.</h2>
+    <ul class="tiles" id="libraries">
+      <li class="tile muted" id="lib-loading"><span class="t">Looking for libraries…</span></li>
+    </ul>
+    <p class="scope">
+      <button type="button" id="rescan" class="link">Rescan the Kiwix library</button>
+      <span id="rescan-msg"></span>
+    </p>
+  </section>
+
+  <section aria-labelledby="tools-h">
+    <h2 id="tools-h">Tools</h2>
+    <div class="tools">
+      <article class="tool" id="tool-convert">
+        <h3>Convert</h3>
+        <div class="row">
+          <input id="cv-in" type="number" step="any" value="10" aria-label="Value">
+          <select id="cv-kind" aria-label="Conversion"></select>
+        </div>
+        <p class="out" id="cv-out"></p>
+      </article>
+
+      <article class="tool" id="tool-fuel">
+        <h3>Fuel and range</h3>
+        <label>Fuel on board (L) <input id="f-fuel" type="number" step="any" value="60"></label>
+        <label>Consumption (L/h) <input id="f-rate" type="number" step="any" value="1.5"></label>
+        <label>Speed (kn) <input id="f-speed" type="number" step="any" value="5"></label>
+        <label>Reserve kept (%) <input id="f-res" type="number" step="any" value="20"></label>
+        <p class="out" id="f-out"></p>
+        <p class="hint">Measure your own consumption: it changes with load, sea state and fouling.</p>
+      </article>
+
+      <article class="tool" id="tool-tide">
+        <h3>Tide height (rule of twelfths)</h3>
+        <label>Low water time <input id="t-lwt" type="time" value="06:00"></label>
+        <label>Low water height (m) <input id="t-lwh" type="number" step="any" value="0.8"></label>
+        <label>High water time <input id="t-hwt" type="time" value="12:10"></label>
+        <label>High water height (m) <input id="t-hwh" type="number" step="any" value="5.2"></label>
+        <label>Time wanted <input id="t-at" type="time" value="09:00"></label>
+        <p class="out" id="t-out"></p>
+        <p class="hint">Works for the half tide between these two times and the one after it. A rough estimate for a regular semi-diurnal tide. Wrong near tidal races, in the Mediterranean and where the curve is irregular; use real predictions when you have them.</p>
+      </article>
+
+      <article class="tool" id="tool-beaufort">
+        <h3>Beaufort scale</h3>
+        <table class="beaufort">
+          <thead><tr><th>F</th><th>Knots</th><th>Name</th><th>Sea</th></tr></thead>
+          <tbody id="bf-body"></tbody>
+        </table>
+        <p class="hint">WMO Beaufort scale; wave heights are typical open-sea values, not limits.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>Open Seamanship <span id="version"></span>. Works offline. Does not replace training, official publications or local rules.
+  Text CC BY-SA 4.0 · <a href="pack/about/licences-and-sources.html">licences and sources</a> · <a href="pack/about/report-an-error.html">report an error</a></p>
+</footer>
+<script src="config.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

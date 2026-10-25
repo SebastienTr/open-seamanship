@@ -11,7 +11,7 @@ French edition starts after English v1.0 is released.
 | 3. Library | Ingest every cleared source with checksums; convert the most-used manuals to HTML | 100% of files pass the licence check | Sources mapped ([docs/SOURCES.md](SOURCES.md)) |
 | 4. Guides | Emergency, Fix it, Run the boat, Health, Know your boat; then fishing and engine-room guides | Each page reviewed or verified | Not started |
 | 5. Tables and tools | Almanac, conversions, signals, lights, glossary, history shelf, local Wikipedia shelves | Computed tables match an independent check | Not started |
-| 6. Supply Depot app | "Mariner" app: the pack as its own tile on the N.O.M.A.D. home page, libraries fetched on first start | Installs from the Supply Depot and shows on the home page | Designed ([ARCHITECTURE.md](ARCHITECTURE.md)) |
+| 6. N.O.M.A.D. app | Mariner dashboard with its own tile on the Command Center home page; later, libraries fetched on first start and a published image | Installs and shows on the home page | **Dashboard done** (`install.sh --dashboard`); fetch and publishing next ([ARCHITECTURE.md](ARCHITECTURE.md#the-dashboard-app-built)) |
 | 7. English v1.0 | Full link and licence audit; ZIM, PDF and EPUB release | No open safety-critical issue | — |
 | 8. French edition | Translate our pages; French sources under Licence Ouverte | Same review rules | — |
 
@@ -28,4 +28,4 @@ diesels from 10 hp to ship engines.
 - Whether public pages may cite makers' manuals for facts only (intervals,
   clearances, torques), in our own words.
 - Regions after Europe.
-- Name and icon of the Supply Depot app.
+- A boat or anchor icon for the home tile (needs a change in N.O.M.A.D.).

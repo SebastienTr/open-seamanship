@@ -11,7 +11,7 @@ file and as a community add-on for
 [Project N.O.M.A.D.](https://github.com/Crosstalk-Solutions/project-nomad).
 
 > **Status (October 2026): foundations done, no reviewed content yet.**
-> The build, licence checks and packaging work end to end, and about 100
+> The build, licence checks, packaging and the N.O.M.A.D. dashboard work end to end, and about 100
 > sources are mapped, half of them already cleared. Written pages come next.
 > Nothing in a preview build should be relied on at sea. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
@@ -52,6 +52,8 @@ The ZIM lands in `dist/`. Open it with any Kiwix reader.
 | `make sources` | Regenerate `docs/SOURCES.md` from `sources.yaml` |
 | `make fetch-private` | Download free official engine manuals into `private/` |
 | `make private` | Pack `private/` into a personal ZIM in `dist/private/` |
+| `make dashboard` | Assemble the N.O.M.A.D. dashboard image context in `dist/dashboard/` |
+| `make dashboard-image` | Build the dashboard Docker image |
 
 Two build modes: `MODE=release` (default) keeps only reviewed pages;
 `MODE=preview` also includes drafts, each marked "Unreviewed" on the page.
@@ -76,24 +78,36 @@ and the public build never reads it. See [private/README.md](private/README.md).
 
 ## Install on Project N.O.M.A.D.
 
-Today, as a ZIM, following N.O.M.A.D.'s community add-on convention. On the
-N.O.M.A.D. host:
+On the N.O.M.A.D. host:
 
 ```sh
 git clone https://github.com/SebastienTr/open-seamanship.git
 cd open-seamanship
-sudo ./install.sh --deploy
+sudo ./install.sh --deploy --dashboard
 ```
 
-`install.sh` builds the ZIM (or uses a prebuilt one with `--zim FILE`), copies
-it into the Kiwix library (`/opt/project-nomad/storage/zim` by default) and
-restarts the Kiwix container (`nomad_kiwix_server` by default). Run
-`./install.sh --help` for options. If the pack does not appear, use
-**Content Manager → Rescan Library**.
+- `--deploy` builds the ZIM (or uses a prebuilt one with `--zim FILE`), copies
+  it into the Kiwix library (`/opt/project-nomad/storage/zim`) and restarts
+  the Kiwix container (`nomad_kiwix_server`).
+- `--dashboard` adds **Open Seamanship** to the Command Center home page. Its
+  tile opens a dashboard for mariners: distress channels and the Mayday call,
+  one search box across the pack and your private shelf, the pack's sections,
+  your Kiwix libraries, and tools (unit converter, fuel and range, tide height
+  by the rule of twelfths, Beaufort scale), with day, dusk and red night modes.
+  It runs as a small nginx container on port 8620 (`--port` to change),
+  registered through N.O.M.A.D.'s own app API, so it shows in the Supply Depot
+  and can be stopped or removed there. Needs docker and curl; the image is
+  built locally.
 
-Next: a Supply Depot app, so the pack installs from N.O.M.A.D.'s app catalogue
-and gets its own tile on the home page. The design, based on N.O.M.A.D.'s code,
-is in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#delivery-through-the-nomad-supply-depot).
+Run the same command again after `git pull` to update. `./install.sh --help`
+lists the options. If a library does not appear, use **Rescan the Kiwix
+library** on the dashboard or **Content Manager → Rescan Library**. How it works:
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#the-dashboard-app-built).
+
+To add your private shelf: `make fetch-private`, `make private`, then copy
+`dist/private/*.zim` into `/opt/project-nomad/storage/zim` and rescan. Search
+finds its PDFs by file and folder name, so name your own files well
+(for example `private/volvo-penta-md2000/MD2020-workshop-notes.pdf`).
 
 ## Repository layout
 
@@ -104,10 +118,11 @@ sources.yaml         every library source: URL, licence, evidence, status
 docs/                page template, roadmap, architecture, generated SOURCES.md
 build/osp/           the build: validation, site generator, ZIM packer, private shelf
 build/templates/     HTML template (no JavaScript)
+dashboard/           N.O.M.A.D. dashboard (HTML, CSS, JS) and its nginx image
 scripts/             fetch_private.py and its download list
 wikipedia/           local Wikipedia shelves (article lists)
 private/             your private shelf (ignored by git)
-tests/               test suite
+tests/               test suite (Python, plus tests/js for the dashboard maths)
 install.sh           N.O.M.A.D. installer
 ```
 

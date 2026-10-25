@@ -27,6 +27,8 @@ jobs:
         run: make all MODE=release
       - name: Preview build (with drafts)
         run: make all MODE=preview
+      - name: Dashboard image (N.O.M.A.D. app)
+        run: make dashboard-image MODE=release
       - uses: actions/upload-artifact@v4
         with:
           name: open-seamanship-zim

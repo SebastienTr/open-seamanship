@@ -155,3 +155,32 @@ class PrivateShelf(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class Dashboard(unittest.TestCase):
+    def test_dashboard_context_has_app_pack_and_sections(self):
+        import json
+
+        import osp.dashboard as dash
+
+        report, pages = check_all(["en"], release=True)
+        self.assertTrue(report.ok, report.errors)
+        with tempfile.TemporaryDirectory() as tmp:
+            site_dir = Path(tmp) / "site"
+            build("en", pages["en"], site_dir, preview=False)
+            old = dash.OUT
+            dash.OUT = Path(tmp) / "dashboard"
+            try:
+                out = dash.assemble("en", pages["en"], site_dir, preview=False)
+            finally:
+                dash.OUT = old
+            for name in ("Dockerfile", "default.conf.template", "40-osp-config.sh",
+                         "www/index.html", "www/dashboard.js", "www/pack/index.html"):
+                self.assertTrue((out / name).exists(), name)
+            data = json.loads((out / "www" / "sections.json").read_text(encoding="utf-8"))
+            slugs = [s["slug"] for s in data["sections"]]
+            self.assertEqual(slugs[0], "emergency")
+            for s in data["sections"]:
+                self.assertTrue((out / "www" / "pack" / s["slug"] / "index.html").exists(), s["slug"])
+            # Nothing from the private shelf may reach the public image.
+            self.assertFalse(any("private" in p.parts for p in (out / "www").rglob("*")))
