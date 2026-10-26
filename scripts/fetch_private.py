@@ -127,6 +127,7 @@ def main(argv=None) -> int:
     PRIVATE.mkdir(exist_ok=True)
     new_log = not LOG.exists()
     ok = skipped = failed = dupes = 0
+    by_hand: list[tuple[Path, str]] = []   # sites that refuse scripts (HTTP 403): fetch in a browser
     seen_hashes: dict[str, str] = {}
     for existing in sorted(PRIVATE.rglob("*.pdf")):  # duplicates are skipped across runs too
         seen_hashes.setdefault(hashlib.sha256(existing.read_bytes()).hexdigest(), existing.name)
@@ -155,6 +156,7 @@ def main(argv=None) -> int:
                     except Exception as exc:  # noqa: BLE001
                         print(f"   FAILED {name}: {exc}")
                         failed += 1
+                        by_hand.append((dest, url))
                         continue
                     if not data.startswith(b"%PDF"):
                         print(f"   FAILED {name}: not a PDF (the site may have moved it)")
@@ -170,6 +172,11 @@ def main(argv=None) -> int:
                     log.write(f"{dt.date.today()}\t{gname}\t{name}\t{digest}\t{url}\n")
                     print(f"   ok    {name} ({len(data) // 1024} KiB)")
                     ok += 1
+    if by_hand:
+        print("\nThese sites refuse scripts. Open each link in a browser, then save the file as shown;")
+        print("the next run skips files that are already there.")
+        for dest, url in by_hand:
+            print(f"   {url}\n     -> {dest.relative_to(PRIVATE.parent)}")
     print(f"\n{ok} downloaded, {skipped} already present, {dupes} duplicates skipped, {failed} failed. "
           "Next: make private")
     return 0 if ok or skipped else 1
