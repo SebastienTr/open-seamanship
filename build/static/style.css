@@ -86,3 +86,6 @@ footer .sources { padding-left: 1.1em; }
   body { background: #fff; color: #000; font-size: 12pt; }
   a { color: #000; }
 }
+dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: .3rem 1rem; }
+dl.facts dt { font-weight: 600; }
+dl.facts dd { margin: 0; overflow-wrap: anywhere; }

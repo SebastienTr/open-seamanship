@@ -13,6 +13,18 @@ from osp.site import build
 from osp.zim import pack
 
 
+def setUpModule():
+    """Build against an empty library cache: tests must not pack gigabytes of PDFs."""
+    from osp import library
+    global _EMPTY_LIBRARY
+    _EMPTY_LIBRARY = tempfile.TemporaryDirectory()
+    library.CACHE = Path(_EMPTY_LIBRARY.name)
+
+
+def tearDownModule():
+    _EMPTY_LIBRARY.cleanup()
+
+
 def page(**overrides) -> Page:
     meta = {
         "title": "Engine overheating",
@@ -27,7 +39,7 @@ def page(**overrides) -> Page:
         "authors": ["alice"],
         "reviewers": [],
         "reviewed": None,
-        "sources": [{"id": "navedtra-machinery-repairman", "locator": "ch. 1"}],
+        "sources": [{"id": "navpers-engineman-1957", "locator": "ch. 1"}],
     }
     meta.update(overrides)
     return Page(
@@ -113,11 +125,9 @@ class EndToEnd(unittest.TestCase):
     def test_drafts_only_in_preview(self):
         draft = page()
         with tempfile.TemporaryDirectory() as tmp:
-            home = Page(path=CONTENT / "en" / "index.md", lang="en", section="home", slug="index",
-                        meta={"title": "Home", "kind": "structural", "section": "home",
-                              "language": "en", "licence": "CC-BY-SA-4.0"}, body="")
-            rel = build("en", [home, draft], Path(tmp) / "r", preview=False)
-            pre = build("en", [home, draft], Path(tmp) / "p", preview=True)
+            structural = [p for p in check_all(["en"], release=False)[1]["en"] if p.structural]
+            rel = build("en", structural + [draft], Path(tmp) / "r", preview=False)
+            pre = build("en", structural + [draft], Path(tmp) / "p", preview=True)
             self.assertNotIn("fix-it/engine-overheating.html", rel)
             self.assertIn("fix-it/engine-overheating.html", pre)
             html = (Path(tmp) / "p" / "fix-it" / "engine-overheating.html").read_text()
@@ -150,7 +160,7 @@ class PrivateShelf(unittest.TestCase):
             site = Path(tmp) / "site"
             build("en", pages["en"], site, preview=True)
             public = [p for p in site.rglob("*") if p.is_file()]
-            self.assertFalse(any(p.suffix == ".pdf" or "my-boat" in p.name for p in public))
+            self.assertFalse(any(p.name in ("owners_manual.pdf", "my-boat.html") for p in public))
 
 
 if __name__ == "__main__":
@@ -184,3 +194,45 @@ class Dashboard(unittest.TestCase):
                 self.assertTrue((out / "www" / "pack" / s["slug"] / "index.html").exists(), s["slug"])
             # Nothing from the private shelf may reach the public image.
             self.assertFalse(any("private" in p.parts for p in (out / "www").rglob("*")))
+
+
+class Library(unittest.TestCase):
+    def test_cleared_files_are_published_and_others_are_not(self):
+        import hashlib
+        import zipfile
+
+        from osp import library
+
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp = Path(tmp)
+            pdf = tmp / "cache" / "manual.pdf"
+            pdf.parent.mkdir(parents=True)
+            pdf.write_bytes(b"%PDF-1.4 test")
+            book = tmp / "cache" / "book-h.zip"
+            with zipfile.ZipFile(book, "w") as z:
+                z.writestr("book/index.html", "<html><title>Book</title></html>")
+
+            def lf(p):
+                return library.LibFile(path=p.name, url="https://example.org/" + p.name, size=p.stat().st_size,
+                                       sha256=hashlib.sha256(p.read_bytes()).hexdigest(), local=p)
+
+            cleared = library.Entry({"id": "demo", "title": "Demo", "status": "cleared"}, [lf(pdf), lf(book)])
+            pending = library.Entry({"id": "pending", "title": "Pending", "status": "check"}, [lf(pdf)])
+            out = tmp / "site"
+            links = library.publish_files(cleared, out)
+            self.assertEqual(len(links), 2)
+            self.assertTrue((out / "library/files/demo/manual.pdf").exists())
+            self.assertTrue((out / "library/files/demo/book-h/book/index.html").exists())
+            self.assertEqual(library.publish_files(pending, out), [])
+            self.assertFalse((out / "library/files/pending").exists())
+
+    def test_broken_internal_links_are_reported(self):
+        from osp.site import check_links
+
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp)
+            (out / "a").mkdir()
+            (out / "a" / "x.html").write_text('<a href="y.html">y</a> <a href="../b/z.html#top">z</a> '
+                                             '<a href="https://example.org/">e</a>', encoding="utf-8")
+            (out / "a" / "y.html").write_text("ok", encoding="utf-8")
+            self.assertEqual(check_links(out, ["a/x.html"]), ["a/x.html -> ../b/z.html"])

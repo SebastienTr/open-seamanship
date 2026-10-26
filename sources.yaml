@@ -8,35 +8,72 @@
   publisher: US National Geospatial-Intelligence Agency
   url: https://msi.nga.mil/Publications/APN
   licence: public-domain-us-federal
-  evidence: "US federal work; NGA states it is freely available for download"
-  status: check            # confirm current download location and edition
-  retrieved: null
-  files: []
+  evidence: "US federal work, 2024 edition (Vol. I PDF May 2024, Vol. II Apr 2024) from the NGA MSI publications API. Title verso of both volumes: '© Copyright 2024 by the National Geospatial-Intelligence Agency. No domestic copyright claimed under Title 17 U.S.C. All rights reserved.' Vol. I adds 'Certain sections are subject to third party protection.'"
+  third_party: "Vol. I title verso: 'Certain sections are subject to third party protection' (sections not identified); both volumes reserve rights outside the US ('No domestic copyright claimed ... All rights reserved')"
+  status: check
+  retrieved: 2026-10-26
+  files:
+    - path: bowditch-vol1.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16693975/SFH00000/Bowditch_Vol_1.pdf"
+      sha256: 0e0df6b67908439286e90f94995d3fe18ca140e00808ea32d845617393b091db
+      size: 174391582
+    - path: bowditch-vol2.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16693975/SFH00000/Bowditch_Vol_2.pdf"
+      sha256: fde16cbde3baddae002ed5f52c295f4ff63e788cb414d9c3734512a36fd676da
+      size: 32483448
 - id: nga-pub102
   title: "International Code of Signals (Pub. No. 102)"
   publisher: US National Geospatial-Intelligence Agency
   url: https://msi.nga.mil/Publications
   licence: public-domain-us-federal
-  evidence: "US federal work"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "1969 edition, revised 2020 (NGA MSI download). Title verso: '© Copyright 2020 by the United States Government. No copyright claimed under Title 17 U.S.C.' No third-party notice found"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: pub102.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694273/SFH00000/Pub102bk.pdf"
+      sha256: b2814807c53ba87239ccbe98db360703556048064eae97aa630d98bcc548d687
+      size: 2614568
 - id: nga-pub229
   title: "Sight Reduction Tables for Marine Navigation (Pub. No. 229), 6 volumes"
   publisher: US National Geospatial-Intelligence Agency
   url: https://msi.nga.mil/Publications
   licence: public-domain-us-federal
-  evidence: "US federal work"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "US federal publication (NIMA; volume PDFs dated 2000, from the NGA MSI API). No copyright notice in the volumes. Preface: tables prepared jointly by NIMA, the US Naval Observatory and HM Nautical Almanac Office (published in the UK as NP 401); the US edition carries no Crown or third-party claim"
+  status: check            # joint work with HM Nautical Almanac Office (UK NP 401): Crown copyright share unclear
+  retrieved: 2026-10-26
+  files:
+    - path: pub229-vol1.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V1/Pub229Vol1.pdf"
+      sha256: fe70644789f4489ac2c46d583b4cbe3c65404838bcbc7f6bd6483d4a0cb76f79
+      size: 5041011
+    - path: pub229-vol2.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V2/Pub229Vol2.pdf"
+      sha256: e6012f5964d1f98db98d2571627948a65f4522f10a1cf8674521fe0f7154151c
+      size: 5466113
+    - path: pub229-vol3.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V3/Pub229Vol3.pdf"
+      sha256: 4fd7820d329a91628dfef02cf25d2ed9d34f7c716ac1a2f44e0a55e7924354df
+      size: 5515709
+    - path: pub229-vol4.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V4/Pub229Vol4.pdf"
+      sha256: 5579e085777242c5309274d29e347c2eeef356da86a1405dca008166bf419d9f
+      size: 5309486
+    - path: pub229-vol5.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V5/Pub229Vol5.pdf"
+      sha256: 244c1d186d7cc7027a410c72b68b8f7dd6ee67e886bda888a6b442f6a54ba02c
+      size: 13095579
+    - path: pub229-vol6.pdf
+      url: "https://msi.nga.mil/api/publications/download?type=download&key=16694509/SFH00000/V6/Pub229Vol6.pdf"
+      sha256: 4627152abb80aee444625f4b798f6c14ec81c6f41741030d5811815c449387f5
+      size: 6233475
 - id: uscg-navrules
   title: "Navigation Rules and Regulations Handbook (International and Inland)"
   publisher: US Coast Guard
   url: https://www.navcen.uscg.gov/navigation-rules-amalgamated
   licence: public-domain-us-federal
-  evidence: "US federal publication of law; COLREGs text taken from here, not from IMO"
-  status: check            # confirm latest corrected edition
+  evidence: "US federal publication of law; COLREGs text taken from here, not from IMO. Not fetched on 2026-10-26: navcen.uscg.gov (page and navrules.pdf), uscg.mil, dco.uscg.mil and media.defense.gov return 403 from the fetch host; no archive.org copy of a current edition found. Fetch from another network and record the edition"
+  status: check            # not fetched: navcen.uscg.gov, uscg.mil and dco.uscg.mil return 403 to the fetch host
   retrieved: null
   files: []
 - id: uscg-boat-crew-seamanship
@@ -44,8 +81,8 @@
   publisher: US Coast Guard
   url: https://everyspec.com/USCG/COMDTINST_M16114x5C_50599/
   licence: public-domain-us-federal
-  evidence: "US federal work; revision C dated 2003"
-  status: check            # look for a newer revision and its distribution statement
+  evidence: "US federal work; revision C dated 2003. Superseded by the USCG Boat Crew Handbook series (BCH16114.x: Seamanship Fundamentals is source uscg-boat-crew-handbook-seamanship; Boat Operations, Navigation and Piloting, Rescue and Survival, First Aid are on archive.org). everyspec.com returns 403 to the fetch host and no archive.org copy of M16114.5C exists. Suggest replacing this entry with the BCH handbooks"
+  status: check            # superseded; no fetchable copy
   retrieved: null
   files: []
 - id: navedtra-machinery-repairman
@@ -53,19 +90,28 @@
   publisher: US Naval Education and Training Command
   url: https://archive.org/details/machineryrepairm003995mbp
   licence: public-domain-us-federal
-  evidence: "Distribution Statement A on the cover: approved for public release, distribution unlimited"
-  status: cleared
-  retrieved: null
-  files: []
+  evidence: "NAVEDTRA 12204 (May 1990): 'Distribution Statement A: Approved for public release; distribution is unlimited' on the cover. Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'. Scan: Million Book Project (Carnegie Mellon), not Google"
+  third_party: "Credits page (end of book): figures from Atlas Press/Clausing (11-3), Brown & Sharpe (11-8, 11-9, 11-13, 11-14, 11-16, 11-17, 13-20), Cincinnati Milacron (11-1 to 11-5, 11-12, 11-13, 11-15, 11-18 to 11-21, 11-83, 13-10 to 13-12, 13-15, 13-23 to 13-25), Cincinnati Inc. (12-1, 12-3), DeVlieg-Sundstrand (10-42, 10-43), DoAll (5-3, 5-5 to 5-24, 11-11), Kearney & Trecker, Lars Machine (12-19 to 12-32, table 12-2), Monarch (7-1), Rockford (12-13), SIFCO (14-11 to 14-19, tables 14-3 to 14-12, all chapter 14 inserts), South Bend Lathe; about 30 captions 'Photo courtesy of the Warner & Swasey Company'"
+  status: check
+  retrieved: 2026-10-26
+  files:
+    - path: machinery-repairman-3-2.pdf
+      url: "https://archive.org/download/machineryrepairm003995mbp/machineryrepairm003995mbp.pdf"
+      sha256: 6ec6dfac1988362119f1cb15a5be7b4203a97ba25df30f01a9917bc73c26647d
+      size: 48424173
 - id: phs-ships-medicine-chest
   title: "The Ship's Medicine Chest and Medical Aid at Sea (2003 edition)"
   publisher: US Public Health Service
   url: https://irp.fas.org/doddir/milmed/ships.pdf
   licence: public-domain-us-federal
-  evidence: "US federal work (DHHS / PHS)"
+  evidence: "US federal work (DHHS / PHS). File from Internet Archive item gov.law.usphs.ships.2003 (412 pages; CC0 mark), because irp.fas.org answers with a bot challenge. No courtesy or copyright notice found in the text"
   status: cleared          # dosing to be marked as dated on every page that uses it
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: ships-medicine-chest-2003.pdf
+      url: "https://archive.org/download/gov.law.usphs.ships.2003/usphs.ships.2003.pdf"
+      sha256: 261edcaaa2fb1ae830665b19e4b0122e1ff16a7cec704d0e1dead3f0f815290d
+      size: 4164123
 - id: noaa-mariners-weather-guide-hawaii
   title: "Mariners Weather Guide for Hawaiian Waters and the North Pacific (1972)"
   publisher: NOAA National Weather Service
@@ -73,8 +119,12 @@
   licence: CC0-1.0
   evidence: "NOAA Institutional Repository rights field: CC0 Public Domain"
   status: cleared          # concepts only; broadcast schedules are obsolete
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: mariners-weather-guide-hawaii-1972.pdf
+      url: "https://repository.library.noaa.gov/view/noaa/49724/noaa_49724_DS1.pdf"
+      sha256: 8e6eab351b1c2fbc6de82b2faca60c7b7e8418c7e15aefb99a9165db448ee21b
+      size: 5138152
 
 # --- Public-domain books ----------------------------------------------------
 - id: verrill-knots
@@ -84,8 +134,12 @@
   licence: public-domain
   evidence: "Published 1912 (US PD); author died 1954, so EU PD since 1 January 2025"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: pg13510-h.zip
+      url: "https://www.gutenberg.org/cache/epub/13510/pg13510-h.zip"
+      sha256: 915f59f70903f0419f0730d72663f5fc2e5c8e1c98b5afe727603365abdad87a
+      size: 2054970
 - id: verrill-sailboat
   title: "The Book of the Sailboat (A. Hyatt Verrill)"
   publisher: Project Gutenberg eBook #54051
@@ -93,8 +147,12 @@
   licence: public-domain
   evidence: "Published 1916 (US PD); author died 1954 (EU PD since 2025). Label as historical"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: pg54051-h.zip
+      url: "https://www.gutenberg.org/cache/epub/54051/pg54051-h.zip"
+      sha256: 8aba547b51ab556161cade0ac4a03c177aa0e37be7a0e203293135cddaff9b65
+      size: 1216336
 - id: knight-sailing
   title: "Sailing (E. F. Knight)"
   publisher: Project Gutenberg eBook #56394
@@ -102,24 +160,32 @@
   licence: public-domain
   evidence: "19th-century work; author died 1925 (EU PD since 1996). Label as historical"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: pg56394-h.zip
+      url: "https://www.gutenberg.org/cache/epub/56394/pg56394-h.zip"
+      sha256: 4744e6fd8c9b78f12eab0f19eb770e7b3c09a700b50e6918204b6ee8af399b30
+      size: 820782
 - id: bonnefoux-memoires
   title: "Mémoires du Baron de Bonnefoux, capitaine de vaisseau, 1782-1855"
   publisher: Project Gutenberg eBook #38734
   url: https://www.gutenberg.org/ebooks/38734
   licence: public-domain
-  evidence: "Author died 1855; editor's notes (early 20th c.) to check for EU 70-year rule"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "Published by Plon, Paris, 1900 (US PD). Bonnefoux died 1855; preface and notes by Émile Jobbé-Duval, 4 May 1851 - 25 November 1931 (BnF authority record cb13014149c), so EU PD since 1 January 2002"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: pg38734-h.zip
+      url: "https://www.gutenberg.org/cache/epub/38734/pg38734-h.zip"
+      sha256: 4dc3da3c20e9c712870c57dbd6480a92e7bca2243fccfef84f13ddb1d2a40cda
+      size: 553564
 - id: bonnefoux-paris-dictionnaire
   title: "Dictionnaire de marine à voiles et à vapeur (Bonnefoux et Pâris)"
   publisher: Arthus Bertrand, Paris, 1847-1859
   url: https://mrsh.unicaen.fr/dicomarine/dicoMarine/DicoMarineImpr.xml/ead/oeuv24_3.pdf
   licence: public-domain
-  evidence: "Authors died 1855 and 1893. Use an Internet Archive or Wikisource copy, never Gallica files"
-  status: check            # find a non-Gallica scan
+  evidence: "Authors died 1855 and 1893 (PD). No file: the mrsh.unicaen.fr PDF is a 3-page catalogue record, not the text; no Internet Archive or Wikisource copy found. Candidate: Bibliothèques numériques du ministère des Armées (bibliotheques-numeriques.defense.gouv.fr), whose scan reuse terms must be checked. Never Gallica"
+  status: check            # no non-Gallica scan found
   retrieved: null
   files: []
 
@@ -129,8 +195,8 @@
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/collections/active-marine-guidance-notes-mgns
   licence: OGL-UK-3.0
-  evidence: "MCA publications state OGL v3.0; check each note for third-party images"
-  status: check
+  evidence: "MCA publications state OGL v3.0; check each note for third-party images. No files: the entry names no specific notes. List the MGNs wanted (several current notes are HTML-only on gov.uk)"
+  status: check            # list the notes wanted
   retrieved: null
   files: []
 - id: shom-ram
@@ -138,17 +204,21 @@
   publisher: Shom
   url: https://services.data.shom.fr/geonetwork/1/api/records/MAREE_COURANTS_RAM.xml
   licence: etalab-2.0
-  evidence: "Shom product sheet: Licence Ouverte 2.0; citation 'Shom, 2025. Références Altimétriques Maritimes, https://dx.doi.org/10.17183/MAREE_COURANTS_RAM'"
+  evidence: "Shom product sheet: Licence Ouverte 2.0; citation 'Shom, 2025. Références Altimétriques Maritimes, https://dx.doi.org/10.17183/MAREE_COURANTS_RAM'. data.gouv.fr dataset 'Références Altimétriques Maritimes' (licence lov2) links the official download, a 7z pack (PDF + shapefiles). The 7z was not unpacked here"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: ram-pack.7z
+      url: "https://services.data.shom.fr/INSPIRE/telechargement/prepackageGroup/RAM_PACK_DL/prepackage/RAM_PACK/file/RAM_PACK.7z"
+      sha256: e554fc4ab8d70d72539ab9f8e237611d2a278b9c7691cfecdcb00beff10a9460
+      size: 7449661
 - id: mer-gouv-plaisance
   title: "Fiches d'information et éditions de la navigation de plaisance"
   publisher: French Ministry of the Sea
   url: https://mer.gouv.fr/fiches-dinformation-et-editions-de-la-navigation-de-plaisance-et-des-loisirs-nautiques
   licence: etalab-2.0
-  evidence: "Contradictory: the site footer says etalab-2.0 unless stated otherwise, but its legal notice forbids commercial use and modification of editorial content. Take regulations from Légifrance/LEGI instead"
-  status: check
+  evidence: "mer.gouv.fr footer says etalab-2.0 'sauf mention contraire', but its Mentions légales (read 2026-10-26) say: 'toute utilisation à des fins commerciales ou publicitaires est formellement interdite', reproduction must be free of charge and without 'aucune modification', and other content is under copyright (CPI L.122-4). Take regulations from Légifrance/LEGI instead"
+  status: excluded
   retrieved: null
   files: []
 - id: eu-rcd-2013-53
@@ -158,8 +228,12 @@
   licence: eu-reuse-2011-833
   evidence: "EUR-Lex reuse authorised with the source acknowledged (Decision 2011/833/EU)"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: directive-2013-53-eu-en.pdf
+      url: "https://publications.europa.eu/resource/cellar/68dca22c-76d8-11e3-b889-01aa75ed71a1.0006.01/DOC_1"
+      sha256: c6e63c35219fc62461be077aef4efd18d0757040d38e4c4451f033362cb142e4
+      size: 1089185
 
 # --- Diesel engines (library shelf "Diesel engines, all sizes") --------------
 # Rule for government manuals: read the credits page. Navy rate manuals often
@@ -172,17 +246,26 @@
   licence: public-domain-us-federal
   evidence: "US Navy work, 1945; Internet Archive Public Domain Mark; no courtesy credits found in the text"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fundamentals-of-diesel-engines-1945.pdf
+      url: "https://archive.org/download/FundamentalsOfDieselEngines16178/FundamentalsOfDieselEngines-16178-1945.pdf"
+      sha256: ddfb5cd3eb8142841cb05df2c42abc86c9e41a62b4ee0ae24fc552049262b389
+      size: 55853495
 - id: navedtra-engineman-3-2-1979
   title: "Engineman 3 & 2, Rate Training Manual (1979)"
   publisher: US Naval Education and Training Command, via ERIC ED178727
   url: https://archive.org/details/ERIC_ED178727
   licence: public-domain-us-federal
-  evidence: "US Navy work. Credits page lists third-party illustrations used by courtesy: those must be removed or cleared"
+  evidence: "US Navy work (ERIC ED178727). Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'"
+  third_party: "Credits page (after the index): American Bosch (10-9 to 10-13, 10-24, 10-25, 10-27, 10-28), American Engineering (10-4, 20-5), ASME, Armstrong Bros., Bacharach, Cummins (10-18), Detroit Diesel (many figures in ch. 3-6, 8, 10, 13), Fairbanks Morse (ch. 2-5, 8-10), Galbraith-Pilot Marine, GM Cleveland Diesel (ch. 3-6, 8, 9, 13, 15), Hodge and Shipley, Moeller and others"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: engineman-3-2-1979.pdf
+      url: "https://archive.org/download/ERIC_ED178727/ERIC_ED178727.pdf"
+      sha256: 9e7a5f1c072bed1509a5758a27b189be9a2dedfee01307e94b242a93ef8e417a
+      size: 52454190
 - id: navpers-engineman-1957
   title: "Engineman 3 (NAVPERS 10539) and Engineman 2 (NAVPERS 10540), 1957"
   publisher: US Bureau of Naval Personnel
@@ -190,44 +273,66 @@
   licence: public-domain-us-federal
   evidence: "US Navy work, 1957; Public Domain Mark; GPO publication; no courtesy credits found in the text"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: engineman-3-1957.pdf
+      url: "https://archive.org/download/Engineman310539/Engineman3-10539-1957.pdf"
+      sha256: 355337c53c88c53d27402b50f530aaed264fd357f596a7d8b62975830107ff60
+      size: 115253930
 - id: navedtra-fireman-1976
   title: "Fireman, Rate Training Manual (1976)"
   publisher: US Naval Education and Training Command, via ERIC ED126343
   url: https://archive.org/details/ERIC_ED126343
   licence: public-domain-us-federal
-  evidence: "US Navy work. Credits page to check"
+  evidence: "US Navy work (ERIC ED126343). Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'"
+  third_party: "Credits page: Babcock & Wilcox (6-16C), Buffalo Meter (9-16, 9-17), Cooper-Bessemer (4-12), Crane (10-15), Crosby Valve (9-6), General Electric (7-14, 7-15, 11-2, 11-3), GM, Detroit Diesel (4-13), Electro-Motive (4-8), James G. Biddle (9-21, 9-22), Manning Maxwell & Moore (9-1 to 9-5), US Naval Institute (about 20 figures in ch. 5-10) and others"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fireman-1976.pdf
+      url: "https://archive.org/download/ERIC_ED126343/ERIC_ED126343.pdf"
+      sha256: 4dea8f688abc5f493f25a27c0af453fbe51b124b35bd097b46bc6ad22d9b6614
+      size: 10151595
 - id: navedtra-14050-construction-mechanic-advanced
   title: "Construction Mechanic Advanced (NAVEDTRA 14050), 1992"
   publisher: US Naval Education and Training Command
   url: https://archive.org/details/navedtra-14050-construction-mechanic-advanced-1992
   licence: public-domain-us-federal
-  evidence: "Distribution Statement A: approved for public release, distribution is unlimited (checked in the text). Credits page to check"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "'Distribution Statement A: approved for public release; distribution is unlimited' (in the text). No credits page and no courtesy or copyright notice in the text layer"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: navedtra-14050.pdf
+      url: "https://archive.org/download/navedtra-14050-construction-mechanic-advanced-1992/NAVEDTRA14050_Construction_mechanic_advanced_1992.pdf"
+      sha256: 676a8d03c95f3b6573aa3452786367b2543727caac738cfb0dfed68adeea51c4
+      size: 9932476
 - id: navedtra-construction-mechanic-3-2-1978
   title: "Construction Mechanic 3 & 2, Rate Training Manual (1978)"
   publisher: US Naval Education and Training Command, via ERIC ED170540
   url: https://archive.org/details/ERIC_ED170540
   licence: public-domain-us-federal
-  evidence: "US Navy work. Credits page to check"
+  evidence: "US Navy work (ERIC ED170540). Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'"
+  third_party: "Credits page: Allison Division GM, Cummins (4-62, 4-63), Caterpillar (4-41, 4-43, 4-44), General Motors (3-5, 4-58), International Harvester (4-57), J. A. Baldwin (5-15, 5-16), Deere (3-4, 4-66, 8-5, 8-33, 8-34, 9-12, 9-13, 11-4 to 11-8, 11-11, 11-13, 11-28, 11-31), US Steel (11-63), Worthington (11-67 to 11-69)"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: construction-mechanic-3-2-1978.pdf
+      url: "https://archive.org/download/ERIC_ED170540/ERIC_ED170540.pdf"
+      sha256: cdf42078b25ea25dbc234e406dcda5f086afa5b67e815d84cc8659ac3b07cc7e
+      size: 32907447
 - id: mcm-engine-tune-up-diesel
   title: "Construction Mechanic, Engine Tune-Up II (Diesel), 8-8 (1978)"
   publisher: Military Curriculum Materials for Vocational and Technical Education, via ERIC ED223905
   url: https://archive.org/details/ERIC_ED223905
   licence: public-domain-us-federal
-  evidence: "Adapted US military course; ERIC notes copyrighted materials were omitted or cleared. Confirm the adaptation's own status"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "US Navy course (Naval Construction Training Center, Port Hueneme, 1978) disseminated by the National Center for Research in Vocational Education under US Office of Education funding (ERIC ED223905). ERIC: 'Copyrighted materials were either omitted or approval for their use was obtained'; no copyright, courtesy or permission notice found in the 154 pages. Drop the NCRVE/ERIC wrapper pages"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: engine-tune-up-ii-diesel.pdf
+      url: "https://archive.org/download/ERIC_ED223905/ERIC_ED223905.pdf"
+      sha256: 7d2bbc743c556cc58a68f6d84f09cfaf6b0166dcf32bd175fae9e7bb63867de5
+      size: 2069963
 - id: tm-9-2815-252-24-dn2m
   title: "TM 9-2815-252-24, Diesel Engine Model DN2M (5 kW MEP-802A generator), 1993"
   publisher: US Department of the Army
@@ -235,26 +340,42 @@
   licence: public-domain-us-federal
   evidence: "Distribution Statement A: approved for public release, distribution is unlimited (checked in the text). A small two-cylinder diesel, the closest public analogue to small marine diesels"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: tm-9-2815-252-24.pdf
+      url: "https://archive.org/download/5kw-mep-802-tqg-engine-9-2815-252-24/5kw%20MEP802%20TQG%20Engine%209-2815-252-24.PDF"
+      sha256: 8dc77d96c30103e7e76bce85cc5572617ec30daba385da9ba2a01f09a8f66329
+      size: 1384478
 - id: tm-9-8000-automotive-1985
   title: "TM 9-8000, Principles of Automotive Vehicles (1985)"
   publisher: US Department of the Army
   url: https://archive.org/details/tm-9-8000-principles-of-automotive-vehicles-1985
   licence: public-domain-us-federal
-  evidence: "US Army work; diesel and fuel-injection chapters. Distribution statement to check"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "US Army work (25 Oct 1985 with Change 1, 14 Nov 1988). The reprint carries no Distribution Statement: only 'Distribution: to be distributed in accordance with DA Form 12-37/12-38'. Policy needs Distribution Statement A for military manuals; no courtesy or copyright notice found"
+  status: check            # no Distribution Statement A
+  retrieved: 2026-10-26
+  files:
+    - path: tm-9-8000-1985.pdf
+      url: "https://archive.org/download/tm-9-8000-principles-of-automotive-vehicles-1985/TM9-8000_Principles_of_automotive_vehicles_1985.pdf"
+      sha256: 7c2f4b2d58d0dcbc1bea2165acc77861c3a99f6feb2f447302e3518f8d5a035b
+      size: 18049630
 - id: doe-hdbk-1018-mechanical-science
   title: "DOE Fundamentals Handbook: Mechanical Science (DOE-HDBK-1018-93), 2 volumes"
   publisher: US Department of Energy
   url: https://everyspec.com/DOE/DOE-HDBK/DOE-HDBK-1018-1-93_3295/
   licence: public-domain-us-federal
-  evidence: "'Distribution Statement A. Approved for public release; distribution is unlimited.' No third-party notice found. Volume 1 covers diesel engines, heat exchangers, pumps, valves"
+  evidence: "'Distribution Statement A. Approved for public release; distribution is unlimited.' No third-party notice found. Volume 1 covers diesel engines, heat exchangers, pumps, valves. Files from energy.gov (everyspec returns 403)"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: doe-hdbk-1018-1-93.pdf
+      url: "https://www.energy.gov/documents/doe-hdbk-1018-93vol1"
+      sha256: c1e37601164acf95cbaecad93b1db9841ad8d7670bf30a4fdd6ff0a87c6a0070
+      size: 3166437
+    - path: doe-hdbk-1018-2-93.pdf
+      url: "https://www.energy.gov/documents/doe-hdbk-1018-93vol2"
+      sha256: f569f8de24e0c9b23fa8f5c965c3d0740daa5e41db0f029ad8e3893d3fd9e2fd
+      size: 3091979
 - id: tm-9-2815-254-24-isuzu-c240
   title: "TM 9-2815-254-24, engine maintenance for MEP-804A/814A (Isuzu C-240PW-28 diesel), 1993, and parts list TM 9-2815-254-24P (2010)"
   publisher: US Department of the Army
@@ -262,17 +383,30 @@
   licence: public-domain-us-federal
   evidence: "Distribution Statement A: approved for public release, distribution is unlimited (in the text); no Isuzu copyright found. Strip the uploader's added pages. Parts list: archive.org/details/mep804amep814aenginepartstechnicalmanualtm9281525424p"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: tm-9-2815-254-24.pdf
+      url: "https://archive.org/download/mep804amep814aenginemaintenancetechnicalmanualtm9281525424/MEP804A-MEP814A-Engine-Maintenance-Technical-Manual-TM-9-2815-254-24.pdf"
+      sha256: b3ba63a4d4288976349c74d9f341bdf2258b410f173c6f3a5696a0dcab059cd0
+      size: 1985345
+    - path: tm-9-2815-254-24p.pdf
+      url: "https://archive.org/download/mep804amep814aenginepartstechnicalmanualtm9281525424p/MEP804A-MEP814A-Engine-Parts-Technical-Manual-TM-9-2815-254-24P.pdf"
+      sha256: 411ca926c18a05da6778c2b4d8685cf98469422213bdf5cea538b69210e9cf9a
+      size: 3404213
 - id: fm-55-501-marine-crewman
   title: "FM 55-501, Marine Crewman's Handbook (1999)"
   publisher: US Department of the Army
   url: https://archive.org/details/FM_55_501_M_C_H_1999
   licence: public-domain-us-federal
-  evidence: "Distribution restriction: approved for public release; distribution is unlimited (in the text)"
-  status: cleared
-  retrieved: null
-  files: []
+  evidence: "Distribution restriction: approved for public release; distribution is unlimited (in the text). Chapter 12 splicing material is used 'with permission and through the courtesy of Samson Ocean Systems'"
+  third_party: "Chapter 12, from para 12-121 (standard eye splice and end-for-end splice of double-braided line): 'The following information is used with permission and through the courtesy of Samson Ocean Systems, Inc., Boston'"
+  status: check
+  retrieved: 2026-10-26
+  files:
+    - path: fm-55-501-1999.pdf
+      url: "https://archive.org/download/FM_55_501_M_C_H_1999/FM%2055-501%20Marine%20Crewmans%20Handbook%20%281999%29.pdf"
+      sha256: e79f2333ca551d4180eb13feddf1a75335674cd238ea88642f16b699c5ed46d3
+      size: 10206172
 - id: tm-5-278-outboard-motors-1944
   title: "TM 5-278, Outboard Motors (1944)"
   publisher: US War Department
@@ -280,8 +414,12 @@
   licence: public-domain-us-federal
   evidence: "US federal work, predates distribution statements; no copyright notice found. Two-stroke principles, label as historical"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: tm-5-278-1944.pdf
+      url: "https://archive.org/download/TM5-278/TM5-278.pdf"
+      sha256: c93a47ad0162caa455ebfcb63a8eb42cb26379ef21027bf5b78603cb77f756f7
+      size: 68130610
 - id: tm-55-1030-evinrude-1945
   title: "TM 55-1030, Evinrude Zephyr and Lightfour outboard motors (1945)"
   publisher: US War Department
@@ -289,17 +427,25 @@
   licence: public-domain-us-federal
   evidence: "US federal work; no copyright notice found. Historical"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: tm-55-1030-1945.pdf
+      url: "https://archive.org/download/TM55-1030/TM55-1030.pdf"
+      sha256: 13e24b2595c903db700f4e8381843e903b339d8ef5e63daae07e444b5195ab56
+      size: 10182397
 - id: uscg-boat-crew-handbook-seamanship
   title: "USCG Boat Crew Handbook, Seamanship Fundamentals (BCH16114.4A)"
   publisher: US Coast Guard
   url: https://archive.org/details/boat-crew-handbook-seamanship-fundamentals
   licence: public-domain-us-federal
-  evidence: "US Coast Guard work with a section on outboard motors and stern drives; no Distribution Statement A seen yet"
-  status: check
-  retrieved: null
-  files: []
+  evidence: "US Coast Guard (DHS) handbook BCH16114.4A, 2020. No distribution limitation (Coast Guard directives carry no DoD distribution statement; promulgation page: electronic distribution only). No copyright, courtesy or permission notice in the text; Internet Archive Public Domain Mark"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: bch16114-4a-seamanship.pdf
+      url: "https://archive.org/download/boat-crew-handbook-seamanship-fundamentals/Boat%20Crew%20Handbook%20-%20Seamanship%20Fundamentals.pdf"
+      sha256: dc6765609f3648bd442f268534ddb9060876d06d2c9711901bc97764ea83e397
+      size: 13817292
 - id: marine-oil-engine-handbook-1914
   title: "The Marine Oil-Engine Handbook, 3rd edition (1914)"
   publisher: Temple Press, London (staff of The Motor Ship and Motor Boat)
@@ -307,35 +453,51 @@
   licence: public-domain
   evidence: "Published 1914 (US PD); collective work with no named author, so EU term is 70 years after publication. Label as historical"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: marine-oil-engine-handbook-1914.pdf
+      url: "https://archive.org/download/MarineOilEngineHandbook3rdEd1914/Marine%20Oil%20Engine%20Handbook%203rd_ed%201914.pdf"
+      sha256: 75a8c00b137f2c25c1a244bb0e6b8814684bf079e14e9d999d94beb317a7fc97
+      size: 86183303
 - id: supino-land-marine-diesel-1915
   title: "Land and Marine Diesel Engines (Giorgio Supino, translated by A. G. Bremner and J. Richardson), 1915"
   publisher: Charles Griffin, London
   url: https://archive.org/details/landmarinediesel00supi
   licence: public-domain
-  evidence: "Published 1915 (US PD); author died 1913. Translators' death dates still to check for the EU rule"
+  evidence: "Published 1915 (US PD); author died 1913. Translators A. G. Bremner and J. Richardson: death dates not found (searched 2026-10-26). Scan: University of California, not Google"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: supino-1915.pdf
+      url: "https://archive.org/download/landmarinediesel00supi/landmarinediesel00supi.pdf"
+      sha256: d28f3e18fdf481bb025041cae4bec02dd7667b31a807c5ec08669e1282877574
+      size: 24742041
 - id: megson-diesel-engine-in-practice-1916
   title: "The Diesel Engine in Practice (J. E. Megson and H. S. Jones), 1916"
   publisher: Internet Archive scan (University of California)
   url: https://archive.org/details/dieselengineinpr00megsrich
   licence: public-domain
-  evidence: "Published 1916 (US PD). Authors' death dates still to check for the EU rule"
+  evidence: "Published 1916 (US PD). Death dates of J. E. Megson and H. S. Jones not found (searched 2026-10-26). Scan: University of California, not Google"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: megson-jones-1916.pdf
+      url: "https://archive.org/download/dieselengineinpr00megsrich/dieselengineinpr00megsrich.pdf"
+      sha256: 6ac031b05b17d0e8c5db43dcb66e32390bf1ab4d64705a905f2163cc9c78f84a
+      size: 10713626
 - id: collins-knocks-and-kinks-1908
   title: "Knocks and Kinks (Hubert E. Collins), 1908"
   publisher: Internet Archive scan (University of California copy, not the Google scan)
   url: https://archive.org/details/knockskinkscause00collrich
   licence: public-domain
-  evidence: "Published 1908 (US PD); author born 1872, death date to check for the EU rule. Prefer non-Google scans"
+  evidence: "Published 1908 (US PD); author born 1872, death date not found (searched 2026-10-26). Scan: University of California, not Google"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: knocks-and-kinks-1908.pdf
+      url: "https://archive.org/download/knockskinkscause00collrich/knockskinkscause00collrich.pdf"
+      sha256: e15d38af51f5b95bae6d93491a0b1b7a3c9606bd5bacaac1cec386275fa629a8
+      size: 21415142
 
 # --- Looked at and rejected -------------------------------------------------
 - id: tm-5-2815-233-14-cummins
@@ -410,8 +572,16 @@
   licence: public-domain-us-federal
   evidence: 'PDF: ''This document is in the public domain''. Installation guide: https://www.cdc.gov/niosh/docs/2024-111/pdfs/2024-111.pdf'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: niosh-2024-110.pdf
+      url: "https://www.cdc.gov/niosh/docs/2024-110/pdfs/2024-110.pdf"
+      sha256: 5ca90ba35d5a16d367b8dc21c02bf3e84f3415590a29227cafd27e5d793280f4
+      size: 4952207
+    - path: niosh-2024-111.pdf
+      url: "https://www.cdc.gov/niosh/docs/2024-111/pdfs/2024-111.pdf"
+      sha256: d2f43d60a72b9fe8928dfa4cfc1300befe780ca1cb9a216fff4638e5efc9a563
+      size: 5587438
 - id: niosh-pfds-that-work
   title: PFDs That Work (NIOSH 2013-131)
   publisher: US NIOSH
@@ -419,8 +589,12 @@
   licence: public-domain-us-federal
   evidence: 'US federal work; CDC policy: ''not subject to copyright, is in the public domain'''
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: niosh-2013-131.pdf
+      url: "https://www.cdc.gov/niosh/docs/2013-131/pdfs/2013-131.pdf"
+      sha256: 527262b941d621e7a4a37207ee45aec755db44c2e6394d66109050b226c533be
+      size: 5819730
 - id: niosh-survive-sinking
   title: Increase your chances of surviving a vessel sinking (crewmember info sheet)
   publisher: US NIOSH
@@ -428,15 +602,19 @@
   licence: public-domain-us-federal
   evidence: US federal work; CDC public-domain policy
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: crewmember-survival-infosheet.pdf
+      url: "https://www.cdc.gov/niosh/media/pdfs/Crewmember-Survival-Infosheet_1.pdf"
+      sha256: dfd32cedc0ee00a57fac562800bded8c0fd8397473cd845d92cab2edc05e4381
+      size: 446122
 - id: uscg-fishing-fed-regs
   title: Federal Requirements for Commercial Fishing Industry Vessels
   publisher: US Coast Guard CG-CVC-3
   url: https://www.dco.uscg.mil/Portals/9/Fed_Regs.pdf
   licence: public-domain-us-federal
-  evidence: US federal work (17 USC 105); no notice in the PDF
-  status: cleared
+  evidence: "US federal work (17 USC 105); no notice in the PDF. Not fetched on 2026-10-26: dco.uscg.mil returns 403 to the fetch host and no other official copy was found"
+  status: cleared            # not fetched: dco.uscg.mil returns 403 to the fetch host
   retrieved: null
   files: []
 - id: cfr-46-part-28
@@ -446,17 +624,26 @@
   licence: public-domain-us-federal
   evidence: US federal regulation
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: cfr-2025-title46-vol1-part28.pdf
+      url: "https://www.govinfo.gov/content/pkg/CFR-2025-title46-vol1/pdf/CFR-2025-title46-vol1-part28.pdf"
+      sha256: a4d367690c331bc703400dc9da1d2226a067d69e4ad4a02f07053926a6859195
+      size: 522212
 - id: mca-fishermens-safety-guide
   title: Fishermen's Safety Guide (2020, amendment 1)
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/publications/fishermens-safety-guide
   licence: OGL-UK-3.0
   evidence: 'gov.uk: ''All content is available under the Open Government Licence v3.0, except where otherwise stated''. Drop the credited Planefocus and Seafish photos'
+  third_party: "Acknowledgements: back cover and other photographs by Geoffrey Lee, Planefocus Ltd, and photographs by Seafish Industry Authority, 'reproduced by kind permission'"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fishermens-safety-guide-2020-am1.pdf
+      url: "https://assets.publishing.service.gov.uk/media/5eac030986650c435a68dd0b/Fishermans_safety_guide_2020_amendment_1.pdf"
+      sha256: 146f7da088992c3b729b1840809a0a4de558de9ef737d9d74e4d03a81129d01e
+      size: 2682272
 - id: mca-fishing-stability
   title: Fishing Vessel Stability Guidance (2020)
   publisher: UK Maritime and Coastguard Agency
@@ -464,15 +651,19 @@
   licence: OGL-UK-3.0
   evidence: gov.uk OGL v3.0 footer
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fishing-vessel-stability-guidance.pdf
+      url: "https://assets.publishing.service.gov.uk/media/5aaa38d040f0b66b625e2dfb/10743-MCGA-Fishing_Vessel_Stability_Guidance-WEB.pdf"
+      sha256: fdc02fe2285bbe9488c5c1b9c86f2e90c2bb7d0cd8607a05909ff58d4b7c9c5e
+      size: 508852
 - id: mca-msn-1871
   title: MSN 1871, Code of Practice for the Safety of Small Fishing Vessels under 15 m
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/publications/msn-1871-fcode-of-practice-for-safety-of-small-fishing-vessels
   licence: OGL-UK-3.0
-  evidence: gov.uk OGL footer; '© Crown Copyright 2017'. Check it has not been superseded
-  status: cleared
+  evidence: "gov.uk OGL footer; '© Crown Copyright 2017'. Superseded: MSN 1871 and Amendment 1 are withdrawn; the current MSN 1871 Amendment No. 2 (2021) is published on gov.uk only as HTML and ODT (no PDF), so no file is recorded. Decide whether to accept the HTML/ODT"
+  status: cleared            # current version is HTML/ODT only
   retrieved: null
   files: []
 - id: mca-fishing-leaflets
@@ -480,10 +671,23 @@
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/collections/fishing-safety-guides-and-publications
   licence: OGL-UK-3.0
-  evidence: gov.uk OGL footer on the collection and the single-handed leaflet
+  evidence: "gov.uk OGL footer on the collection and the single-handed leaflet. Single-handed leaflet: 'Photos courtesy of Harbour Media' (drop them)"
+  third_party: "Single-handed fishing leaflet: 'Photos courtesy of Harbour Media'"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: flooding-leaflet.pdf
+      url: "https://assets.publishing.service.gov.uk/media/5a7b9197e5274a7318b8f833/flooding_fishing_lflt.pdf"
+      sha256: 89eb25bd9e26850fe0eba719c2b057babf637e10f81c62bbfbd88f6696372f14
+      size: 1066785
+    - path: potting-creeling-leaflet.pdf
+      url: "https://assets.publishing.service.gov.uk/media/5a74ab03e5274a529406934d/potting_creeling_lflt.pdf"
+      sha256: 9fea4751128bd7428b493c5f67a24aca56203718f68a39b70e537100f61b8fef
+      size: 1100948
+    - path: single-handed-fishing.pdf
+      url: "https://assets.publishing.service.gov.uk/media/5e32dad4ed915d0938933285/Single_handed_fishing.pdf"
+      sha256: ea32f1669285cc78a2f9202a6cfd37c294239d081f310b9285c88adb27179eac
+      size: 2558000
 - id: mca-mgn-526-wolfson
   title: MGN 526, Wolfson stability method for small fishing vessels
   publisher: UK Maritime and Coastguard Agency
@@ -491,8 +695,12 @@
   licence: OGL-UK-3.0
   evidence: 'PDF: ''© Crown Copyright 2021''; gov.uk OGL footer'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: mgn-526.pdf
+      url: "https://assets.publishing.service.gov.uk/media/677d0ac16f01ae28ab5c0450/MGN_526_-_FINAL.pdf"
+      sha256: 25ba3d81ab2ca792fdf0702bfed3523dc6f88a912ba4768a90a4e34b819e944d
+      size: 1187217
 - id: fao-small-fishing-vessel-inspection-2025
   title: Guidelines for the seaworthiness and safety inspection of small fishing vessels (cd4894en)
   publisher: FAO
@@ -500,17 +708,25 @@
   licence: CC-BY-4.0
   evidence: 'PDF: ''made available under the Creative Commons Attribution-4.0 International licence''. FAO photos and non-FAO material excluded from the licence'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: cd4894en.pdf
+      url: "https://openknowledge.fao.org/server/api/core/bitstreams/f9e1f453-4933-4315-8dc2-10cbda4f4fc0/content"
+      sha256: 60066ffd448556b8fed67c21b03cd381cde3cf5c9470ef0b1888d97841287f16
+      size: 6386204
 - id: fao-small-fishing-vessel-risk-2025
   title: Guidelines for insurance value and risk assessment of small fishing vessels (cd5007en)
   publisher: FAO
   url: https://doi.org/10.4060/cd5007en
   licence: CC-BY-4.0
-  evidence: 'Repository metadata: CC BY 4.0; PDF licence line not yet seen'
-  status: check
-  retrieved: null
-  files: []
+  evidence: "PDF: '© FAO, 2025. Some rights reserved. This work is made available under the Creative Commons Attribution-4.0 International licence'. Non-FAO material and FAO photographs excluded from the licence"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: cd5007en.pdf
+      url: "https://openknowledge.fao.org/server/api/core/bitstreams/bfc2e72c-4a07-4563-a2a6-5296ccb63bfa/content"
+      sha256: fe13601c2aa193c3d038202d6c457c6bc3d6df3930fa9ed11d4679b6b04876a9
+      size: 3662408
 - id: eu-guide-small-fishing-vessels
   title: European guide for risk prevention in small fishing vessels (2016, 20+ languages)
   publisher: European Commission (DG EMPL), via EU-OSHA
@@ -518,17 +734,30 @@
   licence: eu-reuse-2011-833
   evidence: 'ES edition: ''© Unión Europea, 2016. Reproducción autorizada, con indicación de la fuente bibliográfica''. Cover photos excluded'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: eu-guide-small-fishing-vessels-en.pdf
+      url: "https://osha.europa.eu/sites/default/files/European_guide_for_risk_prevention_in_small_fishing_vessels.pdf"
+      sha256: ccd9bdcf79496c888d2c8eb2b780ab0ae20bde46005b8f00f6617868d64d9e22
+      size: 9307602
+    - path: eu-guide-small-fishing-vessels-fr.pdf
+      url: "https://osha.europa.eu/sites/default/files/KE-04-15-025-FR-N.pdf"
+      sha256: 997258e1f5a48a79e6363d4da8a6f7e298d1817a27fcf672302813d31b7566e4
+      size: 8411378
 - id: fr-legi-divisions-226-228
   title: Arrêté du 23 novembre 1987, divisions 226, 227 and 228 (French fishing-vessel rules), from the LEGI dataset
   publisher: DILA, data.gouv.fr
   url: https://www.data.gouv.fr/datasets/legi-codes-lois-et-reglements-consolides
   licence: etalab-2.0
-  evidence: data.gouv.fr licence 'fr-lo' (Licence Ouverte). Take the text from LEGI, not from mer.gouv.fr PDFs
+  evidence: "data.gouv.fr licence 'fr-lo' (Licence Ouverte). Take the text from LEGI, not from mer.gouv.fr PDFs. File: the full LEGI dump (gzip tar, hashed by streaming, not stored)"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: Freemium_legi_global_20250713-140000.tar.gz
+      url: "https://echanges.dila.gouv.fr/OPENDATA/LEGI/Freemium_legi_global_20250713-140000.tar.gz"
+      sha256: f862b4a2238e11ec3c48ec70f3b1c68bac0bb1985907841666b98608653d4eca
+      size: 1171027316
+      skip: too-large
 - id: beamer-abordages-peche-commerce-2001
   title: Étude sur les abordages entre navires de pêche et de commerce (2001)
   publisher: BEAmer
@@ -536,17 +765,26 @@
   licence: etalab-2.0
   evidence: 'BEAmer site: ''Sauf mention explicite de propriété intellectuelle, les contenus de ce site sont proposés sous licence ouverte'''
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: etude-abordages-peche-commerce-2001.pdf
+      url: "https://www.bea-mer.developpement-durable.gouv.fr/IMG/pdf/Etude_abordages_peche-commerce_2001.pdf"
+      sha256: 20a1e15ff7ecf9f9af7fe314c6fa1aa2465669954ef9bf9caffb62ece089d7c2
+      size: 118642
 - id: beamer-plaquette-fileyeurs-2015
   title: Plaquette fileyeurs (BEAmer with IMP and CNPMEM, 2015)
   publisher: BEAmer
   url: https://www.bea-mer.developpement-durable.gouv.fr/IMG/pdf/Plaquette_fileyeurs_2015.pdf
   licence: etalab-2.0
-  evidence: BEAmer site licence ouverte, but co-published and the PDF carries no notice
+  evidence: "BEAmer site: licence ouverte 'sauf mention explicite de propriété intellectuelle'; the PDF carries no notice, but it was produced with IMP and CNPMEM, whose rights the BEAmer licence cannot cover. Ask BEAmer, or use only BEAmer's own findings"
+  third_party: "Co-produced with the Institut maritime de prévention and the CNPMEM; photos and drawings uncredited"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: plaquette-fileyeurs-2015.pdf
+      url: "https://www.bea-mer.developpement-durable.gouv.fr/IMG/pdf/Plaquette_fileyeurs_2015.pdf"
+      sha256: 9735cf02c864bfbb243c3778592202bd7036b515c3d5758ea6e2ae197c73f84d
+      size: 2417447
 - id: navpers-engineman-2-1957
   title: Engineman 2 (NAVPERS 10540), 1957
   publisher: US Bureau of Naval Personnel
@@ -554,17 +792,26 @@
   licence: public-domain-us-federal
   evidence: Internet Archive Public Domain Mark; GPO publication; no courtesy credits found in the text
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: engineman-2-1957.pdf
+      url: "https://archive.org/download/Engineman210540/Engineman2-10540-1957.pdf"
+      sha256: 1438cc6b4840536f14fec8a50a46a9efd037617f10c2afb8b78643ab796ca9bc
+      size: 235955318
 - id: navpers-principles-naval-engineering-1970
   title: Principles of Naval Engineering (NAVPERS 10788), 1970
   publisher: US Bureau of Naval Personnel
   url: https://archive.org/details/principlesofnava00unit
   licence: public-domain-us-federal
-  evidence: 'US Navy work; credits list illustrations from Cooper-Bessemer, Fairbanks Morse, GM and others: ''Permission to reproduce these illustrations must be obtained from the original sources''. Strip them'
+  evidence: "US Navy work. Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'. Scan: MBLWHOI Library, not Google"
+  third_party: "Credits page: American Engineering, ASME, Babcock & Wilcox, Bert A. Shields, Buffalo Meter, Cooper-Bessemer, Crane, Crosby, Cutler-Hammer, De Laval, Fairbanks Morse, GM Cleveland Diesel and Detroit Diesel, Gray Marine, James G. Biddle, John Wiley & Sons (Keenan and Keyes steam tables, excerpts of Table III), Kingsbury, Leeds and Northrup, Leslie, Manning Maxwell & Moore, Moeller, Packard, Shell, SNAME, Stewart Warner, US Naval Institute (figures mostly in ch. 7-8, 10-11, 14, 16, 20-22)"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: principles-naval-engineering-1970.pdf
+      url: "https://archive.org/download/principlesofnava00unit/principlesofnava00unit.pdf"
+      sha256: d313d7f02e66249f1efa3f90a5f6eb1c7a192bc6d761fe1b13172e02fbf7f153
+      size: 45977094
 - id: navpers-machinists-mate-1955-1958
   title: Machinist's Mate 1 & C (NAVPERS 10525, 1955) and Machinist's Mate 2 (NAVPERS 10523, 1958)
   publisher: US Bureau of Naval Personnel
@@ -572,17 +819,30 @@
   licence: public-domain-us-federal
   evidence: 'Public Domain Mark; GPO; no courtesy credits found. MM2: archive.org/details/MachinistsMate210523'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: machinists-mate-1-c-1955.pdf
+      url: "https://archive.org/download/MachinistsMate1andC105251955/MachinistsMate1andC-10525-1955.pdf"
+      sha256: 187496757b6b11d7b80b2923d7f9e485a8d88b755730e7218c0e7d7946961c93
+      size: 187938072
+    - path: machinists-mate-2-1958.pdf
+      url: "https://archive.org/download/MachinistsMate210523/MachinistsMate2-10523-1958.pdf"
+      sha256: efa08f136aee66a6555f0aa607658b7806e15ead31df9f3fe53ece08d4a4075d
+      size: 111693405
 - id: navpers-machinists-mate-3-1958
   title: Machinist's Mate 3 (NAVPERS 10522), 1958
   publisher: US Bureau of Naval Personnel
   url: https://archive.org/details/MachinistsMate310522
   licence: public-domain-us-federal
-  evidence: Public Domain Mark; 45 figures 'Courtesy of U. S. Naval Institute' to strip
+  evidence: "Public Domain Mark; 45 figures 'Courtesy of U. S. Naval Institute' to strip (image-only scan, no text layer)"
+  third_party: "45 figures captioned 'Courtesy of U. S. Naval Institute' (scan has no text layer; locate visually)"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: machinists-mate-3-1958.pdf
+      url: "https://archive.org/download/MachinistsMate310522/MachinistsMate3-10522-1958.pdf"
+      sha256: 5462151a494708b1cd98d501563547605210cf66f707b8d55506a58728c44c42
+      size: 228117892
 - id: navpers-electricians-mate-1-c-1965
   title: Electrician's Mate 1 & C (NAVPERS 10547-A, 1965) and 1976 edition (ERIC ED132256)
   publisher: US Bureau of Naval Personnel
@@ -590,17 +850,30 @@
   licence: public-domain-us-federal
   evidence: Public Domain Mark; no courtesy credits found in either edition
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: electricians-mate-1-c-1965.pdf
+      url: "https://archive.org/download/ElectriciansMate1andC10547A/ElectriciansMate1andC-10547A-1965.pdf"
+      sha256: 9da6c9f8b7f5328cbe4d213fafe66cc76e3ff4002ff6f02dbe7a6f3058dda8da
+      size: 53368439
+    - path: electricians-mate-1-c-1976.pdf
+      url: "https://archive.org/download/ERIC_ED132256/ERIC_ED132256.pdf"
+      sha256: 120a9e4501800867b06cabbd992d90c43d5cfdb748b0f9cd498a84a61a31276b
+      size: 8232247
 - id: navedtra-electricians-mate-3-2-1981
   title: Electrician's Mate 3 & 2 (1981)
   publisher: US Naval Education and Training Command, via ERIC ED203163
   url: https://archive.org/details/ERIC_ED203163
   licence: public-domain-us-federal
-  evidence: '''Permission to reproduce illustrations ... must be obtained from the source'': strip credited figures'
+  evidence: "US Navy work (ERIC ED203163). Credits page: illustrations 'included through the courtesy of' the listed sources; 'Permission to reproduce these illustrations ... should/must be obtained from the source'"
+  third_party: "Credits page: Bell & Howell Company, figures 16-11A, 16-11B, 16-14"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: electricians-mate-3-2-1981.pdf
+      url: "https://archive.org/download/ERIC_ED203163/ERIC_ED203163.pdf"
+      sha256: a046108087c420cb01e10cd049072c584b6be261f02be0f57b4219ab5bba3789
+      size: 17000675
 - id: navedtra-fluid-power-1970
   title: Fluid Power (rate training manual), 1970
   publisher: US Navy, via ERIC ED070578
@@ -608,15 +881,20 @@
   licence: public-domain-us-federal
   evidence: US Navy work; no courtesy credits found. Hydraulics, steering gear, controllable-pitch propellers
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fluid-power-1970.pdf
+      url: "https://archive.org/download/ERIC_ED070578/ERIC_ED070578.pdf"
+      sha256: bf8bded63dae3e4438c514e8d9933d5e7ee389285d2f610aac44fdff0fde1fba
+      size: 10401052
 - id: navedtra-14057-damage-controlman-2003
   title: Damage Controlman (NAVEDTRA 14057), 2003
   publisher: US Naval Education and Training Command
   url: https://everyspec.com/USN/NAVEDTRA/
   licence: public-domain-us-federal
-  evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'' Two figures ''Courtesy of Ocenco, Inc.'' to strip'
-  status: check
+  evidence: "'DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.' Two figures 'Courtesy of Ocenco, Inc.' to strip. Not fetched: everyspec.com returns 403 to the fetch host and no archive.org copy found"
+  third_party: "Two figures 'Courtesy of Ocenco, Inc.' (emergency escape breathing device)"
+  status: check            # no fetchable copy
   retrieved: null
   files: []
 - id: navedtra-damage-controlman-3-2-1986
@@ -626,8 +904,12 @@
   licence: public-domain-us-federal
   evidence: '''DISTRIBUTION STATEMENT A Approved for public release; distribution is unlimited.'' No third-party notice found'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: damage-controlman-3-2-1986.pdf
+      url: "https://archive.org/download/micro_IA41152823_0976/micro_IA41152823_0976.pdf"
+      sha256: e877a544a576bdc841c8a22f15703bda43c88545884901864c9f4e5ffd23ab1e
+      size: 74381158
 - id: fm-4-01-502-watercraft-safety
   title: FM 4-01.502, Army Watercraft Safety (2008)
   publisher: US Department of the Army
@@ -635,26 +917,35 @@
   licence: public-domain-us-federal
   evidence: '''Distribution Restriction: Approved for public release; distribution is unlimited.'''
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fm-4-01-502-2008.pdf
+      url: "https://archive.org/download/FM4-01.502ArmyWatercraftSafety/63282.pdf"
+      sha256: 136e6b4a1255d54eb7817f90d26028db7cb4295b04f87ed0416798d182df7c77
+      size: 2242374
 - id: mca-mgn-657-aerosol-fire
   title: MGN 657 (M+F) amendment 2, fixed aerosol fire extinguishing in small-vessel machinery spaces
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/collections/active-marine-guidance-notes-mgns
   licence: OGL-UK-3.0
-  evidence: '''© Crown copyright 2026. This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated'''
-  status: cleared
+  evidence: "'© Crown copyright 2026. This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise stated'. Published on gov.uk only as HTML (note and appendix), no PDF, so no file is recorded"
+  status: cleared            # HTML-only on gov.uk
   retrieved: null
   files: []
 - id: mca-coswp
-  title: Code of Safe Working Practices for Merchant Seafarers (2015, amendments 1-2)
+  title: "Code of Safe Working Practices for Merchant Seafarers (2026 edition)"
   publisher: UK Maritime and Coastguard Agency
-  url: https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-coswp
+  url: https://www.gov.uk/government/publications/code-of-safe-working-practices-for-merchant-seafarers-2026-edition
   licence: OGL-UK-3.0
-  evidence: Only the gov.uk OGL footer; the PDF has no licence line and a print edition is sold. Confirm with MCA
+  evidence: "2026 edition (gov.uk, 20 March 2026; earlier editions withdrawn). Imprint page: '© Crown Copyright 2026 ... You may re-use the content ... under the terms of the Open Government Licence. The design, cover design, images, photos, logos, and typographical arrangements are NOT subject to open government licence terms and cannot be reused.' Text only"
+  third_party: "Imprint page: all images, photos, logos, cover design and typography excluded from OGL; Figure 26.1 'Image courtesy of Intertanko'"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: coswp-2026.pdf
+      url: "https://assets.publishing.service.gov.uk/media/69bd45a5ed813d0d8b690c2b/code-of-safe-working-practices-for-merchant-seafarers-2026-edition.pdf"
+      sha256: 052241558161f86b3a346c9523433c6fe7879009b1bde8fe9280074f39417bf7
+      size: 18224473
 - id: seaton-manual-marine-engineering-1918
   title: A Manual of Marine Engineering (A. E. Seaton), 1918
   publisher: Internet Archive scan
@@ -662,17 +953,33 @@
   licence: public-domain
   evidence: Published 1918 (US PD); author 1848-1930 (EU PD since 2001). Mostly steam
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: seaton-1918.pdf
+      url: "https://archive.org/download/manualofmarine00seatrich/manualofmarine00seatrich.pdf"
+      sha256: f535098abc6a74c541f014369d2b7926e07608d152171e3478102fe4280ed04c
+      size: 69894871
 - id: early-marine-diesel-books
   title: 'Early marine diesel books: Chalkley, Goldingham, Purday (1913-1919)'
   publisher: Internet Archive scans
   url: https://archive.org/details/dieselenginesfor00chal
   licence: public-domain
-  evidence: Published before 1930 (US PD). Authors' death dates still to check for the EU rule
+  evidence: "Chalkley (1916, UC scan), Goldingham (1915, only a Google scan exists on archive.org), Purday (1919, Cornell scan): all US PD. Death dates of A. P. Chalkley, A. H. Goldingham and H. F. P. Purday not found (searched 2026-10-26)"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: chalkley-1916.pdf
+      url: "https://archive.org/download/dieselenginesfor00chal/dieselenginesfor00chal.pdf"
+      sha256: c90eabaaa0bdece11fe964b4093756c8a7581ec1bc6a786b7f5a2288edceb617
+      size: 27584007
+    - path: goldingham-marine-stationary-diesel-1915.pdf
+      url: "https://archive.org/download/marineandstatio00goldgoog/marineandstatio00goldgoog.pdf"
+      sha256: 767122353461f947f3fa635ddaf4fbff5bcd2e60eb8f07aa42589bdc2549e57e
+      size: 4017968
+    - path: purday-diesel-engine-design-1919.pdf
+      url: "https://archive.org/download/cu31924004406116/cu31924004406116.pdf"
+      sha256: d152316ddf701cea0ecd72a3621ee6a02b2d3a5d4562bd9b5c2d2652abe000ea
+      size: 7806892
 - id: knight-modern-seamanship-1903
   title: Modern Seamanship (Austin M. Knight), 1903
   publisher: Internet Archive scan
@@ -680,17 +987,25 @@
   licence: public-domain
   evidence: Published 1903; author 1854-1927 (EU PD since 1998)
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: modern-seamanship-1903.pdf
+      url: "https://archive.org/download/modernseamanship00knig_0/modernseamanship00knig_0.pdf"
+      sha256: 821891752c8473e54411d687d05acd09050f5e5b85c3e05daf1f5c21b8b86997
+      size: 51571230
 - id: luce-seamanship-1866
   title: Seamanship (Stephen B. Luce, US Naval Academy), 1866
   publisher: Internet Archive scan
   url: https://archive.org/details/seamanshipcompf00lucegoog
   licence: public-domain
-  evidence: 'Author 1827-1917. Google scan: prefer another copy if one exists'
+  evidence: "Author 1827-1917. Google scan (University of Michigan copy): no non-Google scan of any edition found on archive.org (searched 2026-10-26)"
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: luce-seamanship-1866.pdf
+      url: "https://archive.org/download/seamanshipcompf00lucegoog/seamanshipcompf00lucegoog.pdf"
+      sha256: 81f325b729d6b90f7f417c913f57073995b2008408c51a73a07a623a101f9365
+      size: 51119075
 - id: admiralty-manual-seamanship-1915
   title: Admiralty Manual of Seamanship, vol. 1 (1908, reprinted 1915)
   publisher: Admiralty (UK)
@@ -698,17 +1013,25 @@
   licence: public-domain
   evidence: 'UK Crown copyright on published works lasts 50 years: long expired; US PD (pre-1930)'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: admiralty-seamanship-1915.pdf
+      url: "https://archive.org/download/manual-seamanship-1915/ManualSeamanship1915.pdf"
+      sha256: bb3ccbebef06f032be03bbdc89c7ce1b35610da4eedab5f6098f60d0471dbfcb
+      size: 32457406
 - id: todd-whall-practical-seamanship-1921
   title: Practical Seamanship for the Merchant Service (Todd and Whall, 7th ed., revised by C. S. Menge), 1921
   publisher: Internet Archive scan
   url: https://archive.org/details/practicalseamans0000john
   licence: public-domain
-  evidence: Pre-1930; Todd and Whall died before 1955; reviser Menge's death date unknown
+  evidence: "Pre-1930 (US PD); Todd and Whall died before 1955; reviser C. S. Menge's death date not found (searched 2026-10-26)"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: todd-whall-1921.pdf
+      url: "https://archive.org/download/practicalseamans0000john/practicalseamans0000john.pdf"
+      sha256: 3aae94fb67a8e67c84a0c3a98fac20bcf92daf6026327cace16bc85f028a1f9a
+      size: 32324615
 - id: reed-stability-of-ships-1885
   title: A Treatise on the Stability of Ships (Edward J. Reed), 1885
   publisher: Internet Archive scan
@@ -716,17 +1039,25 @@
   licence: public-domain
   evidence: Author 1830-1906
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: reed-stability-1885.pdf
+      url: "https://archive.org/download/cu31924030901692/cu31924030901692.pdf"
+      sha256: a0b7cb7745dee054fd2c25fd11fcc36763401b65fda4cb3a44e110338d42f88c
+      size: 12240245
 - id: stevens-stowage-1894
   title: On the Stowage of Ships and Their Cargoes (R. W. Stevens, 7th ed.), 1894
   publisher: Internet Archive scan
   url: https://archive.org/details/on-the-stowage-of-ships-and-their-cargoes-7th
   licence: public-domain
-  evidence: Published 1894 (US PD); author's death date not confirmed
+  evidence: "Published 1894, 7th edition (US PD); Robert White Stevens's death date not confirmed. The archive.org file is a Google scan ('Digitized by Google' on each page): look for another copy"
   status: check
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: stevens-stowage-1894.pdf
+      url: "https://archive.org/download/on-the-stowage-of-ships-and-their-cargoes-7th/On%20the%20Stowage%20of%20Ships%20and%20Their%20Cargoes%20%5B...%5D%20%28Robert%20White%20Stevens%29.pdf"
+      sha256: 8982e0afb4b9cea8e0225c3d84a83296342400327922222087c0be86ef86d820
+      size: 115135967
 - id: lecky-wrinkles-1901
   title: Wrinkles in Practical Navigation (S. T. S. Lecky), 1901 edition
   publisher: Internet Archive scan
@@ -734,8 +1065,12 @@
   licence: public-domain
   evidence: Author 1838-1902. Use 1901 or earlier; later editions were revised by Allingham
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: lecky-wrinkles-1901.pdf
+      url: "https://archive.org/download/wrinklesinpracti00leck_1/wrinklesinpracti00leck_1.pdf"
+      sha256: 8c514b4f98aa00f2bdbd9f9c22c5fe2787fc84cca243e6650c1b4ef61a266d51
+      size: 74861159
 - id: navedtra-quartermaster-3-2-1976
   title: Quartermaster 3 & 2 (1976)
   publisher: US Navy, via ERIC ED132263
@@ -743,8 +1078,12 @@
   licence: public-domain-us-federal
   evidence: US Navy/GPO work; no third-party notice found
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: quartermaster-3-2-1976.pdf
+      url: "https://archive.org/download/ERIC_ED132263/ERIC_ED132263.pdf"
+      sha256: 4d26da4e040e3924d2c6f2037529dfad8c2953c880e644251062ab03e914016a
+      size: 29833983
 - id: fm-21-22-survival-at-sea-1950
   title: FM 21-22 / AFM 64-26, Survival at Sea (1950)
   publisher: US Army and Air Force
@@ -752,8 +1091,12 @@
   licence: public-domain-us-federal
   evidence: Public Domain Mark; no notice found
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: fm-21-22-1950.pdf
+      url: "https://archive.org/download/FM21-221950/FM21-221950.pdf"
+      sha256: c737db9a7c6dc223f0e5f5fdaf62c2a84a342fce7c03ce40ba4937d5e48b0d92
+      size: 5969887
 - id: navy-survival-land-sea-1944
   title: Survival on Land and Sea (US Navy / Smithsonian), 1944
   publisher: US Navy
@@ -761,8 +1104,12 @@
   licence: public-domain-us-federal
   evidence: '''Not for Sale ... Prepared for The United States Navy''; no copyright notice found'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: survival-land-sea-1944.pdf
+      url: "https://archive.org/download/13820890R.nlm.nih.gov/13820890R.pdf"
+      sha256: 3121db6601d26174300a9e697b09ebb94bef8486f2b68ba754df101a8ebd428f
+      size: 7584005
 - id: navedtra-aerographers-mate-1976
   title: Aerographer's Mate 3 & 2 (NAVEDTRA 10363-E), 1976
   publisher: US Naval Education and Training Support Command
@@ -770,8 +1117,12 @@
   licence: public-domain-us-federal
   evidence: GPO publication; no third-party notice found
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: aerographers-mate-1976.pdf
+      url: "https://archive.org/download/aerographersmate00nava/aerographersmate00nava.pdf"
+      sha256: 3aee148955c371c33136d74628cd61202017a826c2189b808471a6febbc48815
+      size: 32876800
 - id: nws-radiofax-schedules
   title: Worldwide Marine Radiofacsimile Broadcast Schedules
   publisher: US National Weather Service
@@ -779,8 +1130,12 @@
   licence: public-domain-us-federal
   evidence: 'US federal work (NOAA). Schedules change: date every copy'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: rfax.pdf
+      url: "https://www.weather.gov/media/marine/rfax.pdf"
+      sha256: 90ee81a9bb1f12a6abf6ad05dab603745e1a06df7c62093d293755ace79e11cc
+      size: 1531271
 - id: navedtra-neets
   title: NEETS, Navy Electricity and Electronics Training Series (NAVEDTRA 14173 onwards)
   publisher: US Naval Education and Training Command
@@ -788,8 +1143,104 @@
   licence: public-domain-us-federal
   evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'''
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: neets-mod-01.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%201%20NAVEDTRA%2014173A.pdf"
+      sha256: 059df1a69617a337069aa03baf84dc247dbeb7fbb2185d96233e9c7ae93eb0c6
+      size: 6988744
+    - path: neets-mod-02.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%202%20NAVEDTRA%2014174A.pdf"
+      sha256: c564bd2029c34ccb9091a943297745125ea1a815d416c205c2fdbb1e6e839619
+      size: 7730192
+    - path: neets-mod-03.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%203%20NAVEDTRA%2014175A.pdf"
+      sha256: f3f12f8dc2ce95ffc519e0f5659a76b1ba244b2ab3de8b88b900af2b8316185c
+      size: 6302168
+    - path: neets-mod-04.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%204%20NAVEDTRA%2014176A.pdf"
+      sha256: 8aaab4efbc9404bee1437c13755429830b217ad8846770e89140849f9a6ee171
+      size: 3989839
+    - path: neets-mod-05.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%205%20NAVEDTRA%2014177A.pdf"
+      sha256: fa3c2f1a3a8ccc0e19cc39217dc4c433a1ab930838f443bc8dbd767d0345d997
+      size: 2633532
+    - path: neets-mod-06.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%206%20NAVEDTRA%2014178A.pdf"
+      sha256: ace94784dc301e1bb083689b5fed4b4f07d2fde6b27bbb3c64a4aefbf559c8e6
+      size: 4352423
+    - path: neets-mod-07.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%207%20NAVEDTRA%2014179A.pdf"
+      sha256: bc68cb805cbdfb3a170407c79caddeb6ec3ad3db50fe9e760601de97f8cd3ef0
+      size: 6938505
+    - path: neets-mod-08.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%208%20NAVEDTRA%2014180A.pdf"
+      sha256: e6e7863e172439cde862a25328ae6a3efbef387f007b95da53e7497fc8984d3b
+      size: 4172314
+    - path: neets-mod-09.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%209%20NAVEDTRA%2014181A.pdf"
+      sha256: c3f5b9872e7605dc660aafe2fd93fef5950042a21fea0da0c4c8109e65f9dedf
+      size: 8330413
+    - path: neets-mod-10.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2010%20NAVEDTRA%2014182A.pdf"
+      sha256: 10700b200041b437c6ff0f95c20f9950a140f23045debc9740bf0b98ffdfc979
+      size: 7138987
+    - path: neets-mod-11.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2011%20NAVEDTRA%2014183A.pdf"
+      sha256: 258e073cb102f6175b58f2a7cbd18ae1f08edcb81b4e18a1776726949101a031
+      size: 6319679
+    - path: neets-mod-12.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2012%20NAVEDTRA%2014184A.pdf"
+      sha256: 606a62ecb3f885380a97c8dfee468627ffb2f28b58e62341ecf982207b2cbc4b
+      size: 6302463
+    - path: neets-mod-13.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2013%20NAVEDTRA%2014185A.pdf"
+      sha256: 2252fa59b40a7ded80dc5650ef26abb1e3b90ca496ff43e3eeac28be3678849e
+      size: 6892380
+    - path: neets-mod-14.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2014%20NAVEDTRA%2014186.pdf"
+      sha256: 95f889ce55cf93b8a1ac21b06492ebbc3760cc6d208a74e710c56eb907e6e0d1
+      size: 6755709
+    - path: neets-mod-15.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2015%20NAVEDTRA%2014187A.pdf"
+      sha256: 19f176a8a6772e38323d5d76e55f6d55e211e0f97e95f0d65542bb8f7043699e
+      size: 5107051
+    - path: neets-mod-16.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2016%20NAVEDTRA%2014188A.pdf"
+      sha256: 9447687e0b46f880f6d86530a11b48bb1757e5999665b7f24b196450b76444aa
+      size: 7844341
+    - path: neets-mod-17.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2017%20NAVEDTRA%2014189A.pdf"
+      sha256: 63c8aaa5fefcae92282f383a6f982460664ec56d6e600589b523d378d2bbfb49
+      size: 5272853
+    - path: neets-mod-18.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2018%20NAVEDTRA%2014190A.pdf"
+      sha256: a4cbdb9ad367bddf13862d10911ccf8dcd90f08d5747098c0c83ce894fdb0e55
+      size: 5208014
+    - path: neets-mod-19.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2019%20NAVEDTRA%2014191.pdf"
+      sha256: a139de1f66b1cbede85c3a97e98fa9f923ab54e51e479d60fc2779dc415ebd7d
+      size: 3725275
+    - path: neets-mod-20.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2020%20NAVEDTRA%2014192.pdf"
+      sha256: 2dd888d7826a6c222894248c291b818d1f92fb74f21072461fd7190b1eaf5c41
+      size: 558651
+    - path: neets-mod-21.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2021%20NAVEDTRA%2014193A.pdf"
+      sha256: ef450c3d6801bfabfc14ab0ba0afc9c0bfec10d414a7192c616c89365eeab835
+      size: 5703152
+    - path: neets-mod-22.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2022%20NAVEDTRA%2014194A.pdf"
+      sha256: 70c5294f7c10ac87efc29577a089d793e82431704137835088dc8e63f9657f7e
+      size: 3903919
+    - path: neets-mod-23.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2023%20NAVEDTRA%2014195A.pdf"
+      sha256: 5b788c3452c2d07cb6641393cb0f0878c6bd19b1d8839a9fd66880ed69752a8b
+      size: 3025065
+    - path: neets-mod-24.pdf
+      url: "https://archive.org/download/neetsmodules_202003/NEETS%20MOD%2024%20NAVEDTRA%2014196A.pdf"
+      sha256: ce85a4743a388566548c57001e01ca280067e7a3f096734acac729fd2a1956bc
+      size: 6764412
 - id: navedtra-electronics-technician
   title: Electronics Technician vols 1 (safety), 3 (communications), 5 (navigation), 7 (antennas), 1994-97
   publisher: US Naval Education and Training Command
@@ -797,8 +1248,24 @@
   licence: public-domain-us-federal
   evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'''
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: et-vol1-safety.pdf
+      url: "https://archive.org/download/et1_20200208/et1.pdf"
+      sha256: 0ca6ede1e9359558e029f827a14e9bb918a571f9520481425701226e29841d04
+      size: 1450976
+    - path: et-vol3-communications.pdf
+      url: "https://archive.org/download/et3_20200208/et3.pdf"
+      sha256: f36a33e5fea96c7db90169d4bb60aa71d310118db8287201d16bb3fdbe4e539b
+      size: 12111775
+    - path: et-vol5-navigation.pdf
+      url: "https://archive.org/download/et5_20200208/et5.pdf"
+      sha256: d5036f3d880e1310549e45bf1f09d225019286347297e654fd0bdec38c3baad3
+      size: 1775422
+    - path: et-vol7-antennas.pdf
+      url: "https://archive.org/download/et7_20200208/et7.pdf"
+      sha256: 7b18ef3437334952de062afb6c3254a0544b213790676d4508cb61c04eb6f65c
+      size: 3266936
 - id: nga-pub-117-2014
   title: Radio Navigational Aids, Pub. 117 (2014), including GMDSS
   publisher: US National Geospatial-Intelligence Agency
@@ -806,8 +1273,12 @@
   licence: public-domain-us-federal
   evidence: '''NO COPYRIGHT CLAIMED UNDER TITLE 17 U.S.C.'' Station data dated 2014'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: pub117-2014.pdf
+      url: "https://archive.org/download/radio-navigational-aids-publication-no.-117-2014-edition./Radio%20Navigational%20Aids%2C%20%20Publication%20No.%20117%2C%202014%20Edition..pdf"
+      sha256: 0ddc761e8968caa60be2cf65aa0870e7bc412180d0545486cddf00fc645bd2d5
+      size: 5346093
 - id: navedtra-14295-hospital-corpsman
   title: Hospital Corpsman (NAVEDTRA 14295), 2000
   publisher: US Naval Education and Training Command
@@ -815,15 +1286,19 @@
   licence: public-domain-us-federal
   evidence: '''DISTRIBUTION STATEMENT A: Approved for public release; distribution is unlimited.'' Mark dosing as dated'
   status: cleared
-  retrieved: null
-  files: []
+  retrieved: 2026-10-26
+  files:
+    - path: hospital-corpsman-14295.pdf
+      url: "https://archive.org/download/hospital-corpsman-nonresident-training-course-navedtra-14295/Hospital%20Corpsman%20-%20Nonresident%20Training%20Course%20-%20NAVEDTRA%2014295.pdf"
+      sha256: 1985609b2b16bbeca4831ff0a19415e330cfc7d30ab297150e3c2c788acdd3f6
+      size: 12293286
 - id: mca-ship-captains-medical-guide
   title: The Ship Captain's Medical Guide (15 chapter PDFs, updated 2019)
   publisher: UK Maritime and Coastguard Agency
   url: https://www.gov.uk/government/publications/the-ship-captains-medical-guide
   licence: OGL-UK-3.0
-  evidence: Only the gov.uk OGL footer; chapter PDFs carry no notice. Confirm
-  status: check
+  evidence: "gov.uk: 'This publication was withdrawn on 17 October 2019 ... no longer valid'; the 15 chapter PDFs are stamped WITHDRAWN PUBLICATION and carry no licence notice. MIN 718 (2025): the current 24th edition is sold by TSO and 'due to intellectual property included ... may not be reproduced without the permission of TSO'"
+  status: excluded
   retrieved: null
   files: []
 - id: noaa-chart-no-1
@@ -831,10 +1306,14 @@
   publisher: NOAA and NGA
   url: https://nauticalcharts.noaa.gov/publications/docs/us-chart-1/ChartNo1.pdf
   licence: public-domain-us-federal
-  evidence: 'US federal work, but it mirrors the IHO INT 1 symbol set: check for IHO material'
-  status: check
-  retrieved: null
-  files: []
+  evidence: "US federal work (NOAA/NGA, 13th edition PDF). No copyright or third-party notice in the document; it describes IHO INT 1 symbol specifications and portrays the symbols but reproduces no IHO text under an IHO notice"
+  status: cleared
+  retrieved: 2026-10-26
+  files:
+    - path: chart-no-1.pdf
+      url: "https://nauticalcharts.noaa.gov/publications/docs/us-chart-1/ChartNo1.pdf"
+      sha256: 9c6d26a88aefd53edd913818f66b29414845ef01cb9920c114b4d40bbc139f6c
+      size: 108951161
 - id: fao-bobp-safety-guide-2004
   title: A Safety Guide for Small Offshore Fishing Boats (FAO/BOBP, 2004)
   publisher: FAO

@@ -17,7 +17,8 @@ which licences we accept and how pages are reviewed.
 
 ## Add a source
 
-Add an entry to `sources.yaml`:
+Add an entry to `sources.yaml`, or to a topic file in `sources.d/` (same
+format; every `sources.d/*.yaml` is read after `sources.yaml`):
 
 ```yaml
 - id: short-unique-id
@@ -28,8 +29,14 @@ Add an entry to `sources.yaml`:
   evidence: "Distribution Statement A on the cover; US Navy work"
   status: check                          # cleared | check | excluded
   retrieved: null                        # YYYY-MM-DD once fetched
-  files: []                              # path + sha256, filled when the source is ingested (phase 3)
+  files:                                 # what scripts/fetch_library.py downloads into library/<id>/
+    - {path: short-name.pdf, url: "https://direct/link.pdf", sha256: <64 hex>, size: <bytes>}
+  third_party: "..."                     # optional: figures owned by others; the file is then never shipped
 ```
+
+Only `cleared` sources without `third_party` material are shipped as files.
+A web page cited for facts needs no `files`. Check a new file with
+`python3 scripts/fetch_library.py --only <id>`.
 
 Use `status: excluded` (with the reason in `evidence`) for sources we looked at
 and rejected, so nobody checks them again.
@@ -48,9 +55,11 @@ a maker's own document. Test with
 ## Add a local Wikipedia shelf
 
 A shelf is a plain text file `wikipedia/<lang>/<region>.txt` with one article
-title per line, exactly as in the article URL but with spaces. Describe the
-shelf in [wikipedia/README.md](wikipedia/README.md). Check every title exists
-before opening the pull request.
+title per line, exactly as in the article URL but with spaces. Give it a title
+and description in `wikipedia/shelves.yaml` and describe it in
+[wikipedia/README.md](wikipedia/README.md). Check every title exists before
+opening the pull request. `python3 scripts/build_wikipedia.py --only <lang>/<shelf>`
+builds it (needs Docker and internet).
 
 ## Code
 

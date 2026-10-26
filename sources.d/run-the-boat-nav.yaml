@@ -1,0 +1,11 @@
+# Added by the run-the-boat-nav writer (navigation pages).
+- id: uscg-boat-crew-handbook-navigation
+  title: "USCG Boat Crew Handbook, Navigation and Piloting (BCH 16114.3A), August 2021"
+  publisher: US Coast Guard, Office of Boat Forces (CG-731)
+  url: https://archive.org/details/boat-crew-handbook-navigation-and-piloting
+  licence: public-domain-us-federal
+  evidence: "US Coast Guard work (17 U.S.C. 105); Internet Archive item marked Public Domain Mark 1.0. The promulgation page says only 'No paper distribution will be made of this Handbook. An electronic version will be located on the Office of Boat Forces (CG-731) Portal site'; no Distribution Statement A was seen and no third-party copyright or 'courtesy of' notice was found in the text. PDF sha256 fc063fd320e5ec0c31520d36aa5cdb13e5dcc661a802608aac2bb43b701a58a8"
+  status: cleared          # same series and terms as the cleared Seamanship Fundamentals volume; USCG (DHS) handbook, released electronically
+  retrieved: 2026-10-26
+  files:
+    - {path: bch16114-3a-navigation.pdf, url: "https://archive.org/download/boat-crew-handbook-navigation-and-piloting/Boat%20Crew%20Handbook%20-%20Navigation%20and%20Piloting.pdf", sha256: fc063fd320e5ec0c31520d36aa5cdb13e5dcc661a802608aac2bb43b701a58a8, size: 11863277}

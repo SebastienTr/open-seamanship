@@ -6,3 +6,5 @@ __pycache__/
 # Private shelf: never committed (see private/README.md)
 private/*
 !private/README.md
+# Library cache (downloaded by scripts/fetch_library.py)
+library/

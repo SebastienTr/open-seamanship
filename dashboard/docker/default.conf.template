@@ -22,6 +22,15 @@ server {
         proxy_connect_timeout 3s;
     }
 
+    # Library files (PDFs, books) live in the pack ZIM; fetch them from Kiwix.
+    location ^~ /pack/library/files/ {
+        limit_except GET { deny all; }
+        rewrite ^/pack/library/files/(.*)$ /content/${OSP_PACK_BOOK}/library/files/$1 break;
+        proxy_pass http://$kiwix;
+        proxy_set_header Host $host;
+        proxy_connect_timeout 3s;
+    }
+
     # The only admin call the dashboard makes: rescan the Kiwix library.
     location = /nomad/api/zim/rescan-library {
         limit_except POST { deny all; }

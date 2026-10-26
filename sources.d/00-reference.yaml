@@ -1,0 +1,28 @@
+# Reference works cited across many pages. Locator: the article title (and section).
+- id: wikipedia-en
+  title: "English Wikipedia (articles cited by title)"
+  publisher: Wikipedia contributors / Wikimedia Foundation
+  url: https://en.wikipedia.org/
+  licence: CC-BY-SA-4.0
+  evidence: "Text is CC BY-SA 4.0 (https://en.wikipedia.org/wiki/Wikipedia:Copyrights); images are checked one by one"
+  status: cleared
+  retrieved: null
+  files: []
+- id: wikipedia-fr
+  title: "Wikipédia en français (articles cités par leur titre)"
+  publisher: Contributeurs de Wikipédia / Wikimedia Foundation
+  url: https://fr.wikipedia.org/
+  licence: CC-BY-SA-4.0
+  evidence: "Texte sous CC BY-SA 4.0 (https://fr.wikipedia.org/wiki/Wikipédia:Citation_et_réutilisation_du_contenu_de_Wikipédia)"
+  status: cleared
+  retrieved: null
+  files: []
+- id: mca-msn-1781-colreg
+  title: "MSN 1781 (M+F) Amendment 3: the COLREGs as UK law (Merchant Shipping (Distress Signals and Prevention of Collisions) Regulations 1996)"
+  publisher: Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/msn-1781-mf-amendment-3-the-merchant-shipping-regulations-1996-colreg
+  licence: OGL-UK-3.0
+  evidence: "GOV.UK HTML publication; page footer: all content is available under the Open Government Licence v3.0, except where otherwise stated. Contains public sector information licensed under the Open Government Licence v3.0."
+  status: cleared
+  retrieved: 2026-10-26
+  files: []

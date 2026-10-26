@@ -59,7 +59,8 @@
         a.href = 'pack/' + s.slug + '/index.html';
         a.appendChild(el('span', 't', s.title));
         a.appendChild(el('span', 'd', s.blurb));
-        a.appendChild(el('span', 'n', s.count ? s.count + (s.count > 1 ? ' pages' : ' page') : 'Being written'));
+        var unit = s.slug === 'library' ? ' document' : ' page';
+        a.appendChild(el('span', 'n', s.count ? s.count + unit + (s.count > 1 ? 's' : '') : 'Being written'));
         li.appendChild(a);
         ul.appendChild(li);
       });
@@ -101,7 +102,8 @@
 
   function describe(b) {
     if (b.name === 'open-seamanship-private') return 'Your private shelf: engine manuals and notes. Not for sharing.';
-    if (b.name.indexOf('open-seamanship_') === 0) return 'The Open Seamanship pack, as a Kiwix library.';
+    if (b.name.indexOf('open-seamanship_') === 0) return 'The Open Seamanship pack with its library of manuals, as a Kiwix library.';
+    if (b.name.indexOf('open-seamanship-wiki_') === 0) return 'Local Wikipedia shelf: coasts, harbours, lights, history.';
     return 'Kiwix library';
   }
 

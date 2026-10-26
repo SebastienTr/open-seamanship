@@ -4,7 +4,7 @@ MODE ?= release
 export MODE
 export PYTHONPATH := $(CURDIR)/build
 
-.PHONY: all check site zim test clean private sources fetch-private dashboard dashboard-image
+.PHONY: all check site zim test clean private sources fetch-library fetch-private dashboard dashboard-image
 
 all: test
 	$(PYTHON) -m osp all
@@ -31,6 +31,9 @@ dashboard:
 dashboard-image: dashboard
 	$(DOCKER) build --build-arg OSP_VERSION=$$($(PYTHON) -c 'from osp import config; print(config.build_info().version)') \
 	  -t $(DASHBOARD_IMAGE):$$($(PYTHON) -c 'from osp import config; print(config.build_info().version.lstrip("v"))') dist/dashboard
+
+fetch-library:
+	$(PYTHON) scripts/fetch_library.py
 
 fetch-private:
 	$(PYTHON) scripts/fetch_private.py

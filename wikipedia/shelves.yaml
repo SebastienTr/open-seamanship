@@ -1,0 +1,22 @@
+# Metadata for each Wikipedia shelf, used by scripts/build_wikipedia.py.
+# title <= 30 characters, description <= 80 characters (ZIM limits).
+fr/bretagne.txt:
+  title: "Wikipédia : Bretagne maritime"
+  description: "Côtes, îles, phares, ports, courants, bateaux et histoire maritime de Bretagne"
+  language: fra
+  region: fr-bretagne
+fr/mediterranee.txt:
+  title: "Wikipédia : Méditerranée"
+  description: "Côte méditerranéenne française et Corse : ports, îles, caps, vents, phares"
+  language: fra
+  region: fr-mediterranee
+en/uk-south-coast.txt:
+  title: "Wikipedia: UK south coast"
+  description: "Scilly to Dover and the Channel Islands: harbours, headlands, races, lights"
+  language: eng
+  region: uk-south-coast
+en/seamanship-core.txt:
+  title: "Wikipedia: Seamanship core"
+  description: "Rules, weather, tides, knots, rigs, engines, radio, navigation, safety, fishing"
+  language: eng
+  region: international

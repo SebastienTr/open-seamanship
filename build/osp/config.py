@@ -35,7 +35,11 @@ def regions() -> dict:
 
 @cache
 def sources() -> list:
-    return _load(ROOT / "sources.yaml") or []
+    """sources.yaml, then sources.d/*.yaml (one file per topic, merged in name order)."""
+    out = list(_load(ROOT / "sources.yaml") or [])
+    for extra in sorted((ROOT / "sources.d").glob("*.yaml")):
+        out.extend(_load(extra) or [])
+    return out
 
 
 @cache

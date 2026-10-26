@@ -10,19 +10,22 @@ internet and a problem to solve. It ships as a [Kiwix](https://kiwix.org) ZIM
 file and as a community add-on for
 [Project N.O.M.A.D.](https://github.com/Crosstalk-Solutions/project-nomad).
 
-> **Status (October 2026): foundations done, no reviewed content yet.**
-> The build, licence checks, packaging and the N.O.M.A.D. dashboard work end to end, and about 100
-> sources are mapped, half of them already cleared. Written pages come next.
-> Nothing in a preview build should be relied on at sea. See [docs/ROADMAP.md](docs/ROADMAP.md).
+> **Status (October 2026): first full draft, not yet reviewed by people.**
+> About 110 pages cover every section, each citing its sources down to the
+> page; safety-critical pages have been fact-checked once by an independent
+> pass, but **no page has been reviewed by a human expert yet**, so every page
+> is marked "Unreviewed". The library holds 53 openly licensed documents
+> (about 1.8 GB). Do not rely on this pack at sea until pages are reviewed.
+> See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## What is inside
 
 | Layer | What it is | Who writes it | Status |
 | --- | --- | --- | --- |
-| Emergency cards | One screen, numbered actions, act in seconds | Us, reviewed by practitioners | Not started |
-| Guides | Symptom first, then causes, fixes and "if that fails" | Us, reviewed by practitioners | Not started |
-| Library | Public-domain and openly licensed manuals | US, UK, French and EU public bodies; old books | [sources mapped](docs/SOURCES.md), not yet ingested |
-| Local Wikipedia shelves | Curated regional articles, one small ZIM per region | Wikipedia contributors | Brittany seed list |
+| Emergency cards | One screen, numbered actions, act in seconds | Us, reviewed by practitioners | 12 drafts, fact-checked |
+| Guides and explainers | Fix it, run the boat, health, know your boat, tables, regions, history | Us, reviewed by practitioners | About 100 drafts ([plan](docs/PAGE_PLAN.md)) |
+| Library | Public-domain and openly licensed manuals, one page each with licence and evidence | US, UK, French and EU public bodies; old books | 53 documents in the pack ([sources](docs/SOURCES.md)) |
+| Local Wikipedia shelves | Curated regional articles, one small ZIM per shelf | Wikipedia contributors | 4 shelves ([wikipedia/](wikipedia/README.md)) |
 | Private shelf | Manuals you own but may not share, packed for your own use | Engine makers | Working |
 
 Coverage is layered: an international core, then Europe (Brittany first, then
@@ -49,14 +52,16 @@ The ZIM lands in `dist/`. Open it with any Kiwix reader.
 | `make site` | Build the static HTML into `dist/site/en/` |
 | `make zim` | Pack the site into `dist/open-seamanship_en_<version>.zim` |
 | `make all` | Tests, then site and ZIM |
-| `make sources` | Regenerate `docs/SOURCES.md` from `sources.yaml` |
+| `make sources` | Regenerate `docs/SOURCES.md` from `sources.yaml` and `sources.d/` |
+| `make fetch-library` | Download the library files into `library/` and check their SHA-256 |
 | `make fetch-private` | Download free official engine manuals into `private/` |
 | `make private` | Pack `private/` into a personal ZIM in `dist/private/` |
 | `make dashboard` | Assemble the N.O.M.A.D. dashboard image context in `dist/dashboard/` |
 | `make dashboard-image` | Build the dashboard Docker image |
 
-Two build modes: `MODE=release` (default) keeps only reviewed pages;
+Two build modes: `MODE=release` (default for `make`) keeps only reviewed pages;
 `MODE=preview` also includes drafts, each marked "Unreviewed" on the page.
+Run `make fetch-library` first to put the library documents in the pack.
 
 With Docker, nothing else is needed:
 
@@ -78,52 +83,71 @@ and the public build never reads it. See [private/README.md](private/README.md).
 
 ## Install on Project N.O.M.A.D.
 
-On the N.O.M.A.D. host:
+One command on the N.O.M.A.D. host does everything, and is safe to run again
+at any time (after `git pull`, for example):
 
 ```sh
 git clone https://github.com/SebastienTr/open-seamanship.git
 cd open-seamanship
-sudo ./install.sh --deploy --dashboard
+sudo ./install.sh
 ```
 
-- `--deploy` builds the ZIM (or uses a prebuilt one with `--zim FILE`), copies
-  it into the Kiwix library (`/opt/project-nomad/storage/zim`) and restarts
-  the Kiwix container (`nomad_kiwix_server`).
-- `--dashboard` adds **Open Seamanship** to the Command Center home page. Its
-  tile opens a dashboard for mariners: distress channels and the Mayday call,
-  one search box across the pack and your private shelf, the pack's sections,
-  your Kiwix libraries, and tools (unit converter, fuel and range, tide height
-  by the rule of twelfths, Beaufort scale), with day, dusk and red night modes.
-  It runs as a small nginx container on port 8620 (`--port` to change),
-  registered through N.O.M.A.D.'s own app API, so it shows in the Supply Depot
-  and can be stopped or removed there. Needs docker and curl; the image is
-  built locally.
+In order, it:
 
-Run the same command again after `git pull` to update. `./install.sh --help`
-lists the options. If a library does not appear, use **Rescan the Kiwix
-library** on the dashboard or **Content Manager → Rescan Library**. How it works:
-[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#the-dashboard-app-built).
+1. downloads the library (only the files not already there, each checked
+   against its SHA-256);
+2. downloads the free official engine manuals into `private/` and packs your
+   private shelf (never published);
+3. builds the local Wikipedia shelves with MWoffliner (in Docker);
+4. builds the pack ZIM;
+5. installs every ZIM into the Kiwix library (`/opt/project-nomad/storage/zim`),
+   replaces older builds and asks N.O.M.A.D. to rescan;
+6. builds the dashboard and registers it as a N.O.M.A.D. app, so
+   **Open Seamanship** appears on the Command Center home page.
 
-To add your private shelf: `make fetch-private`, `make private`, then copy
-`dist/private/*.zim` into `/opt/project-nomad/storage/zim` and rescan. Search
-finds its PDFs by file and folder name, so name your own files well
-(for example `private/volvo-penta-md2000/MD2020-workshop-notes.pdf`).
+A failed download does not stop the rest; the warnings are listed at the end,
+and running the command again fetches what is still missing. Some engine
+manuals must be downloaded by hand: the script prints the link and where to
+save each one.
+
+| Option | Effect |
+| --- | --- |
+| `--clean` | delete downloads and builds first, then download everything again (your own files in `private/` stay) |
+| `--release` | pack reviewed pages only (default: preview, drafts marked "Unreviewed") |
+| `--no-library`, `--no-private`, `--no-wikipedia`, `--no-dashboard` | skip that step |
+| `--no-deploy` | build only, install nothing |
+| `--port`, `--api`, `--library`, `--container` | dashboard port (8620), N.O.M.A.D. admin URL, Kiwix folder and container |
+
+The dashboard: distress channels and the Mayday call, one search box across
+the pack, the library, your private shelf and the Wikipedia shelves, the
+pack's sections, your Kiwix libraries, and tools (unit converter, fuel and
+range, tide height by the rule of twelfths, Beaufort scale), with day, dusk
+and red night modes. It runs as a small nginx container on port 8620,
+registered through N.O.M.A.D.'s own app API, so it can be stopped or removed in
+the Supply Depot. How it works: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+
+The first run downloads about 2 GB for the library and builds a pack of about
+1.5 GB, plus the private shelf (about 300 MB) and the Wikipedia shelves. Search
+finds private PDFs by file and folder name, so name your own files well (for
+example `private/volvo-penta-md2000/MD2020-workshop-notes.pdf`).
 
 ## Repository layout
 
 ```
 content/en/          written pages (Markdown + front matter), one folder per section
 content/assets.yaml  licence record for every image or file under content/
-sources.yaml         every library source: URL, licence, evidence, status
-docs/                page template, roadmap, architecture, generated SOURCES.md
+sources.yaml         every library source: URL, licence, evidence, status, files and SHA-256
+sources.d/           more sources, one file per topic (same format)
+library/             downloaded library files (ignored by git; make fetch-library)
+docs/                page template, page plan, roadmap, architecture, generated SOURCES.md
 build/osp/           the build: validation, site generator, ZIM packer, private shelf
 build/templates/     HTML template (no JavaScript)
 dashboard/           N.O.M.A.D. dashboard (HTML, CSS, JS) and its nginx image
-scripts/             fetch_private.py and its download list
+scripts/             fetch_library.py, fetch_private.py, build_wikipedia.py
 wikipedia/           local Wikipedia shelves (article lists)
 private/             your private shelf (ignored by git)
 tests/               test suite (Python, plus tests/js for the dashboard maths)
-install.sh           N.O.M.A.D. installer
+install.sh           one-command N.O.M.A.D. installer
 ```
 
 ## Contributing

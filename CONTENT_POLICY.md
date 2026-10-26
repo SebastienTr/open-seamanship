@@ -52,6 +52,10 @@ Record both facts (publication date, death dates) in `sources.yaml`.
   domain and must be removed or cleared. Army technical manuals that reprint a
   manufacturer's manual (for example the Cummins engine TMs) carry the
   maker's copyright and are excluded.
+- **Third-party figures stop a file, not the text.** A source whose file
+  contains material owned by others gets a `third_party:` note in
+  `sources.yaml`. Its text may still be cited for facts in our own words, but
+  the file itself is never shipped until those figures are removed or cleared.
 - **Prefer non-Google scans** of old books on Internet Archive. Google's scans
   carry usage guidelines asking for non-commercial use; a university or
   Internet Archive scan of the same book avoids the question.

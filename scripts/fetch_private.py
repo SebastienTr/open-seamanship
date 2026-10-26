@@ -111,7 +111,21 @@ def main(argv=None) -> int:
     ap.add_argument("--max-hp", type=float, help="Tohatsu: largest engine power to include")
     ap.add_argument("--lang", action="append", help="Tohatsu: language to include (repeatable)")
     ap.add_argument("--force", action="store_true", help="download again even if the file exists")
+    ap.add_argument("--clean", action="store_true",
+                    help="first delete the files this script downloaded (listed in DOWNLOADS.tsv); your own files stay")
     args = ap.parse_args(argv)
+
+    if args.clean and LOG.exists():
+        removed = 0
+        for row in LOG.read_text(encoding="utf-8").splitlines()[1:]:
+            cols = row.split("\t")
+            if len(cols) >= 3:
+                f = PRIVATE / cols[1] / cols[2]
+                if f.is_file():
+                    f.unlink()
+                    removed += 1
+        LOG.unlink()
+        print(f"removed {removed} downloaded file(s); your own documents are untouched")
 
     groups = yaml.safe_load(MANIFEST.read_text(encoding="utf-8"))
     if args.list:
@@ -179,7 +193,7 @@ def main(argv=None) -> int:
             print(f"   {url}\n     -> {dest.relative_to(PRIVATE.parent)}")
     print(f"\n{ok} downloaded, {skipped} already present, {dupes} duplicates skipped, {failed} failed. "
           "Next: make private")
-    return 0 if ok or skipped else 1
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

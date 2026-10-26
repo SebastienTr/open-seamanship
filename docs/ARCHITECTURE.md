@@ -4,7 +4,7 @@
 
 ```
 content/<lang>/*.md ─┐
-sources.yaml ────────┼─▶ validate (build/osp/pages.py) ─▶ render (site.py) ─▶ dist/site/<lang>/
+sources.yaml (+ .d) ─┼─▶ validate (build/osp/pages.py) ─▶ render (site.py) ─▶ dist/site/<lang>/
 content/assets.yaml ─┘         licences, sources,          Jinja template,      ─▶ pack (zim.py)
                                review status, regions      no JavaScript         ─▶ dist/*.zim
 ```
@@ -23,6 +23,52 @@ content/assets.yaml ─┘         licences, sources,          Jinja template,  
   `SOURCE_DATE_EPOCH`), never from the clock, so the same commit gives the same
   HTML. The ZIM file itself differs between builds because libzim writes a
   random identifier; its content is identical.
+
+## Library
+
+`scripts/fetch_library.py` downloads every `files` entry of the cleared
+sources (`sources.yaml` and `sources.d/*.yaml`) into `library/<id>/`, checks
+the SHA-256 of each and keeps only matching files (`--verify` re-hashes,
+`--clean` starts again). The build (`build/osp/library.py`) then publishes:
+
+- `library/index.html`: every source that is shipped or cited, with its licence;
+- `library/<id>.html` for every citable source: licence, evidence, origin,
+  SHA-256, the files, and the pages that cite it (pages link here from their
+  citations, so a source never needs to be in the pack to be cited);
+- `library/files/<id>/…`: the files themselves, hard-linked from the cache.
+  Project Gutenberg HTML books (`-h.zip`) are unpacked and their main page
+  linked. PDFs get the source title as their ZIM title, so title search finds
+  them.
+
+A file is shipped only if its source is `cleared`, has no `third_party`
+material, and is present with the recorded size. Files over 400 MB are listed
+with `skip: too-large` and not fetched. The dashboard image leaves
+`library/files/` out and nginx serves it from the pack ZIM in Kiwix
+(`OSP_PACK_BOOK`, set at build time to the matching ZIM name).
+
+The build also checks every relative link in the pages it writes and fails on
+a broken one.
+
+## Local Wikipedia shelves
+
+`scripts/build_wikipedia.py` turns each `wikipedia/<lang>/<shelf>.txt` into
+`dist/wikipedia/open-seamanship-wiki_<lang>_<shelf>.zim` with openZIM's
+MWoffliner (Docker image `ghcr.io/openzim/mwoffliner:2.1.1`, `--pageList`,
+WebP images, metadata from `wikipedia/shelves.yaml`). A shelf is rebuilt only
+when its list is newer than its ZIM. Wikipedia rate-limits busy addresses; a
+failed shelf is retried on the next run.
+
+## One-command install
+
+`install.sh` runs, in order: library download, private shelf download and
+pack, Wikipedia shelves, pack build (preview by default), install of every ZIM
+into the Kiwix library with older builds removed, a library rescan through
+the N.O.M.A.D. API and a Kiwix restart, then the dashboard image build and its
+registration as a custom app. Downloads and builds run as the invoking user
+(`SUDO_USER`); only the copy into the Kiwix folder and Docker need root. A
+failed download is a warning, not an error. `--clean` deletes `dist/`,
+`library/` and the files `fetch_private.py` downloaded (listed in
+`private/DOWNLOADS.tsv`), never the user's own files.
 
 ## Private shelf
 

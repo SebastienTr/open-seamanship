@@ -1,0 +1,28 @@
+# Sources added for the emergency cards.
+- id: mca-gmdss-small-boat-procedures
+  title: "GMDSS: sea areas and distress procedures for small boat users (VHF DSC procedures page and sea-area map, 2024)"
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/gmdss-sea-areas-and-procedures-for-small-boat-users/gmdss-vhf-dsc-procedures-for-small-boat-users
+  licence: OGL-UK-3.0
+  evidence: "gov.uk publication page (published by the MCA, updated 2024-07-24); gov.uk footer: 'All content is available under the Open Government Licence v3.0, except where otherwise stated'. No other notice on the HTML page. Gives the ITU distress call and message format (DSC alert, then Mayday x3, name x3, call sign, MMSI, position, nature, assistance, persons on board, other information, Over)"
+  status: cleared
+  retrieved: 2026-10-26
+  files: []
+- id: mca-mgn-312-lpg
+  title: "MGN 312 (F), Use of liquid petroleum gas (LPG) and diesel fuelled appliances on fishing vessels (2006)"
+  publisher: UK Maritime and Coastguard Agency
+  url: https://www.gov.uk/government/publications/mgn-312-liquid-petroleum-gas-and-diesel-fueled-appliances-on-fishing-vessels
+  licence: OGL-UK-3.0
+  evidence: "Crown copyright 2006, published on gov.uk, whose footer reads 'All content is available under the Open Government Licence v3.0, except where otherwise stated'. PDF: https://assets.publishing.service.gov.uk/media/5a7f1c1240f0b6230268d7e9/MGN_312_-_Gov.pdf (no third-party material)"
+  status: cleared
+  retrieved: 2026-10-26
+  files: []
+- id: hse-about-lpg
+  title: "About liquefied petroleum gas (LPG)"
+  publisher: UK Health and Safety Executive
+  url: https://www.hse.gov.uk/gas/lpg/about.htm
+  licence: OGL-UK-3.0
+  evidence: "Page footer: 'All content is available under the Open Government Licence v3.0, except where otherwise stated'. Text only, no third-party material cited"
+  status: cleared
+  retrieved: 2026-10-26
+  files: []

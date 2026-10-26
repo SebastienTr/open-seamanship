@@ -86,8 +86,13 @@ def pack(lang: str, site_dir: Path, out_file: Path, flavour: str = "all") -> Pat
             mime = _mimetype(f)
             title = rel
             front = False
-            if mime == "text/html":
-                m = TITLE_RE.search(f.read_text(encoding="utf-8"))
+            from .library import zim_title
+
+            lib_title = zim_title(rel)
+            if lib_title:
+                title, front = lib_title, True
+            elif mime == "text/html":
+                m = TITLE_RE.search(f.read_text(encoding="utf-8", errors="replace"))
                 title = (m.group(1).replace(" · Open Seamanship", "") if m else rel).strip()
                 front = True
             creator.add_item(PageItem(rel, title, f, mime, front))

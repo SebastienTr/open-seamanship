@@ -29,8 +29,19 @@ def _env() -> Environment:
     return env
 
 
+NESTED_ITEM = __import__("re").compile(r"^( +)(?=(?:[-*+]|\d+\.) )", __import__("re").M)
+
+
+def _nest(text: str) -> str:
+    """Python-Markdown nests a list only at 4-space steps; accept 2- or 3-space indents too."""
+    def fix(m):
+        n = len(m.group(1))
+        return " " * (4 * -(-n // 4)) if n % 4 else m.group(1)
+    return NESTED_ITEM.sub(fix, text)
+
+
 def _md(text: str) -> str:
-    return markdown.markdown(text, extensions=MD_EXTENSIONS, output_format="html")
+    return markdown.markdown(_nest(text), extensions=MD_EXTENSIONS, output_format="html")
 
 
 def _root(out_path: str) -> str:
@@ -119,8 +130,74 @@ def build(lang: str, pages: list[Page], out_dir: Path, preview: bool) -> list[st
             footer_sources=_footer_sources(p),
         )
 
+    # Library: one page per citable source, the files themselves, and the section index.
+    from html import escape
+
+    from . import library
+
+    cited_by: dict[str, list[Page]] = {}
+    for p in included:
+        for ref in p.meta.get("sources") or []:
+            if isinstance(ref, dict) and ref.get("id"):
+                cited_by.setdefault(ref["id"], []).append(p)
+    lic_all = config.licences()
+    lib_rows = []
+    for e in library.entries():
+        src = e.source
+        lic = lic_all.get(src.get("licence"), {})
+        links = library.publish_files(e, out_dir)
+        parts = [f"<p class=\"summary\">{escape(str(src.get('publisher') or ''))}</p>"]
+        if links:
+            parts.append("<h2>In this pack</h2><ul class=\"listing\">")
+            for ln in links:
+                parts.append(f"<li><a href=\"{escape(ln['href'])}\">{escape(ln['label'])}</a> "
+                             f"<span class=\"meta\">{escape(ln['size'])}</span></li>")
+            parts.append("</ul>")
+        elif src.get("third_party"):
+            parts.append("<p>Not included in this pack: the file contains material owned by others ("
+                         + escape(str(src["third_party"])) + "). Its text is cited where it is ours to use.</p>")
+        elif src.get("status") == "cleared":
+            parts.append("<p>Not included in this pack: cited for reference. "
+                         "The original is at the address below.</p>")
+        else:
+            parts.append("<p>Not included: its licence is still being checked.</p>")
+        parts.append("<h2>Licence and origin</h2><dl class=\"facts\">")
+        parts.append(f"<dt>Licence</dt><dd>{escape(str(lic.get('name', src.get('licence'))))}</dd>")
+        parts.append(f"<dt>Evidence</dt><dd>{escape(str(src.get('evidence') or ''))}</dd>")
+        parts.append(f"<dt>Original</dt><dd>{escape(str(src.get('url') or ''))}</dd>")
+        if src.get("retrieved"):
+            parts.append(f"<dt>Retrieved</dt><dd>{escape(str(src['retrieved']))}</dd>")
+        for f in e.files:
+            if f in e.shipped:
+                parts.append(f"<dt>{escape(f.path)}</dt><dd>SHA-256 {escape(f.sha256)}<br>{escape(f.url)}</dd>")
+        parts.append("</dl>")
+        citing = sorted(cited_by.get(e.id, []), key=lambda p: p.title.lower())
+        if citing:
+            parts.append("<h2>Pages that cite it</h2><ul class=\"listing\">")
+            for p in citing:
+                parts.append(f"<li><a href=\"../{p.out_path}\">{escape(p.title)}</a></li>")
+            parts.append("</ul>")
+        write(f"library/{e.id}.html", page=None, title=str(src.get("title", e.id)),
+              section=section_by_slug.get("library"), body="".join(parts))
+        lib_rows.append((e, bool(links)))
+
     # Section index pages.
     for s in sections:
+        if s["slug"] == "library":
+            items = []
+            for e, has_files in lib_rows:
+                if not has_files and e.id not in cited_by:
+                    continue
+                lic = lic_all.get(e.source.get("licence"), {}).get("name", e.source.get("licence"))
+                note = "" if has_files else " · reference only"
+                items.append(f"<li><a href=\"{escape(e.id)}.html\">{escape(str(e.source.get('title', e.id)))}</a>"
+                             f"<span class=\"meta\">{escape(str(lic))}{note}</span><br>"
+                             f"<span class=\"sub\">{escape(str(e.source.get('publisher') or ''))}</span></li>")
+            body = ("<p class=\"summary\">" + escape(s["blurb"]) + "</p>"
+                    + (f"<ul class=\"listing\">{''.join(items)}</ul>" if items
+                       else "<p class=\"empty\">No documents downloaded yet. Run <code>make fetch-library</code>.</p>"))
+            write("library/index.html", page=None, title=s["title"], section=s, body=body)
+            continue
         members = [p for p in by_section.get(s["slug"], [])]
         write(
             f"{s['slug']}/index.html",
@@ -138,6 +215,7 @@ def build(lang: str, pages: list[Page], out_dir: Path, preview: bool) -> list[st
     # Home page.
     home = next((p for p in included if p.section == "home"), None)
     counts = {s["slug"]: len(by_section.get(s["slug"], [])) for s in sections}
+    counts["library"] = sum(1 for _, has in lib_rows if has)
     write(
         "index.html",
         page=home,
@@ -147,4 +225,24 @@ def build(lang: str, pages: list[Page], out_dir: Path, preview: bool) -> list[st
         counts=counts,
         section=None,
     )
+    broken = check_links(out_dir, written)
+    if broken:
+        raise SystemExit("broken internal links:\n  " + "\n  ".join(broken))
     return written
+
+
+HREF = __import__("re").compile(r'(?:href|src)="([^"#?]+)(?:[#?][^"]*)?"')
+
+
+def check_links(out_dir: Path, written: list[str]) -> list[str]:
+    """Every relative link in a page we wrote must point at a file in the site."""
+    broken = []
+    for rel in written:
+        page = out_dir / rel
+        for target in HREF.findall(page.read_text(encoding="utf-8")):
+            if "://" in target or target.startswith(("mailto:", "data:", "/")):
+                continue
+            if not (page.parent / target).resolve().exists():
+                broken.append(f"{rel} -> {target}")
+    return sorted(set(broken))
+
