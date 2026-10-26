@@ -77,6 +77,12 @@ failed download is a warning, not an error. `--clean` deletes `dist/`,
 `library/` and the files `fetch_private.py` downloaded (listed in
 `private/DOWNLOADS.tsv`), never the user's own files.
 
+Every run also tidies up what is no longer used: library files that no
+cleared source lists (`fetch_library.py --prune`), older pack and private
+ZIMs in the Kiwix folder, Wikipedia shelf ZIMs whose list was deleted or whose
+language is now covered by a full Wikipedia, and older dashboard images.
+Files in `private/` are never deleted by a normal run.
+
 ## Private shelf
 
 `scripts/fetch_private.py` reads `scripts/private_downloads.yaml` and saves

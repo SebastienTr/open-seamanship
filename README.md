@@ -107,7 +107,10 @@ In order, it:
 6. builds the dashboard and registers it as a N.O.M.A.D. app, so
    **Open Seamanship** appears on the Command Center home page.
 
-A failed download does not stop the rest; the warnings are listed at the end,
+Each run also removes what is no longer used: library files dropped from the
+sources, older pack builds, unneeded Wikipedia shelves and old dashboard
+images (your own files in `private/` are never touched). A failed download
+does not stop the rest; the warnings are listed at the end,
 and running the command again fetches what is still missing. Some engine
 manuals must be downloaded by hand: the script prints the link and where to
 save each one.

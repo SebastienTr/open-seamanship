@@ -142,7 +142,7 @@ fi
 # --- 1. library -----------------------------------------------------------------------
 if [ "$DO_LIBRARY" -eq 1 ]; then
   step "1/6 Library: openly licensed manuals"
-  as_user "$PY" scripts/fetch_library.py || warn "some library files failed to download (see above); run again later"
+  as_user "$PY" scripts/fetch_library.py --prune || warn "some library files failed to download (see above); run again later"
 fi
 
 # --- 2. private shelf -----------------------------------------------------------------
@@ -204,6 +204,15 @@ if [ "$DO_DEPLOY" -eq 1 ]; then
   for f in dist/wikipedia/open-seamanship-wiki_*.zim; do
     [ -e "$f" ] && install_zim "$f" "$(basename "$f")"
   done
+  # Shelf ZIMs that are no longer wanted: list deleted, or a full Wikipedia now covers the language.
+  for f in "$LIBRARY"/open-seamanship-wiki_*.zim dist/wikipedia/open-seamanship-wiki_*.zim; do
+    [ -e "$f" ] || continue
+    rest="$(basename "$f" .zim)"; rest="${rest#open-seamanship-wiki_}"
+    lang="${rest%%_*}"; shelf="${rest#*_}"
+    if [ ! -f "wikipedia/$lang/$shelf.txt" ] || ls "$LIBRARY"/wikipedia_"$lang"_all*.zim >/dev/null 2>&1; then
+      rm -f -- "$f" && echo "    removed $(basename "$f") (no longer needed)"
+    fi
+  done
   if nomad_up; then
     curl -s -o /dev/null -X POST "$NOMAD_API/api/zim/rescan-library" && echo "    asked N.O.M.A.D. to rescan the library"
   fi
@@ -248,6 +257,9 @@ if [ "$DO_DASHBOARD" -eq 1 ]; then
     status="$(printf '%s' "$resp" | tail -n 1)"
     if [ "$status" = "200" ]; then
       echo "    registered '$DASH_NAME' with N.O.M.A.D. ($method)"
+      # Older dashboard images are no longer used by the app.
+      docker images --format '{{.Repository}}:{{.Tag}}' "$DASH_IMAGE" | grep -vx "$image" |
+        while read -r old; do docker image rm "$old" >/dev/null 2>&1 && echo "    removed old image $old"; done || true
     else
       warn "N.O.M.A.D. refused the dashboard (HTTP $status): $(printf '%s' "$resp" | sed '$d')"
     fi

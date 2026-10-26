@@ -60,18 +60,39 @@ def download(f: library.LibFile, tries: int = 3) -> str:
     return f"FAILED: {last}"
 
 
+def prune() -> None:
+    """Remove files in the cache that no source lists any more (and interrupted downloads)."""
+    if not library.CACHE.exists():
+        return
+    keep = {f.local.resolve() for e in library.entries() for f in e.files if e.source.get("status") == "cleared"}
+    removed = 0
+    for path in sorted(library.CACHE.rglob("*"), reverse=True):
+        if path.is_file() and path.resolve() not in keep:
+            path.unlink()
+            removed += 1
+            print(f"   removed {path.relative_to(library.CACHE)} (no longer listed)")
+        elif path.is_dir() and not any(path.iterdir()):
+            path.rmdir()
+    if removed:
+        print(f"pruned {removed} file(s) no longer in the library")
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--clean", action="store_true", help="delete the library cache first")
     ap.add_argument("--verify", action="store_true", help="re-hash files already present")
     ap.add_argument("--only", help="comma-separated source ids")
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--prune", action="store_true",
+                    help="delete cached files that sources.yaml no longer lists")
     args = ap.parse_args(argv)
 
     if args.clean and library.CACHE.exists():
         shutil.rmtree(library.CACHE)
         print(f"removed {library.CACHE}")
     wanted = set(args.only.split(",")) if args.only else None
+    if args.prune:
+        prune()
 
     todo, have, skipped = [], 0, 0
     for e in library.entries():
