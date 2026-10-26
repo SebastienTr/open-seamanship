@@ -98,7 +98,9 @@ In order, it:
    against its SHA-256);
 2. downloads the free official engine manuals into `private/` and packs your
    private shelf (never published);
-3. builds the local Wikipedia shelves with MWoffliner (in Docker);
+3. builds the local Wikipedia shelves with MWoffliner (in Docker), except for a
+   language whose full Wikipedia is already in the Kiwix library: the
+   dashboard then opens the curated articles straight in it;
 4. builds the pack ZIM;
 5. installs every ZIM into the Kiwix library (`/opt/project-nomad/storage/zim`),
    replaces older builds and asks N.O.M.A.D. to rescan;
@@ -120,7 +122,8 @@ save each one.
 
 The dashboard: distress channels and the Mayday call, one search box across
 the pack, the library, your private shelf and the Wikipedia shelves, the
-pack's sections, your Kiwix libraries, and tools (unit converter, fuel and
+pack's sections, your Kiwix libraries, the local Wikipedia shelves (curated
+articles for each coast, opened in your full Wikipedia if you have one), and tools (unit converter, fuel and
 range, tide height by the rule of twelfths, Beaufort scale), with day, dusk
 and red night modes. It runs as a small nginx container on port 8620,
 registered through N.O.M.A.D.'s own app API, so it can be stopped or removed in

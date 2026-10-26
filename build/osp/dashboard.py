@@ -22,6 +22,26 @@ OUT = DIST / "dashboard"
 WEB_FILES = ("index.html", "dashboard.css", "dashboard.js", "config.js", "favicon.svg")
 
 
+def _shelves() -> list[dict]:
+    """The curated Wikipedia lists, for the dashboard's Local Wikipedia section."""
+    import yaml
+
+    folder = ROOT / "wikipedia"
+    meta_file = folder / "shelves.yaml"
+    meta = yaml.safe_load(meta_file.read_text(encoding="utf-8")) if meta_file.exists() else {}
+    out = []
+    for lst in sorted(folder.glob("*/*.txt")):
+        lang, shelf = lst.parent.name, lst.stem
+        info = meta.get(f"{lang}/{shelf}.txt") or {}
+        out.append({
+            "key": f"{lang}/{shelf}", "lang": lang,
+            "title": info.get("title", shelf), "description": info.get("description", ""),
+            "zim_name": f"open-seamanship-wiki_{lang}_{shelf}",
+            "titles": [t for t in lst.read_text(encoding="utf-8").splitlines() if t.strip()],
+        })
+    return out
+
+
 def _skip_library_files(site_dir: Path):
     files_dir = (site_dir / "library" / "files").resolve()
 
@@ -67,5 +87,7 @@ def assemble(lang: str, pages: list[Page], site_dir: Path, preview: bool) -> Pat
             for s in config.sections()[lang]
         ],
     }
+    (www / "shelves.json").write_text(json.dumps({"shelves": _shelves()}, indent=1, ensure_ascii=False) + "\n",
+                                      encoding="utf-8")
     (www / "sections.json").write_text(json.dumps(data, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     return OUT

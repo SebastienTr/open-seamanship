@@ -47,6 +47,8 @@ def main(argv=None) -> int:
     ap.add_argument("--only", help="comma-separated shelves, e.g. fr/bretagne")
     ap.add_argument("--email", help="operator email sent to Wikipedia (MWoffliner requires one)")
     ap.add_argument("--docker", default=os.environ.get("DOCKER", "docker"))
+    ap.add_argument("--skip-lang", action="append", default=[],
+                    help="language whose shelves are not built (a full Wikipedia is already installed)")
     args = ap.parse_args(argv)
 
     if shutil.which(args.docker) is None:
@@ -65,6 +67,9 @@ def main(argv=None) -> int:
         lang, shelf = lst.parent.name, lst.stem
         key = f"{lang}/{shelf}"
         if wanted and key not in wanted:
+            continue
+        if lang in args.skip_lang:
+            print(f"== {key}: skipped, a full {lang} Wikipedia is installed (the dashboard links into it)")
             continue
         info = meta.get(f"{key}.txt") or meta.get(key) or {}
         name = f"open-seamanship-wiki_{lang}_{shelf}"

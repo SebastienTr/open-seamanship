@@ -114,6 +114,7 @@
     }).then(function (xml) {
       books = parseCatalog(xml);
       renderLibraries();
+      renderShelves();
       renderScope();
     }).catch(function () {
       var ul = $('libraries');
@@ -164,6 +165,51 @@
     $('search-scope').textContent = m.length
       ? 'Searching ' + m.map(function (b) { return b.title; }).join(', ') + '. PDF manuals are found by their title.'
       : 'No mariner library in Kiwix yet: install the Open Seamanship ZIM to search it.';
+  }
+
+  /* ---- local Wikipedia shelves ---------------------------------------------- */
+  // Each shelf is a curated list of titles. Open them in a full Wikipedia ZIM if one is
+  // installed (wikipedia_<lang>_all…), otherwise in the small shelf ZIM built by install.sh.
+  var shelves = [];
+  function loadShelves() {
+    fetch('shelves.json').then(function (r) { return r.json(); }).then(function (d) {
+      shelves = d.shelves || [];
+      renderShelves();
+    }).catch(function () { shelves = []; });
+  }
+  function wikiBook(sh) {
+    var full = books.filter(function (b) { return b.name.indexOf('wikipedia_' + sh.lang + '_all') === 0; });
+    if (full.length) return full[0];
+    var own = books.filter(function (b) { return b.name === sh.zim_name; });
+    return own.length ? own[0] : null;
+  }
+  function renderShelves() {
+    var box = $('shelves');
+    if (!box || !shelves.length) return;
+    box.innerHTML = '';
+    shelves.forEach(function (sh) {
+      var book = wikiBook(sh);
+      var d = el('details', 'shelf');
+      var sum = el('summary');
+      sum.appendChild(el('span', 't', sh.title));
+      sum.appendChild(el('span', 'd', sh.description + ' · ' + sh.titles.length + ' articles' +
+        (book ? '' : ' · Wikipedia (' + sh.lang + ') not installed')));
+      d.appendChild(sum);
+      var ul = el('ul', 'wiki-list');
+      sh.titles.forEach(function (t) {
+        var li = el('li');
+        if (book) {
+          var a = el('a', null, t);
+          a.href = KIWIX_PUBLIC + book.path + '/' + encodeURIComponent(t.replace(/ /g, '_')).replace(/%2F/g, '/');
+          li.appendChild(a);
+        } else {
+          li.textContent = t;
+        }
+        ul.appendChild(li);
+      });
+      d.appendChild(ul);
+      box.appendChild(d);
+    });
   }
 
   /* ---- search ------------------------------------------------------------- */
@@ -370,6 +416,7 @@
     tb.appendChild(tr);
   });
 
+  loadShelves();
   loadSections();
   loadLibraries();
 })();

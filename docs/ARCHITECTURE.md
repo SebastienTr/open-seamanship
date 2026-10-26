@@ -58,6 +58,13 @@ WebP images, metadata from `wikipedia/shelves.yaml`). A shelf is rebuilt only
 when its list is newer than its ZIM. Wikipedia rate-limits busy addresses; a
 failed shelf is retried on the next run.
 
+When a full Wikipedia for the shelf's language is already in the Kiwix library
+(`wikipedia_<lang>_all*.zim`, as N.O.M.A.D. installs it), `install.sh` skips
+that language (`--skip-lang`). The dashboard reads `shelves.json` (built from
+the lists and `shelves.yaml`) and links each title into the full Wikipedia
+(`/content/<book>/<Title_with_underscores>`), or into the shelf ZIM if that is
+what is installed.
+
 ## One-command install
 
 `install.sh` runs, in order: library download, private shelf download and

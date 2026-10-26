@@ -155,9 +155,18 @@ fi
 
 # --- 3. Wikipedia shelves -------------------------------------------------------------
 if [ "$DO_WIKIPEDIA" -eq 1 ]; then
-  step "3/6 Local Wikipedia shelves (this can take a while the first time)"
+  step "3/6 Local Wikipedia shelves"
+  # A full Wikipedia already in Kiwix makes a shelf ZIM pointless: the dashboard opens the
+  # curated articles in it instead.
+  skip=()
+  for lang in en fr; do
+    if ls "$LIBRARY"/wikipedia_"$lang"_all*.zim >/dev/null 2>&1; then
+      skip+=(--skip-lang "$lang")
+      echo "    full Wikipedia ($lang) found in $LIBRARY: its shelves link into it"
+    fi
+  done
   email="$(as_user git config user.email 2>/dev/null || true)"
-  "$PY" scripts/build_wikipedia.py ${email:+--email "$email"} ||
+  "$PY" scripts/build_wikipedia.py ${email:+--email "$email"} "${skip[@]}" ||
     warn "some Wikipedia shelves failed (Wikipedia may be rate-limiting); run again later"
   give_back dist
 fi
